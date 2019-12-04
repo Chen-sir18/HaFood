@@ -1,0 +1,222 @@
+@dbtnColor: #fb7e00;
+@dwhite: #fff;
+//按钮和某些背景会用到
+.btn-back-color {
+    background: @dbtnColor;
+}
+.btn-bor-color {
+    border: 1px solid @dbtnColor;
+}
+.font-white {
+    color: @dwhite;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans";
+}
+
+//响应式布局的content
+.change-content{
+    margin: 0 auto;
+    height: 100%;
+}
+/*主要内容所占用的宽度*/
+@media only screen and (max-width:767px) {
+    .change-content{
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .change-content{
+        width: 750px;
+    }
+}
+
+@media only screen and (min-width:992px) {
+    .change-content{
+        width: 970px;
+    }
+}
+
+@media only screen and (min-width:1200px ) {
+    .change-content{
+        width: 1180px;
+    }   
+}
+
+//非响应式页面的content
+.d-content{
+  width: 1200px;
+  padding:0 10px;
+}
+
+// 宽度百分比循环
+.generate-columns(4);
+.generate-columns(@n, @i: 1) when (@i =< @n) {
+  .column-@{i} {
+    width: (@i * 100% / @n);
+  }
+  .generate-columns(@n, (@i + 1));
+}
+
+/*超出三行隐藏*/
+.text-over-hidden-3{
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+text-overflow:ellipsis;
+overflow: hidden;
+}
+
+/*超出两行隐藏*/
+.text-over-hidden-2{
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+text-overflow:ellipsis;
+overflow: hidden;   
+}
+
+/*超出一行隐藏*/
+.text-over-hidden-1{
+    overflow: hidden;/*超出部分隐藏*/
+    text-overflow:ellipsis;/* 超出部分显示省略号 */
+    white-space: nowrap;
+}
+
+/*清除浮动*/
+.clearfix:after{
+    content: ' ';
+    display: block;
+    clear: both;
+}
+
+// 字体大小封装
+.font-size(12,60);
+.font-size(@i, @j) when (@i =< @j) {
+  .font-@{i} {
+    font-size: (@i * 1px) !important;
+  }
+  .font-size((@i + 1), @j);
+}
+
+/*去掉多次点击产生的蓝色块状*/
+.text-no-blue{
+    -webkit-user-select:none;
+   -moz-user-select:none;
+   -ms-user-select:none;
+   user-select:none;
+}
+
+//字体粗体封装100到900
+.fontwight(1,9);
+.fontwight(@i,@j,@n: @i * 100) when (@i =< @j) {
+  .font-wi-@{n} {
+    font-weight: @n!important;         
+  }
+  .fontwight((@i + 1), @j)
+}
+
+
+// margin封装 所有的双数 2 到  60
+.margin-left(1,30);
+.margin-left(@i,@j,@n: @i * 2) when (@i =< @j) {
+  .mar-l-@{n} {
+    margin-left: (@n * 1px)!important;
+  }
+  .margin-left((@i + 1), @j)
+}
+
+.margin-right(1,30);
+.margin-right(@i,@j,@n: @i * 2) when (@i =< @j) {
+  .mar-r-@{n} {
+    margin-right: (@n * 1px)!important;
+  }
+  .margin-right((@i + 1), @j)
+}
+
+.margin-left-right(1,30);
+.margin-left-right(@i,@j,@n: @i * 2) when (@i =< @j) {
+  .mar-lr-@{n} {
+    margin: 0 (@n * 1px)!important;
+  }
+  .margin-left-right((@i + 1), @j)
+}
+
+.margin-top(1,30);
+.margin-top(@i,@j,@n: @i * 2) when (@i =< @j) {
+  .mar-t-@{n} {
+    margin-top: (@n * 1px)!important;
+  }
+  .margin-top((@i + 1), @j)
+}
+
+.margin-bottom(1,30);
+.margin-bottom(@i,@j,@n: @i * 2) when (@i =< @j) {
+  .mar-b-@{n} {
+    margin-bottom: (@n * 1px)!important;
+  }
+  .margin-bottom((@i + 1), @j)
+}
+
+.margin-top-bottom(1,30);
+.margin-top-bottom(@i,@j,@n: @i * 2) when (@i =< @j) {
+  .mar-tb-@{n} {
+    margin: (@n * 1px) 0 !important;
+  }
+  .margin-top-bottom((@i + 1), @j)
+}
+
+// padding的封装 2 到  60 所有的双数
+.padding-left(1,30);
+.padding-left(@i,@j,@n: @i * 2) when (@i =< @j) {
+  .pad-l-@{n} {
+    padding-left: (@n * 1px)!important;
+  }
+  .padding-left((@i + 1), @j)
+}
+
+.padding-right(1,30);
+.padding-right(@i,@j,@n: @i * 2) when (@i =< @j) {
+  .pad-r-@{n} {
+    padding-right: (@n * 1px)!important;
+  }
+  .padding-right((@i + 1), @j)
+}
+
+.padding-left-right(1,30);
+.padding-left-right(@i,@j,@n: @i * 2) when (@i =< @j) {
+  .pad-lr-@{n} {
+    padding: 0 (@n * 1px)!important;
+  }
+  .padding-left-right((@i + 1), @j)
+}
+
+.padding-top(1,30);
+.padding-top(@i,@j,@n: @i * 2) when (@i =< @j) {
+  .pad-t-@{n} {
+    padding-top: (@n * 1px)!important;
+  }
+  .padding-top((@i + 1), @j)
+}
+
+.padding-bottom(1,30);
+.padding-bottom(@i,@j,@n: @i * 2) when (@i =< @j) {
+  .pad-b-@{n} {
+    padding-bottom: (@n * 1px)!important;
+  }
+  .padding-bottom((@i + 1), @j)
+}
+
+.padding-top-bottom(1,30);
+.padding-top-bottom(@i,@j,@n: @i * 2) when (@i =< @j) {
+  .pad-tb-@{n} {
+    padding: (@n * 1px) 0 !important;
+  }
+  .padding-top-bottom((@i + 1), @j)
+}
