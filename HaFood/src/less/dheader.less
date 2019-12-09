@@ -1,0 +1,319 @@
+// 头部导航部分
+.header-box {
+    width: 100%;
+    height: 60px;
+    padding:  10px 0;
+    position: fixed;
+    background: transparent;
+    z-index: 1000;
+    .change-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        // 主导航文字
+        .navlist {
+        width: 450px;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        vertical-align: top;
+            .router-link {
+                height: 100%;
+                line-height: 40px;
+                cursor: pointer;
+                position: relative;
+                text-align: center;
+                    .border-bottom-block {
+                        width:100%;
+                        height: 40px;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        // background: yellow;
+                        overflow: hidden;
+                        .border-bottom {
+                            border-bottom:2px solid #EEEEEE;
+                            position: absolute; 
+                            height: 10px;
+                            top: 24px;
+                            width: 100%;
+                            transition: all 0.5s;
+                            transform: translateX(-105%);               
+                        }
+                    }
+                    .nav-list-box {
+                        display: none;
+                    }
+                    &:hover {
+                        .nav-list-box {
+                            width: 220px;
+                            background: #ffffff;
+                            box-shadow: 0 2px 6px 0;
+                            color: #7e7e7e;
+                            position: absolute;
+                            top: 36px;
+                            left: 0;
+                            display: block;
+                            .nav-list {
+                                width: 100%;
+                                height: 45px;
+                                &:hover {
+                                    background: #fb7e00;
+                                    color: #ffffff;
+                                }
+                                .nav-list-link {
+                                    text-align: left;
+                                    padding: 0 20px;
+                                    width: 100%;
+                                    height: 100%;
+                                    line-height: 45px;
+                                }
+                            }
+                        }
+                    }
+                    
+            }
+        }
+        @media only screen and (max-width:992px) {
+            .navlist {
+                display: none;
+            }
+        }
+        .search-and-cart {
+            width: 144px;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            .search {
+                line-height: 40px;
+                cursor: pointer;
+            }
+            .cart {
+                width: 50px;
+                height: 50px;
+                position: relative;
+                border-radius: 25px;
+                line-height: 50px;
+                margin-top: -5px;
+                text-align: center;
+                cursor: pointer;
+                .cart-count {
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 50%;
+                    background: #ffffff;
+                    color: #000000;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    font-size: 12px;
+                    line-height: 18px;
+                }
+            }
+            @media only screen and (max-width:576px) {
+                .cart,.search {
+                    display: none;
+                }
+            }
+            .little-nav-btn {
+                display: none;
+                .little-nav-text {
+                    line-height: 40px;
+                    cursor: pointer;
+                }
+            }
+            @media only screen and (max-width:992px)  {
+                .little-nav-btn {
+                    display: block;
+                }    
+            }
+        }
+    }   
+}
+// 头部搜索框下拉效果部分
+.d-drop-search {
+    position: fixed;
+    background: #ffffff;
+    transform: translateY(-120%);
+    transition: all 0.8s;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    .title-part {
+        width: 50%;
+        float: left;
+        padding: 0% 10%;
+        font-size: 24px;
+    }
+    .title-right{
+        text-align: right;
+        .close-search{
+            margin-left: 20px;
+            cursor: pointer;
+        }
+    }
+    .input-search-box{
+        padding: 0 10%;
+        .input-search{
+            font-size:30px;
+            color: #707070;
+            border: none;
+            width: 100%;
+            border-bottom: 2px solid #707070;
+            margin-top: 200px;
+        }
+    }
+}
+// 头部的小导航条
+.little-nav-box {
+    transition: all 0.8s;
+    transform: translateY(-120%);
+    width: 89%;
+    padding: 8px 14px;
+    background:#ffffff;
+    position: fixed;
+    top: 50px;
+    box-shadow: 0px 15px 16px 0px rgba(187, 187, 187, 0.15);   
+    .little-nav-title {
+        width: 100%;
+        color: #555555;
+        font-size: 16px;
+        margin-top: 6px;
+        cursor: pointer;
+        line-height: 40px;
+        .dropicon {
+            font-size: 20px;
+            float: right;
+            font-weight: 600;
+        }
+        .little-nav-second-box {
+            display: none;
+            .little-nav-second {
+                padding: 8px 24px;
+                &:hover {
+                    background:#fb7e00;
+                    color: #ffffff;
+                }
+                .little-nav-second-link {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width:992px) {
+    .little-nav-box {
+        display: none;
+    }
+}
+
+// 侧边购物车部分
+.right-cart-box {
+    width: 400px;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    bottom: 0;
+    padding: 40px;
+    background: #ffffff;
+    right: 0;
+    color: #222222;
+    font-size: 20px;
+    transform: translateX(100%);
+    transition: all 0.8s;
+    box-shadow: 0px 15px 16px 0px rgba(187, 187, 187, 0.15);
+    .cart-title {
+        margin-bottom: 20px;
+        .close-shopcart {
+            float: right;
+            cursor: pointer;
+        }
+    }
+    .cart-goods-box {
+        width: 100%;
+        padding: 20px 0;
+        border-bottom: 1px solid #ffff;
+        height: 116px;
+        .goods-img-box {
+            height: 100%;
+            float: left;
+            .goods-img {
+                height: 100%;
+            }
+        }
+        .goods-infos {
+            float: right;
+            height: 100%;
+            width: calc(100% - 75px);
+            padding: 0 30px 0 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .goods-name {
+                width: 100%;
+                font-size: 16px;
+                color: #222222;
+                font-weight: 600;
+            }
+            .goods-count {
+                font-size: 14px;
+                color: #dddddd;
+            }
+            .goods-money {
+                font-size: 14px;
+                color: #fb7e00;
+            }
+        }
+        .totalmoney {
+            width: calc(100% - 80px);
+            padding: 35px 0 0;
+            position: absolute;
+            bottom: 180px;
+            height: 60px;
+            background: #ffffff;
+            border-top: 1px solid #cccccc;
+            .subtotal {
+                color: #222;
+                font-size: 18px;
+                font-weight: 600;
+            }
+            .allmoney {
+                color: #fb7e00;
+                font-size:14px;
+                float: right;
+                line-height: 30px;
+            }
+        }
+        .view-cart {
+            width: calc(100% - 80px);
+            background: #fb7e00;
+            color: #ffffff;
+            font-size: 14px;
+            padding: 0 50px;
+            position: absolute;
+            bottom: 80px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    }
+    .cart-goods-box + .cart-goods-box {
+        border-top: 1px solid #ccc;
+    }
+}
+@media only screen and (max-width:768px) {
+    .right-cart-box {
+        width: 320px;
+    }
+}
+@media only screen and (max-width:576px) {
+    .right-cart-box {
+        display: none;
+    }
+}
