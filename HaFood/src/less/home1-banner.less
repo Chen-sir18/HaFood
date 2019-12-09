@@ -1,0 +1,167 @@
+// 主页按钮颜色
+@btn-color: #fb7e00;
+// banner 开始
+.banner-box {
+  height: 900px;
+  background-image: url('../img/banner_bg.jpg');
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: cover;
+  position: relative;
+}
+.banner-box::before {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  opacity: .3;
+}
+
+// 内容部分
+.banner-cont {
+  width: 100%;
+  height: 268px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+.main-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  border: 1px solid @btn-color;
+  background-color: @btn-color;
+}
+.hover-status {
+  background-color: @btn-color;
+}
+.banner-title {
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  bottom: 100px;
+  font-size: 138px;
+  color: #fff;
+  font-family: "CommercialScript BT";
+  transform: translate(-50%);
+  animation: anima 1.75s, opacity 1.75s;
+  cursor: default;
+  
+}
+// title动画
+@keyframes anima {
+  from {
+    bottom: -50%;
+    opacity: 0;
+  }
+  to {
+    bottom: 100px;
+    opacity: 1;
+  }
+}
+// show now按钮动画
+.main-button {
+  opacity: 0;
+  animation: ani 1.25s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes ani {
+  from {
+    bottom: -50%;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+// 左右按钮
+.left-arrow,.right-arrow {
+  display: inline-block;
+  width: 30px;
+  height: 60px;
+  line-height: 60px;
+  font-weight: 600;
+  color: #666;
+  font-size: 16px;
+  cursor: pointer;
+}
+.left-arrow {
+  border-radius: 0 60px 60px 0;
+  text-align: right;
+  padding-right: 12px;
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.right-arrow {
+  border-radius: 60px 0 0 60px;
+  text-align: left;
+  padding-left: 12px;
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+// banner-shap 形状图片
+.banner-shape {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  img {
+    max-width: 100%;
+  }
+}
+
+// 响应式布局调屏
+@media (min-width: 992px) and (max-width:1200px) {
+  .banner-title {
+    font-size: 124px;
+  }
+  .left-arrow,.right-arrow {
+    display: none;
+  }
+}
+@media (min-width: 767px) and (max-width:992px) {
+  .banner-title {
+    font-size: 138px;
+  }
+  .left-arrow,.right-arrow {
+    display: none;
+  }
+}
+@media (min-width: 576px) and (max-width:768px) {
+  .banner-box {
+    height: 650px;
+  }
+  .banner-title {
+    font-size: 138px;
+  }
+  .left-arrow,.right-arrow {
+    display: none;
+  }
+}
+@media only screen and (max-width:576px) {
+  .banner-box {
+    height: 650px;
+  }
+  .banner-title {
+    font-size: 76px;
+  }
+  .left-arrow,.right-arrow {
+    display: none;
+  }
+  .banner-cont {
+    height: 180px;
+  }
+}

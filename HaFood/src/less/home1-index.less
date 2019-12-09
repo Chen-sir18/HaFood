@@ -1,0 +1,458 @@
+// 复用产品模块样式
+@product-price: #a71c60;
+// 按钮颜色
+@btn-color-default: #fff;
+
+
+// show now按钮封装
+.main-btn {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 50px;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid @btn-color-default;
+  background-color: @btn-color-default;
+  padding: 0 50px;
+  cursor: pointer;
+}
+// 按钮hover动画
+.hover-status {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: @btn-color-default;
+  z-index: -1;
+  opacity: .4;
+  top: 5px;
+  left: 5px;
+  transition: all 0.4s ease-out 0s;
+}
+.main-btn:hover .hover-status {
+  top: 0;
+  left: 0;
+  transition: all 0.5s ease-out 0s;
+}
+// 按钮封装结束
+img {
+  max-width: 100%;
+}
+// 圆形形状产品样式
+.product-area {
+  padding: 57px 0 21px 0;
+  .product-area-cont {
+    width: 1140px;
+    margin: 0 auto;
+  }
+  .product-area-lists {
+    width: 100%;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .product-area-list {
+    width: 25%;
+    text-align: center;
+    cursor: pointer;
+    .pro-img {
+      width: 75%;
+      display: inline-block;
+      border-radius: 50%;
+    }
+    .product-name {
+      padding-top: 15px;
+      color: #222;
+    }
+  }
+  .product-area-list {
+    .pro-img {
+      transition: all 0.3s ease-out 0s;
+    }
+  }
+  .product-area-list:hover .pro-img {
+    box-shadow: 0px 15px 38px 0px rgba(0, 79, 104, 0.2);
+    transition: all 0.3s ease-out 0s;
+  }
+  .product-area-list:nth-child(1),
+  .product-area-list:nth-child(3),
+  .product-area-list:nth-child(5) {
+    margin-top: 30px;
+  }
+  .product-area-list:nth-child(2),
+  .product-area-list:nth-child(4) {
+    margin-top: 60px;
+  }
+}
+// 通用模块样式
+.products-box {
+  padding-bottom: 83px;
+  .products-cont {
+    width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+    .products-lists {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      .products-list {
+        width: 33.3333%;
+        padding: 0 15px;
+        img {
+          max-width: 100%;
+        }
+      }
+      .product-title {
+        font-size: 16px;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        color: #222222;
+        padding-top: 25px;
+        padding-bottom: 5px;
+      }
+      .product-price, .product-oldprice {
+        font-size: 14px;
+      }
+      .product-price {
+        color: @product-price;
+      }
+      .product-oldprice {
+        color: #888;
+        text-decoration: line-through;
+      }
+    }
+  }
+}
+
+// 视频内容组件样式
+.home-video {
+  position: relative;
+  .home-video-box {
+    width: 1140px;
+    padding: 0 15px;
+    margin: 0 auto;
+    .home-video-cont {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      // 标题
+      .home-video-title {
+        padding: 80px 0 25px 240px;
+        .title-top {
+          font-size: 28px;
+          font-weight: 600;
+          color: #222222;
+          font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .title-bottom {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 24px;
+          color: #888;  
+        }
+      }
+      // 视频部分
+      .home-video-item {
+        margin-top: 30px;
+        position: relative;
+        // 中心视频播放按钮
+        .play-video-btn {
+          height: 60px;
+          width: 60px;
+          position: absolute !important;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          line-height: 60px;
+          border-radius: 50%;
+          color: #222222;
+          background: #fff;
+          z-index: 2;
+          animation: myanimate 1s infinite;
+          .icon-f10:before {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+  // 中心按钮水波纹效果
+  // @keyframes myanimate {
+  //   from {
+  //     width: 60px;
+  //     height: 60px;
+  //   }
+  //   to {
+  //     width: 100px;
+  //     height: 100px;
+  //   }
+  // }
+  
+
+  // 浅蓝色占位内容
+  .home-video-occupy {
+    position: absolute;
+    width: 550px;
+    height: 570px;
+    background: #f1f7f7;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+  
+  // 视频弹出内容样式
+  .play-video-cont {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 100;
+    .video-box {
+      width: 900px;
+      padding: 0 8px;
+      margin: 0 auto;
+      .video-item {
+        width: 100%;
+        max-width: 900px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        video {
+          width: 100%;
+          height: 100%;
+        }
+        video:focus {
+          outline-color: transparent;
+        }
+        .close-video {
+          position: absolute;
+          top: -30px;
+          right: 0;
+          color: #d4ded4;
+          .icon-quxiao:before {
+            font-size: 12px;
+            font-weight: 900;
+          }
+        }
+        .close-video:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+  
+}
+
+// 只有左右两块内容部分样式(点击可去到Product页面)
+.discount-area {
+  padding-bottom: 90px;
+  .discount-area-box {
+    // width: 1140px;
+    .discount-item {
+      width: 100%;
+      margin-top: 30px;
+      color: #fff;
+      display: flex;
+      justify-content: space-around;
+    }
+    .bg-item {
+      max-width: 50%;
+      position: relative;
+    }
+    .discount-item-left {
+      padding-right: 15px;
+    }
+    .discount-item-right {
+      padding-left: 15px;
+    }
+    // 标题
+    .discount-title {
+      padding-top: 50px;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      .discount-title-top {
+        font-size: 18px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+      .discount-title-bottom {
+        font-size: 70px;
+        font-family: "CommercialScript BT";
+        padding-bottom: 20px;
+      }
+    }
+  }
+}
+
+// 响应式布局调屏
+@media (min-width: 992px) and (max-width:1200px) {
+  // 顶部圆形产品
+  .product-area {
+    .product-area-cont {
+      width: 960px;
+    }
+  }
+  // 通用模块产品调屏
+  .products-box {
+    .products-cont {
+      width: 960px;
+    }
+  }
+  // 播放视频样式
+  .home-video {
+    .home-video-box {
+      width: 960px;
+    }
+  }
+}
+@media (min-width: 767px) and (max-width:992px) {
+  // 顶部圆形产品
+  .product-area {
+    .product-area-cont {
+      width: 720px;
+    }
+  }
+  // 通用模块产品调屏
+  .products-box {
+    .products-cont {
+      width: 720px;
+    }
+  }
+  // 播放视频样式
+  .home-video {
+    .home-video-box {
+      width: 720px;
+      .home-video-cont {
+        .home-video-title {
+          padding-left: 150px;
+        }
+      }
+    }
+    // 蓝色占位
+    .home-video-occupy {
+      width: 400px;
+      height: 470px;
+    }
+    // 弹出部分
+    .play-video-cont {
+      .video-box {
+        width: 800px;
+        .video-item {
+          width: 100%;
+          max-width: 800px;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 576px) and (max-width:768px) {
+  // 顶部圆形产品
+  .product-area {
+    .product-area-cont {
+      width: 540px;
+    }
+  }
+  // 通用模块产品调屏
+  .products-box {
+    .products-cont {
+      width: 540px;
+      .products-lists {
+        flex-wrap: wrap;
+        justify-content: center;
+        .products-list {
+          width: 50%;
+        }
+      }
+    }
+  }
+  // 播放视频样式
+  .home-video {
+    .home-video-box {
+      width: 540px;
+      .home-video-cont {
+        .home-video-title {
+          padding-left: 20px;
+        }
+      }
+    }
+    // 蓝色占位
+    .home-video-occupy {
+      width: 300px;
+      height: 350px;
+    }
+    // 弹出部分
+    .play-video-cont {
+      .video-box {
+        width: 600px;
+        .video-item {
+          width: 100%;
+          max-width: 600px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width:576px) {
+  // 顶部圆形产品
+  .product-area {
+    .product-area-cont {
+      width: 545px;
+    }
+    .product-area-lists {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .product-area-list {
+      width: 100%;
+    }
+  }
+  // 通用模块产品调屏
+  .products-box {
+    .products-cont {
+      width: 545px;
+      .products-lists {
+        flex-wrap: wrap;
+        justify-content: center;
+        .products-list {
+          width: 100%;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  // 播放视频样式
+  .home-video {
+    .home-video-box {
+      width: 545px;
+      .home-video-cont {
+        .home-video-title {
+          padding-left: 0;
+        }
+      }
+    }
+    // 蓝色占位
+    .home-video-occupy {
+      display: none;
+    }
+    // 弹出部分
+    .play-video-cont {
+      .video-box {
+        width: 480px;
+        .video-item {
+          width: 100%;
+          max-width: 480px;
+        }
+      }
+    }
+  }
+}
