@@ -71,7 +71,7 @@
 			</div>
 			<div class="cart-goods-box" v-for="(item, index) in shopgoods" v-bind:key="index">
 				<div class="goods-img-box">
-					<img class="goods-img" :src="'http://192.168.97.241:3000/'+ item.picstr">
+					<img class="goods-img" v-if="!(item.picstr === undefined)" :src="'api/'+ item.picstr">
 				</div>
 				<div  class="goods-infos">
 					<div class="goods-name goods-info">{{item.goodsname}}</div>
