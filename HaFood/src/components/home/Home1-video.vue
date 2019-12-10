@@ -8,7 +8,10 @@
         </div>
         <div class="home-video-item">
           <img src="../../img/play_thumb.png" alt="">
-          <a class="play-video-btn" @click="playVideo"><span class="iconfont icon-f10"></span></a>
+          <a class="view-button effect-btn" @click="playVideo">
+            <span class="iconfont icon-f10"></span>
+          </a>
+          <a class="effect-button"></a>
           <!-- 视频播放内容弹出框 -->
           <div class="play-video-cont" v-show="show">
               <div class="video-box">
