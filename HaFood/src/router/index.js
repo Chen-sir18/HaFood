@@ -20,16 +20,16 @@ export default new Router({
         {
           path: '/Home1',
           component: Home1
+        },
+        {
+        	path: '/Home2',
+      		component: Home2
         }
       ]
     },
     {
       path: '/Login',
       component: Login
-    },
-    {
-      path: '/Home2',
-      component: Home2
     }
   ],
   mode: 'history'
