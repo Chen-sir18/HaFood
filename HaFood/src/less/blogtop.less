@@ -1,0 +1,1404 @@
+.clearfix:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+// bloglist顶部内容
+.h-blog-top{
+    width: 100%;
+    position: relative;
+}
+.h-blog-outer{
+    width: 100%;
+}
+.h-top-imgbox{
+    width: 100%;
+    height: 380px;
+    background: url(../img/page_title_bg.jpg) no-repeat;
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+}
+.h-top-container{
+    width: 100%;
+    height: 48px;
+    position: absolute;
+    margin: 0 auto;
+    top: 45%;
+    display: inline-block;
+}
+.h-inner-box{
+    width: 1140px;
+    margin: 0 auto;
+    height: 48px;
+    text-align: center;
+}
+.h-inner-title{
+    width: 100%;
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: 600;
+}
+.h-banner-outer{
+    width: 100%;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    img{
+        width: 100%;
+        vertical-align: middle;
+        border-style: none;
+    }
+}
+.h-nav-outer{
+    display: inline-block;
+    position: absolute;
+    bottom: -190px;
+    left: 50%;
+    z-index: 5;
+    transform: translateX(-50%);
+}
+.h-nav-inner{
+    background: #fff;
+    border-radius: 0;
+    padding: 0 85px;
+    line-height: 50px;
+    display: inline-block;
+    border: 1px solid #eee;
+    margin-bottom: 16px;
+}
+.h-nav-text{
+    font-size: 14px;
+    color: #888;
+    display: inline-block;
+    letter-spacing: 2px;
+    &.active{
+        color: #6c747d;
+    }
+}
+.h-nav-righttext{
+    font-size: 14px;
+    color: #888;
+    display: inline-block;
+    letter-spacing: 2px;
+    &:before{
+        display: inline-block;
+        padding-right: 5px;
+        color: #6c757d;
+        content: "/";
+    }
+    &.active{
+        color: #6c747d;
+    }
+}
+@media (min-width: 992px) and (max-width:1200px) {
+    .h-inner-box{
+        width: 930px;
+        margin: 0 auto;
+    }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+    .h-inner-box{
+        width: 690px;
+        margin: 0 auto;
+    }
+    .h-nav-inner{
+        padding: 0 45px;
+    }
+}
+@media (min-width: 567px) and (max-width: 767px) {
+    .h-inner-box{
+        width: 510px;
+        margin: 0 auto;
+    }
+    .h-nav-inner{
+        padding: 0 10px;
+    }
+}
+@media only screen and (max-width:567px) {
+    .h-banner-outer{
+        bottom: -5px;
+    }
+    .h-inner-box{
+        width: 100%;
+        padding: 0 15px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .h-nav-inner{
+        padding: 0 10px;
+        width: 210px;
+    }
+    .h-nav-text, .h-nav-righttext{
+        font-size: 12px;
+        text-align: left;
+    }
+}
+// bloglist 中间主体内容
+.h-blog-listarea{
+    width: 1140px;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 35px;
+    padding-bottom: 88px;
+}
+.h-listarea-outer{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+// 主体左边部分
+.h-blog-listitem{
+    width: 855px;
+    padding: 0 15px;
+    position: relative;
+}
+.h-listitem-inner{
+    width: 100%;
+    position: relative;
+}
+.h-sigle-blogs{
+    width: 100%;
+    margin-top: 30px;
+    position: relative;
+}
+.h-sigle-imgbox{
+    width: 100%;
+    height: auto;
+    img{
+        width: 100%;
+        vertical-align: middle;
+    }
+    position: relative;
+}
+.h-bloglist-content{
+    background: #fff;
+    margin: 0 auto;
+    margin-top: -30px;
+    width: 765px;
+    position: relative;
+    z-index: 10;
+    padding: 35px 45px 30px;
+    span{
+        font-size: 12px;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+    p{
+        font-size: 14px;
+        color: #555;
+        line-height: 24px;
+    }
+}
+.cook-tips{
+    font-size: 22px;
+    margin: 9px 0 15px;
+    cursor: pointer;
+}
+.h-read-more{
+    background: #fb7e00;
+    color: #fff;
+    line-height: 50px;
+    padding: 0 30px;
+    border-radius: 30px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 53px;
+    display: inline-block;
+}
+// 翻页
+.h-pagination{
+    border-top: 1px solid #ddd;
+    margin-top: 28px;
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.h-pagination-item1{
+    ul li {
+        display: block;
+        width: 30px;
+        height: 24px;
+    }
+}
+.h-pagination-item2{
+    margin-top: -10px;
+    .h-item-icon{
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background: #f5f5f5;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 50px;
+        vertical-align: middle;
+        transition: all 0.45s ease;
+        cursor: pointer;
+        .icon{
+            color: #222222;
+            font-weight: 600;
+            transition: all 0.45s ease;
+        }
+        &:hover{
+            background: #fb7e00;
+            .icon{
+                color: #fff;
+            }
+        }
+    }
+}
+
+
+// 主体右边部分 topics
+.h-topics{
+    width: 285px;
+    padding: 0 15px;
+    position: relative;
+}
+.h-blog-slidebar{
+    width: 100%;
+    position: relative;
+    margin-top: 30px;
+}
+.h-topics-list{
+    margin-top: -4px;
+    width: 100%;
+    position: relative;
+    .h-tree-topics{
+        width: 100%;
+        position: relative;
+        .el-tree-node{
+            color: #555555;
+            font-size: 14px;
+            .el-tree-node__content{
+                height: 42px;
+                line-height: 42px;
+                .el-tree-node__expand-icon{
+                    color: #555555;
+                }
+            }
+        }
+    }
+}
+.h-title-topics{
+    font-size: 20px;
+    position: relative;
+    padding-left: 30px;
+    padding-bottom: 22px;
+    color: #222222;
+    cursor: pointer;
+    &:before{
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 7px;
+        height: 10px;
+        width: 10px;
+        background: #ddd;
+        border-radius: 50%;
+    }
+}
+// recent posts
+.h-recent-posts{
+    margin-top: 40px;
+    width: 100%;
+    position: relative;
+    .h-post-title{
+        font-size: 20px;
+        position: relative;
+        padding-left: 30px;
+        padding-bottom: 22px;
+        color: #222222;
+        cursor: pointer;
+        &:before{
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 7px;
+            height: 10px;
+            width: 10px;
+            background: #fb7e00;
+            border-radius: 50%;
+        }
+    }
+}
+.h-posd-item{
+    margin-top: 30px;
+    display: flex;
+    position: relative;
+}
+.h-posd-thumb{
+    width: 55%;
+    img{
+        width: 100%;
+        vertical-align: middle;
+    }
+}
+.h-posd-content{
+    margin-left: 18px;
+    a{
+        display: inline-block;
+        text-decoration: none;
+        background-color: transparent;
+    }
+    span{
+        font-size: 12px;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        padding-top: 3px;
+    }
+}
+.h-posd-title{
+    font-size: 14px;
+    font-weight: 600;
+    color: #222222;
+    margin: 0px;
+}
+// tags
+.h-tags-sidebar{
+    width: 100%;
+    margin-top: 30px;
+    position: relative;
+}
+.h-tags-lists{
+    width: 100%;
+    position: relative;
+    li{
+        display: inline-block;
+        a{
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            margin-right: 8px;
+            transition: all 0.3s ease-out 0s;
+            letter-spacing: 2px;
+            line-height: 32px;
+            display: inline-block;
+            cursor: pointer;
+            &:hover{
+                color: #222222;
+            }
+        }
+    }
+}
+@media (min-width:992px) and (max-width:1200px) {
+    .h-blog-listarea{
+        max-width: 960px;
+    }
+    .h-listarea-outer{
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .h-blog-listitem{
+        width: 720px;
+        padding: 0 15px;
+    }
+    .h-bloglist-content{
+        width: 630px;
+    }
+    // topics
+    .h-topics{
+        width: 240px;
+        padding: 0 15px;
+    }
+}
+@media (min-width:767px) and (max-width:992px) {
+    .h-blog-listarea{
+        max-width: 720px;
+    }
+    .h-listarea-outer{
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .h-blog-listitem{
+        width: 720px;
+        padding: 0 15px;
+    }
+    .h-bloglist-content{
+        width: 630px;
+    }
+    // topics
+    .h-topics{
+        width: 300px;
+        padding: 0 15px;
+    }
+}
+@media (min-width:567px) and (max-width:767px) {
+    .h-blog-listarea{
+        max-width: 540px;
+    }
+    .h-listarea-outer{
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .h-blog-listitem{
+        width: 540px;
+        padding: 0 15px;
+    }
+    .h-bloglist-content{
+        width: 490px;
+        margin: -30px 10px 0px;
+        padding: 10px;
+    }
+    // topics
+    .h-topics{
+        width: 360px;
+        padding: 0 15px;
+    }
+}
+@media only screen and (max-width:567px) {
+    .h-blog-listarea{
+        max-width: 100%;
+    }
+    .h-listarea-outer{
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .h-blog-listitem{
+        width: 100%;
+        padding: 0 15px;
+    }
+    .h-bloglist-outer{
+        width: 100%;
+        position: relative;
+        padding: 0 10px;
+    }
+    .h-bloglist-content{
+        width: 100%;
+        margin: -30px 0px 0px;
+        padding: 15px;
+    }
+    .cook-tips{
+        font-size: 18px;
+    }
+    // topics
+    .h-topics{
+        width: 100%;
+        padding: 0 15px;
+    }
+}
+
+// blog grid页面
+.h-blog-grid{
+    width: 1140px;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 35px;
+    padding-bottom: 88px;
+}
+.h-bloggrid-outer{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.h-bloggrid-item{
+    width: 380px;
+    position: relative;
+    padding: 0 15px;
+}
+.h-bgid-inner{
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    img{
+        width: 100%;
+        vertical-align: middle;
+    }
+    span{
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 3px;
+        color: #888;
+        padding-top: 25px;
+        display: inline-block;
+    }
+    a{
+        display: inline-block;
+        text-decoration: none;
+        background-color: transparent;
+    }
+    .bloggrid-tips{
+        font-size: 17px;
+        color: #222222;
+        padding-top: 10px;
+        font-weight: 600;
+    }
+}
+// blogs grid 页面响应式
+@media (min-width:992px) and (max-width:1200px) {
+    .h-blog-grid{
+        width: 960px;
+    }
+    .h-bloggrid-item{
+        width: 33.333%;
+    }
+}
+@media (min-width:767px) and (max-width:992px) {
+    .h-blog-grid{
+        width: 720px;
+    }
+    .h-bloggrid-item{
+        width: 50%;
+    }
+}
+@media (min-width:567px) and (max-width:767px) {
+    .h-blog-grid{
+        width: 540px;
+    }
+    .h-bloggrid-item{
+        width: 50%;
+    }
+}
+@media only screen and (max-width:567px) {
+    .h-blog-grid{
+        width: 100%;
+    }
+    .h-bloggrid-item{
+        width: 100%;
+    }
+}
+
+// blog Masonry
+.h-menu-outer{
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    // display: flex;
+    text-align: center;
+}
+.h-list-menu{
+    color: #888888;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0 28px;
+    cursor: pointer;
+    &.active{
+        color: #222222;
+        text-decoration: underline;
+    }
+}
+.h-blogmary-box{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+.h-blogmary-item{
+    width: 33.333%;
+    height: auto;
+    padding: 0 15px;
+    position: absolute;
+    // left: 0px;
+    // top: 0px;
+}
+// .h-blogmary-item2{
+//     width: 33.333%;
+//     height: auto;
+//     padding: 0 15px;
+//     position: absolute;
+//     left: 380px;
+//     top: 0px;
+// }
+// .h-blogmary-item3{
+//     width: 33.333%;
+//     height: auto;
+//     padding: 0 15px;
+//     position: absolute;
+//     left: 760px;
+//     top: 0px;
+// }
+// .h-blogmary-item4{
+//     width: 33.333%;
+//     height: auto;
+//     padding: 0 15px;
+//     position: absolute;
+//     left: 0px;
+//     top: 379.938px;
+// }
+// .h-blogmary-item5{
+//     width: 33.333%;
+//     height: auto;
+//     padding: 0 15px;
+//     position: absolute;
+//     left: 380px;
+//     top: 599.656px;
+// }
+// .h-blogmary-item6{
+//     width: 33.333%;
+//     height: auto;
+//     padding: 0 15px;
+//     position: absolute;
+//     left: 760px;
+//     top: 379.938px;
+// }
+// .h-blogmary-inner1{
+//     width: 100%;
+//     position: relative;
+//     margin-top: 30px;
+//     margin-bottom: 25px;
+//     img{
+//         width: 100%;
+//         vertical-align: middle;
+//     }
+// }
+
+
+// blog details页面
+.h-detail-area{
+    width: 1140px;
+    margin: 0 auto;
+    padding-top: 70px;
+    position: relative;
+    display: block;
+}
+.h-btail-outer{
+    width: 100%;
+    padding: 0 15px;
+    position: relative;
+}
+.h-btail-inner{
+    width: 100%;
+    position: relative;
+}
+// 第一层图片
+.h-detail-thumb{
+    width: 100%;
+    position: relative;
+    img{
+        width: 100%;
+        vertical-align: middle;
+    }
+    ul{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+    .h-details-iconbox{
+        list-style: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: #506ada;
+        margin-bottom: 5px;
+        .icon-xinfeng{
+            color: #ffffff;
+            font-size: 14px;
+        }
+    }
+    .h-detail-pinter{
+        list-style: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: #ce202e;
+        margin-bottom: 5px;
+        .icon-pinterest{
+            color: #ffffff;
+            font-size: 14px;
+        }
+    }
+    .h-detail-in{
+        list-style: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: #14669b;
+        margin-bottom: 5px;
+        .icon-icon-test{
+            color: #ffffff;
+            font-size: 14px;
+        }
+    }
+    .h-detail-gooleplus{
+        list-style: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: #da5073;
+        margin-bottom: 5px;
+        .icon-googleplus-copy{
+            color: #ffffff;
+            font-size: 18px;
+        }
+    }
+    .h-detail-twitter{
+        list-style: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: #23aae1;
+        margin-bottom: 5px;
+        .icon-twitter-fill{
+            color: #ffffff;
+            font-size: 14px;
+        }
+    }
+    .h-detail-fly{
+        list-style: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: #3b5a9a;
+        margin-bottom: 5px;
+        .icon-f{
+            color: #ffffff;
+            font-size: 12px;
+        }
+    }
+}
+// 第二层内容
+.h-detail-content{
+    width: 100%;
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 85px;
+}
+// 第二层文字内容
+.blog-detail-top{
+    width: 100%;
+    position: relative;
+    span{
+        font-size: 12px;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        display: inline-block;
+    }
+    p{
+        font-size: 14px;
+        color: #555;
+        line-height: 26px;
+        padding-top: 15px;
+    }
+    .blog-detail-toplorem{
+        font-size: 18px;
+        color: #222222;
+        line-height: 32px;
+        padding: 0 130px;
+        margin-top: 45px;
+        margin-bottom: 40px;
+        position: relative;
+        text-align: center;
+        .icon-quote{
+            font-size: 50px;
+            color: #e3e3e3;
+            position: absolute;
+            right: 80px;
+            top: 15px;
+        }
+    }
+}
+// 第二层：图片内容
+.blog-detail-lamon{
+    width: 100%;
+    padding-top: 10px;
+    display: flex;
+    position: relative;
+}
+.blog-lamon-thumb{
+    width: 85%;
+    margin-right: 120px;
+    text-align: center;
+    position: relative;
+    img{
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+        border-style: none;
+    }
+    span{
+        padding-top: 45px;
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #888;
+        letter-spacing: 3px;
+        display: inline-block;
+    }
+}
+.blog-lamon-content{
+    position: relative;
+    .lorem{
+        font-size: 14px;
+        color: #555;
+        line-height: 26px;
+    }
+    .lorem-middle{
+        font-size: 14px;
+        color: #555;
+        line-height: 26px;
+        padding: 25px 0px;
+    }
+}
+.blog-detail-discere{
+    width: 100%;
+    padding-top: 40px;
+    position: relative;
+    p{
+        font-size: 14px;
+        color: #555;
+        line-height: 26px;
+        padding-top: 18px;
+    }
+}
+.h-dicere-info{
+    font-size: 14px;
+    font-weight: 600;
+    color: #222222;
+}
+// 第三层
+.h-detail-user{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.h-user-header{
+    width: 16.666%;
+    padding: 0 15px;
+    flex: 0 0 16.666%;
+    position: relative;
+}
+.h-user-inner{
+    text-align: center;
+    position: relative;
+    img{
+        width: 100%;
+        vertical-align: middle;
+    }
+}
+.h-detail-message{
+    width: 83.333%;
+    padding: 0 15px;
+    position: relative;
+}
+.h-detail-mecontent{
+    width: 100%;
+    background: #f5f5f5;
+    padding: 45px 45px 50px;
+    position: relative;
+    span{
+        font-size: 12px;
+        color: #888;
+        text-transform: uppercase;
+    }
+    .h-username{
+        font-size: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: 600;
+        color: #222222;
+    }
+    p{
+        font-size: 14px;
+        color: #555;
+        line-height: 26px;
+    }
+    .h-user-iconlist{
+        position: absolute;
+        top: 55px;
+        right: 45px;
+        li{
+            display: inline-block;
+            list-style: none;
+            .icon-f{
+                font-size: 12px;
+                color: #888;
+                margin-left: 15px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .icon-instagram{
+                font-size: 22px;
+                color: #888;
+                margin-left: 15px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .icon-twitter-fill{
+                font-size: 16px;
+                color: #888;
+                margin-left: 15px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .icon-googleplus-copy{
+                font-size: 20px;
+                color: #888;
+                margin-left: 15px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+// 第五层
+.h-detail-comments{
+    width: 100%;
+    position: relative;
+    margin-top: 85px;
+}
+.h-comment-number{
+    font-size: 24px;
+    padding-bottom: 20px;
+    font-weight: 600;
+    color: #222222;
+}
+// 评论
+.h-comments-item{
+    margin-top: 40px;
+    position: relative;
+}
+.h-comments-item:nth-child(odd){
+    margin-top: 40px;
+    margin-left: 70px;
+    position: relative;
+}
+.h-comments-in{
+    position: relative;
+    padding-left: 80px;
+    img{
+        position: absolute;
+        left: 0;
+        vertical-align: middle;
+    }
+    span{
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #888;
+        letter-spacing: 1px;
+    }
+}
+.h-Vanessa{
+    font-size: 14px;
+    padding-top: 5px;
+    font-weight: 600;
+    color: #222222;
+}
+.h-return-box{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 35px;
+    width: 35px;
+    border: 1px solid #ddd;
+    text-align: center;
+    line-height: 33px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.45s ease;
+    .icon-return-left{
+        color: #555;
+        font-size: 14px;
+    }
+    &:hover{
+        background: #fb7e00;
+        border: 1px solid #fb7e00;
+        .icon-return-left{
+            color: #fff;
+        }
+    }
+}
+.h-comment-paragraph{
+    padding-top: 30px;
+    position: relative;
+    p{
+        font-size: 14px;
+        color: #555;
+        line-height: 26px;
+        padding-right: 30px;
+    }
+}
+// 第五层 发表评论
+.h-comment-input{
+    margin-top: 80px;
+    position: relative;
+}
+.h-comment-inputtitle{
+    position: relative;
+}
+.h-blog-leave{
+    font-size: 24px;
+    font-weight: 600;
+    color: #222222;
+    line-height: 28px;
+}
+.h-comment-details{
+    font-size: 14px;
+    color: #888;
+    padding-top: 15px;
+    line-height: 24px;
+}
+.h-form-first{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+.h-form-item{
+    width: 33.333%;
+    padding: 0 15px;
+    position: relative;
+    .el-form-item {
+        margin-bottom: 0px;
+    }
+}
+.h-input-box{
+    width: 100%;
+    position: relative;
+    margin-top: 35px;
+    .el-input__inner{
+        width: 100%;
+        background: #f5f5f5;
+        line-height: 45px;
+        height: 45px;
+        border: 0;
+        border-radius: none;
+        padding-left: 20px;
+        font-size: 12px;
+        color: #999;
+        overflow: visible;
+    }
+    input{
+        width: 100%;
+        background: #f5f5f5;
+        line-height: 45px;
+        border: 0;
+        padding-left: 20px;
+        font-size: 12px;
+        color: #999;
+        overflow: visible;
+    }
+}
+.h-form-message{
+    width: 100%;
+    padding: 0 15px;
+    position: relative;
+}
+.h-form-inner{
+    width: 100%;
+    margin-top: 35px;
+    position: relative;
+    .textarea{
+        width: 100%;
+        background: #f5f5f5;
+        height: 105px;
+        border: 0;
+        outline: none;
+        font-size: 12px;
+        color: #999;
+        resize: none;
+        margin-bottom: 35px;
+        padding-left: 20px;
+        padding-top: 15px;
+    }
+    .el-textarea__inner{
+        width: 100%;
+        background: #f5f5f5;
+        padding: 0;
+        color: #999999;
+        font-size: 12px;
+        border: none;
+        outline: none;
+    }
+    .el-button--default{
+        background: #fb7e00;
+        border: 1px solid #fb7e00;
+        color: #fff;
+        line-height: 50px;
+        padding: 0 45px;
+        border-radius: 30px;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+    }
+}
+// related items
+.h-related-items{
+    width: 1140px;
+    margin: 0 auto;
+    padding-top: 35px;
+    padding-bottom: 60px;
+    position: relative;
+}
+.h-related-outer{
+    width: 100%;
+    position: relative;
+}
+.h-related-title{
+    width: 100%;
+    padding: 0 15px;
+    position: relative;
+}
+.h-related-info{
+    width: 100%;
+    text-align: center;
+    padding-top: 45px;
+    padding-bottom: 10px;
+    position: relative;
+    .title{
+        font-size: 36px;
+        text-transform: capitalize;
+        color: #222222;
+        padding-bottom: 14px;
+        font-weight: 600;
+        line-height: 56px;
+    }
+}
+.h-row-outer{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.h-row-item{
+    width: 33.333%;
+    padding: 0 15px;
+    position: relative;
+}
+.h-row-list{
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    position: relative;
+    img{
+        width: 100%;
+        vertical-align: middle;
+    }
+    span{
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 3px;
+        color: #888;
+        padding-top: 25px;
+        display: inline-block;
+    }
+    .h-row-a{
+        display: inline-block;
+        .title{
+            font-size: 16px;
+            color: #222222;
+            padding-top: 10px;
+            font-weight: 600;
+        }
+    }
+}
+// blog details 页面响应式
+@media (min-width: 992px) and (max-width: 1200px) {
+    .h-detail-area{
+        width: 960px;
+    }
+    // related items 版块
+    .h-related-items{
+        width: 960px;
+    }
+}
+@media (min-width:767px) and (max-width:992px) {
+    .h-detail-area{
+        width: 720px;
+    }
+    // 第二层文字内容
+    .blog-detail-top{
+        .blog-detail-toplorem{
+            padding: 0 90px;
+            .icon-quote{
+                right: 40px;
+            }
+        }
+    }
+    // 第二层图片以及内容
+    .blog-lamon-thumb{
+        margin-right: 40px;
+    }
+    // 第三层内容
+    .h-user-header{
+        width: 25%;
+        flex: 0 0 25%;
+    }
+    .h-detail-message{
+        width: 75%;
+    }
+    // 第五层发表评论
+    .h-form-item{
+        width: 100%;
+    }
+    // related items 版块
+    .h-related-items{
+        width: 720px;
+    }
+    .h-row-item{
+        width: 50%;
+    }
+}
+@media (min-width:567px) and (max-width:767px) {
+    .h-detail-area{
+        width: 540px;
+    }
+    // 第一层图片
+    .h-detail-thumb{
+        ul{
+            top: 5px;
+        }
+        .h-details-iconbox{
+            margin-bottom: 4px;
+        }
+        .h-detail-pinter{
+            margin-bottom: 4px;
+        }
+        .h-detail-in{
+            margin-bottom: 4px;
+        }
+        .h-detail-gooleplus{
+            margin-bottom: 4px;
+        }
+        .h-detail-twitter{
+            margin-bottom: 4px;
+        }
+        .h-detail-fly{
+            margin-bottom: 4px;
+        }
+    }
+    // 第二层文字内容
+    .blog-detail-top{
+        .blog-detail-toplorem{
+            padding: 0 10px;
+            .icon-quote{
+                font-size: 38px;
+                right: -25px;
+                top: 10px;
+            }
+        }
+    }
+    // 第二层图片以及内容
+    .blog-lamon-thumb{
+        margin-right: 25px;
+    }
+    // 第三层内容
+    .h-detail-user{
+        width: 540px;
+    }
+    .h-user-header{
+        width: 33.333%;
+        flex: 0 0 33.333%;
+    }
+    .h-detail-message{
+        width: 66.666%;
+    }
+    .h-detail-mecontent{
+        padding: 20px;
+    }
+    // 第五层发表评论
+    .h-form-item{
+        width: 100%;
+    }
+    // related items 版块
+    .h-related-items{
+        width: 540px;
+    }
+    .h-row-item{
+        width: 50%;
+    }
+}
+@media only screen and (max-width:567px) {
+    .h-detail-area{
+        width: 100%;
+    }
+    // 第一层图片
+    .h-detail-thumb{
+
+        ul{
+            display: none;
+        }
+    }
+    // 第二层文字内容
+    .blog-detail-top{
+        .blog-detail-toplorem{
+            font-size: 12px;
+            font-weight: normal;
+            padding: 0 10px;
+            .icon-quote{
+                display: none;
+            }
+        }
+    }
+    // 第二层图片内容
+    .blog-detail-lamon{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .blog-lamon-thumb{
+        width: 100%;
+        margin-right: 0px;
+    }
+    .blog-lamon-content{
+        width: 100%;
+    }
+    // 第三层内容
+    .h-user-header{
+        width: 100%;
+        flex: 0 0 100%;
+        padding: 0px;
+    }
+    .h-user-inner{
+        widows: 100%;
+        text-align: center;
+        img{
+            width: 70%;
+        }
+    }
+    .h-detail-message{
+        width: 100%;
+        padding: 0px;
+    }
+    // 第五层发表评论内容
+    .h-form-item{
+        width: 100%;
+    }
+    // related items
+    .h-related-items{
+        width: 100%;
+    }
+    .h-row-item{
+        width: 100%;
+    }
+    .h-comments-item:nth-child(odd){
+        margin-left: 30px;
+    }
+    .h-row-list{
+        span{
+            letter-spacing: 2px;
+        }
+    }
+}
