@@ -1,9 +1,6 @@
 <template>
   <div id="app">
   	<Nav></Nav>
-    <div class="body" style="height:1000px;width:100%;">
-      <img src="./img/banner_bg_2.jpg" style="height:1000px;width:100%;">
-    </div>
     <Bottom></Bottom>
   </div>
 </template>

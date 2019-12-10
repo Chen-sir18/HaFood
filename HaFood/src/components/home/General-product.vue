@@ -12,6 +12,7 @@
             <span class="product-price">{{item.price}}</span>
             <span class="product-oldprice">{{item.oldPrice}}</span>
           </div>
+          <!-- <div class="product-sale">SALE</div> -->
         </li>
       </ul>
     </div>
