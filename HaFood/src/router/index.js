@@ -14,7 +14,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/Index'
+      redirect: '/Home1'
     },
     {
 
@@ -33,7 +33,7 @@ export default new Router({
         	path: '/BlogList',
         	component: Bloglist
         },
-        {	
+        {
         	path: '/BlogGrid',
         	component: Bloggrid
        	},
@@ -48,7 +48,11 @@ export default new Router({
       ]
     },
     {
-      path: '/Login',
+      path: '/login',
+      component: Login
+    },
+    {
+      path: '/register',
       component: Login
     }
   ],

@@ -20,6 +20,10 @@
       .link {
         font-size: 16px;
         color: #888;
+        cursor: pointer;
+      &:hover {
+        color: #fb7e00;
+      }
       }
     }
     .login-content {
@@ -53,6 +57,28 @@
         }
         .error-input {
           color: red;
+        }
+      }
+      .valicode{
+        width: 50% !important;
+      }
+      .valicode-button {
+        width: 40%;
+        height: 100%;
+        float: right;
+        vertical-align: top;
+        background: #fb7e00;
+        border-radius: 4px;
+        color: #ffffff;
+        text-align: center;
+        line-height:50px;
+        font-size: 20px;
+        font-weight: 700;
+        box-shadow:4px 6px 0px 0px rgba(251, 126, 0, 0.4); ;
+        &:hover {
+          box-shadow:0px 0px 0px 0px rgba(251, 126, 0, 0.4); ;
+          transition: all 0.4s;
+          cursor: pointer;
         }
       }
       .login-button {
