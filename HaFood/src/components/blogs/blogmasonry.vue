@@ -1,139 +1,166 @@
 <template>
   <div>
-    <section class="h-blog-grid">
+    <Blogtop></Blogtop>
+    <section class="h-blog-grid" style="min-height: 800px">
       <div class="h-menu-outer">
         <ul>
-          <li :key="index" v-for="(item, index) in tabs" @click="styleClick(index)" :class="{active:active==index}" class="h-list-menu">{{item.title}}</li>
+          <li :key="index" v-for="(item, index) in tabs" @click="styleClick(index, item.view)" :class="{active:active==index}" class="h-list-menu">{{item.title}}</li>
           <!-- <li @click="styleClick" :class="{active:active==index}" class="h-list-menu">Restaurant</li>
           <li :key="index" v-for="{tab, index} in tabs" @click="styleClick(index)" @click="styleClick" class="h-list-menu">Bakery</li>
           <li @click="styleClick" class="h-list-menu">Salads</li> -->
         </ul>
       </div>
-      <div class="h-blogmary-box">
-        <div class="h-blogmary-item">
-          <div class="h-bgid-inner">
-            <img src="../../img/blog_mas_1.jpg" />
-            <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
-            <a>
-              <h5 class="bloggrid-tips">Cooking tips make cooking simple</h5>
-            </a>
+      <!-- <div>
+        <transition-group mode='out-in' class="h-blogmary-box" tag="div" name="flip-list">
+          <div :key="i" v-for="(item, i) in blogData1" class="h-blogmary-item flip-list-item">
+            <div class="h-bgid-inner">
+              <img :src='"http://192.168.97.241:3000/" + item.picstr' />
+              <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
+              <a>
+                <h5 class="bloggrid-tips">{{item.goodsname}}</h5>
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="h-blogmary-item item2">
-          <div class="h-bgid-inner">
-            <img src="../../img/blog_mas_2.jpg" />
-            <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
-            <a>
-              <h5 class="bloggrid-tips">Cooking tips make cooking simple</h5>
-            </a>
-          </div>
-        </div>
-        <div class="h-blogmary-item">
-          <div class="h-bgid-inner">
-            <img src="../../img/blog_mas_3.jpg" />
-            <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
-            <a>
-              <h5 class="bloggrid-tips">Cooking tips make cooking simple</h5>
-            </a>
-          </div>
-        </div>
-        <div class="h-blogmary-item">
-          <div class="h-bgid-inner">
-            <img src="../../img/blog_mas_4.jpg" />
-            <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
-            <a>
-              <h5 class="bloggrid-tips">Cooking tips make cooking simple</h5>
-            </a>
-          </div>
-        </div>
-        <div class="h-blogmary-item">
-          <div class="h-bgid-inner">
-            <img src="../../img/blog_mas_5.jpg" />
-            <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
-            <a>
-              <h5 class="bloggrid-tips">Cooking tips make cooking simple</h5>
-            </a>
-          </div>
-        </div>
-        <div class="h-blogmary-item">
-          <div class="h-bgid-inner">
-            <img src="../../img/blog_mas_6.jpg" />
-            <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
-            <a>
-              <h5 class="bloggrid-tips">Cooking tips make cooking simple</h5>
-            </a>
-          </div>
-        </div>
-      </div>
+        </transition-group>
+      </div> -->
+      <component :is="currentView"></component>
+      <!-- <Blogitem1></Blogitem1> -->
+      <!-- <Blogitem2></Blogitem2> -->
+      <!-- <Blogitem3></Blogitem3> -->
+      <!-- <Blogitem4></Blogitem4> -->
     </section>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+import Blogtop from './blogstop.vue'
+import Blogitem1 from './blogitem1.vue'
+import Blogitem2 from './blogitem2.vue'
+import Blogitem3 from './blogitem3.vue'
+import Blogitem4 from './blogitem4.vue'
 // import './animation.js'
 export default {
   data () {
     return {
       active: 0,
+      currentView: 'Blogitem1',
       tabs: [
         {
           id: 1,
-          title: 'Dairy'
+          title: 'Dairy',
+          view: 'Blogitem1'
         },
         {
           id: 2,
-          title: 'Restaurant'
+          title: 'Restaurant',
+          view: 'Blogitem2'
         },
         {
           id: 3,
-          title: 'Bakery'
+          title: 'Bakery',
+          view: 'Blogitem3'
         },
         {
           id: 4,
-          title: 'Salads'
+          title: 'Salads',
+          view: 'Blogitem4'
         }
-      ]
+      ],
+      blogData1: [],
+      loading: true
     }
   },
   mounted () {
-    (function () {
-      let itemoneHeight = document.querySelector('.h-blogmary-item')
-      let computedStyle = window.getComputedStyle(itemoneHeight).height
-      console.log(computedStyle)
-      let itemtwoHeight = document.querySelector('.h-blogmary-item.item2')
-      console.log(itemtwoHeight)
-      let itemWidth = document.querySelector('.h-blogmary-item').offsetWidth
-      console.log(itemWidth)
-      let box = document.querySelectorAll('.h-blogmary-item')
-      for (let i = 0; i < box.length; i++) {
-        if (i % 3 === 0) {
-          box[i].style.left = 0 + 'px'
-          box[0].style.top = 0 + 'px'
-          // box[3].style.left = 0 + 'px'
-          box[3].style.top = itemoneHeight * 1 + 'px'
-        } else if (i % 3 === 1) {
-          box[i].style.left = itemWidth * 1 + 'px'
-          box[1].style.top = 0 + 'px'
-          // box[4].style.left = itemWidth*1 + 'px'
-          box[4].style.top = itemtwoHeight * 1 + 'px'
-        } else {
-          box[i].style.left = itemWidth * 2 + 'px'
-          box[2].style.top = 0 + 'px'
-          box[5].style.top = itemoneHeight * 1 + 'px'
-        }
-      }
-    })()
+    this.getCake()
   },
   methods: {
-    styleClick (i) {
+    styleClick (i, view) {
       this.active = i
-      console.log(i)
-      // let menuButton = document.querySelectorAll('.h-list-menu')
-      // for (let i = 0; i < menuButton.length; i++) {
-      //   menuButton[i].classList.add('active')
-      //   menuButton[i].classList.remove('.active')
-      // }
+      this.currentView = view
+      // this.blogData1 = _.styleClick(this.blogData1)
+      switch (i) {
+        case 0:
+          // this.blogData1.splice(3,1 )
+          this.getCake()
+          break
+        case 1:
+          // this.blogData1.splice(3,0,this.blogData1[2] )
+          // this.blogData1.splice(3,1)
+          this.getFood()
+          // this.blogData1 = this.blogData1.reverse()
+          break
+        case 2:
+          this.getCake()
+          break
+        case 3:
+          this.getPopular()
+          break
+      }
+    },
+    getCake () {
+      axios({
+        url: 'api/cakes',
+        method: 'get',
+        params: {
+          // 此处不传参
+        }
+      }).then((res) => {
+        console.log(res.data)
+        if (res.status === 200) {
+          this.blogData1 = res.data.data
+          this.loading = false
+        } else {
+          return false
+        }
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    getFood () {
+      axios({
+        url: 'api/foodclass',
+        method: 'get',
+        params: {
+          // 此处不传参
+        }
+      }).then((res) => {
+        console.log(res.data)
+        if (res.status === 200) {
+          this.blogData1 = res.data.data
+          this.loading = false
+        } else {
+            return false
+        }
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    getPopular () {
+      axios({
+      url: 'api/popular',
+      method: 'get',
+      params: {
+        // 此处不传参
+      }
+    }).then((res) => {
+      console.log(res.data)
+      if (res.status === 200) {
+        this.blogData1 = res.data.data
+      } else {
+        return false
+      }
+    }).catch((error) => {
+      console.log(error)
+    })
     }
+  },
+  components: {
+    Blogtop,
+    Blogitem1,
+    Blogitem2,
+    Blogitem3,
+    Blogitem4
   }
 }
 </script>

@@ -599,13 +599,37 @@
     width: 100%;
     position: relative;
     display: flex;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    overflow: hidden;
 }
+.flip-list-enter, .flip-list-leave-to {
+    transform: scale(0.2);
+    opacity: 0.2;
+    transform: translateY(100px);
+}
+.flip-list-enter-to, .flip-list-leave {
+    transform: scale(1);
+    opacity: 1;
+    transform: translateY(0px);
+
+}
+.flip-list-enter-active, .flip-list-leave-active {
+    transition: all 1.5s;
+    // position: absolute;
+}
+
+// .flip-list-move {
+//     transition: transform 1.5s; 
+// }
+// .flip-list-enter-active, .flip-list-leave-active {
+//     position: absolute;
+// }
 .h-blogmary-item{
     width: 33.333%;
     height: auto;
     padding: 0 15px;
-    position: absolute;
+    // position: relative;
     // left: 0px;
     // top: 0px;
 }

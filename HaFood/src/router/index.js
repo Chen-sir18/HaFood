@@ -33,7 +33,7 @@ export default new Router({
         	path: '/BlogList',
         	component: Bloglist
         },
-        {	
+        {
         	path: '/BlogGrid',
         	component: Bloggrid
        	},

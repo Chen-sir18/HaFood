@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Blogtop></Blogtop>
     <section class="h-detail-area">
       <div class="h-btail-outer">
         <div class="h-btail-inner">
@@ -185,12 +186,12 @@
           </div>
         </div>
         <div class="h-row-outer">
-          <div :key="index" v-for="(item, index) in Imgdata" class="h-row-item">
+          <div :key="index" v-for="(item, index) in relatedData" class="h-row-item">
             <div class="h-row-list">
-              <img src="../../img/blog_grid_1.jpg"/>
+              <img :src='"http://192.168.97.241:3000/" + item.picstr'/>
               <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
               <a class="h-row-a">
-                <h5 class="title">{{item.title}}</h5>
+                <h5 class="title">{{item.reminder}}</h5>
               </a>
             </div>
           </div>
@@ -204,6 +205,7 @@
 import '../../font/demo.css'
 import '../../font/iconfont.css'
 import '../../less/public.less'
+import Blogtop from './blogstop.vue'
 import axios from 'axios'
 export default {
   data () {
@@ -219,23 +221,27 @@ export default {
       }
     }
     return {
-      Imgdata: [
-        {
-          id: 1,
-          imgurl: 'blog_grid_1.jpg',
-          title: 'Quality Oganic Foods'
-        },
-        {
-          id: 1,
-          imgurl: 'blog_grid_2.jpg',
-          title: 'Cooking tips make cooking simple'
-        },
-        {
-          id: 1,
-          imgurl: 'blog_grid_3.jpg',
-          title: 'Just Fresh Fruits'
-        }
-      ],
+      relatedData: {
+        reImg: '',
+        relatedDesc: ''
+      },
+      // Imgdata: [
+      //   {
+      //     id: 1,
+      //     imgurl: 'blog_grid_1.jpg',
+      //     title: 'Quality Oganic Foods'
+      //   },
+      //   {
+      //     id: 1,
+      //     imgurl: 'blog_grid_2.jpg',
+      //     title: 'Cooking tips make cooking simple'
+      //   },
+      //   {
+      //     id: 1,
+      //     imgurl: 'blog_grid_3.jpg',
+      //     title: 'Just Fresh Fruits'
+      //   }
+      // ],
       // 评论渲染数据
       commtentData: {
         username: '',
@@ -270,7 +276,7 @@ export default {
         // imgurl: api + this.commtentData.imgurl
       }
     }).then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       if (res.data.status === 200) {
         let comData = res.data.data
         // console.log(comData)
@@ -279,6 +285,24 @@ export default {
         return false
       }
       // this.commtentData = res.data
+    }).catch((error) => {
+      console.log(error)
+    })
+    axios({
+      url: 'api/bloglists',
+      method: 'get',
+      params: {
+        // 从后台获取参数 此处不用传参
+      }
+    }).then((res) => {
+      console.log(res.data)
+      if (res.status === 200) {
+        let latedMount = res.data.data
+        latedMount.splice(6, latedMount.length - 6)
+        this.relatedData = latedMount
+      } else {
+        return false
+      }
     }).catch((error) => {
       console.log(error)
     })
@@ -301,7 +325,7 @@ export default {
               comments: this.commitData.comments
             }
           }).then((res) => {
-            console.log(res)
+            // console.log(res)
             if (res.data.status === 200) {
               this.$message({
                 message: '发表评论成功',
@@ -319,6 +343,7 @@ export default {
                   // 给对象传值
                   returnData.content = res.config.params.comments
                   returnData.nickname = res.config.params.username
+                  returnData.headpic = 'customer_1.png'
                   // this.commitData = res.config.params
                   this.commtentData.unshift(returnData)
                 }
@@ -340,6 +365,9 @@ export default {
         }
       })
     }
+  },
+  components: {
+    Blogtop
   }
 }
 </script>

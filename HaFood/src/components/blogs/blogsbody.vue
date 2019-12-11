@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Blogtop></Blogtop>
     <section class="h-blog-listarea">
       <div class="h-listarea-outer">
         <div class="h-blog-listitem">
@@ -156,6 +157,7 @@
 <script>
 import '../../font/iconfont.css'
 import '../../font/demo.css'
+import Blogtop from './blogstop.vue'
 export default {
   data () {
     return {
@@ -243,6 +245,9 @@ export default {
     handleNodeClick (data) {
       console.log(data)
     }
+  },
+  components: {
+    Blogtop
   }
 }
 </script>

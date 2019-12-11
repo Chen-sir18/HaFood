@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Blogtop></Blogtop>
     <section class="h-blog-grid">
       <div class="h-bloggrid-outer">
         <div class="h-bloggrid-item">
@@ -79,8 +80,11 @@
 </template>
 
 <script>
+import Blogtop from './blogstop.vue'
 export default {
-
+  components: {
+    Blogtop
+  }
 }
 </script>
 
