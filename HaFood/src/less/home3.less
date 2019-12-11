@@ -1,0 +1,620 @@
+
+// home3  banner样式开始
+// *{
+//     border: 1px solid red;
+// }
+.homeThird{
+    width: 100%;
+    height: 770px;
+    position: relative;
+    .homeThird-lists{
+        width: 100%;
+        height: 770px;
+        .item{
+            padding: 0 40px;
+            border-radius: 0 0 0 100px;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            &::before{
+                position: absolute;
+			    content: '';
+			    right: 0;
+			    top: 0;
+			    width: 70%;
+			    height: 100%;
+			    background-size: cover;
+			    background-repeat: no-repeat;
+			    opacity: 1;
+			    left: auto;
+			    background-color: transparent;
+            }
+            .content-text{
+                position: absolute;
+			    top: 50%;
+                transform: translateY(-50%);
+                color: #222;
+                h2{
+                    padding: 0 0 15px;
+                    font-size: 72px;
+                    animation: lani .5s forwards;
+                };
+                p{
+                    padding: 0 0 70px;
+                    animation: ltext 1s forwards;
+                }
+                @keyframes lani {
+                    0%{
+                        opacity: 0;
+                        margin-left: -200px;
+                    }
+                    100%{
+                        margin-left: 0; 
+                        opacity: 1;
+                    }
+                }
+                @keyframes ltext {
+                    0%{
+                        opacity: 0;
+                        margin-left: -200px;
+                    }
+                    100%{
+                        margin-left: 0; 
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        .item.active{
+            z-index: 10;
+        }
+        .item:first-child{
+            background: #d3ecb2;
+            &::before{
+			    background-image: url(../img/banner_thumb_1.png);
+            }
+        }
+
+        .item:nth-child(2){
+            background: #f3d8c1;
+            &::before{
+			    background-image: url(../img/banner_thumb_2.png);
+            }
+        }
+    }
+    // 轮播左右按钮
+    .btn{
+        display: inline-block;
+        width: 30px;
+        height: 60px;
+        line-height: 58px;
+        padding: 0 0 0 10px;
+        background: #fff;
+        border-radius: 40px;
+        color: #222;
+        border-right:none ;
+        border-radius: 30px 0px 0px 30px;
+        // transform: rotate(180deg);
+        // border-radius: 40px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+        z-index: 12;
+        
+    }
+    #prev{
+        transform: rotate(180deg);
+        left: 0;
+    }
+    #next{
+        right: 0;
+        // text-align: left;
+    }
+}
+//  banner样式结束
+// 描述样式开始
+.decript-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 78px;
+    padding-bottom: 83px;
+    .text{
+        text-align: center;
+        padding: 0 45px;
+        line-height: 35px;
+    }
+    .title{
+        font-size: 162px;
+        color: #888;
+        font-family: "Dancing Script", cursive;
+        font-weight: 700;
+        letter-spacing: 40px;
+        opacity: .10;
+        margin-bottom: -70px;
+        margin-top: -20px;
+        font-family: "Vivaldi", cursive;
+    }
+    img{
+        width: 100%;
+    }
+}
+// 瀑布流样式开始
+.fall-box{
+    margin: 0 30px;
+    padding: 90px 0;
+    position: relative;
+    &::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 500px;
+        background: rgb(249, 244, 243);
+        border-radius: 0px 150px 0px 0px;
+        z-index: -1;
+        
+    }
+    .content-box{
+        width: 100%;
+        padding: 0 15px;
+        .fall-content{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center !important;
+            margin: 0 15px;
+            .img-box{
+                max-width: 33.333%;
+                flex: 0 0 33.333%;
+                padding: 0 15px;
+                .img-center{
+                    margin-top: 90px;
+                }
+                .btn-box{
+                    position: relative;
+                    img{
+                        width: 100%;
+                        max-width: 100%;
+                        vertical-align: middle;
+                    }
+                    a{
+                        position: absolute;
+                        left: 50%;
+                        bottom: 0px;
+                        transform: translateX(-50%);
+                        color: rgb(34, 34, 34);
+                        line-height: 45px;
+                        font-size: 16px;
+                        font-weight: 600;
+                        text-transform: capitalize;
+                        background: rgb(255, 255, 255);
+                        padding: 0px 45px;
+                    }
+                }
+            }
+        }
+    }
+}
+// Fresh Cakes Sale Off开始
+.fresh-box{
+    background: #f0e0aa;
+    margin: 12px 0 92px 0;
+    position: relative;
+    // &::before{
+    //     content: "";
+    //     position: absolute;
+    //     width: 260px;
+    //     height: 260px;
+    //     top: -90px;
+    //     right: -210px;
+    //     background: #fff;
+    //     border-radius: 50%;
+    //     border: 75px solid #eda52c;
+    // }
+    .fresh-content-box{
+        margin: 0 30px;
+        .fresh-content{
+            display: flex;
+            align-items: center !important;
+            flex-wrap: wrap;
+            .fresh-left{
+                flex: 0 0 58%;
+                max-width: 58%;
+                position: relative;
+                padding-right: 15px;
+                padding-left: 15px;
+                .img-box{
+                    display: block !important;
+                    margin-right: 80px;
+                    img{
+                        width: 100%;
+                        max-width: 100%;
+                        vertical-align: middle;
+                        margin-bottom: -40px;
+                    }
+                }
+            }
+            .fresh-right{
+                position: relative;
+                padding-right: 15px;
+                padding-left: 15px;
+                flex: 0 0 42%;
+                max-width: 42%;
+                .text-box{
+                    span{
+                        display: inline-block;
+                        color: #fff;
+                        padding-bottom: 13px;
+                        letter-spacing: 4px;
+                        text-transform: uppercase;
+                    }
+                    .title{
+                        color: #fff;
+                        padding-bottom: 40px;
+                    }
+                    .fresh-btn{
+                        display: inline-block;
+                        color: #eda52c;
+                        background: #fff;
+                        line-height: 50px;
+                        height: 50px;
+                        text-align: center;
+                        width: 180px;
+                        border-color: #fff;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+    }
+}
+// trending foods
+.tranding-box{
+    margin: 0 40px;
+    padding-bottom: 70px;
+    .title-box{
+        max-width: 1140px;
+        margin: 0 auto;
+        .tranding-content{
+            display: flex;
+            // padding: 0 15px;
+            flex-wrap: wrap;
+            align-items: center !important;
+            .trending-left{
+                flex: 0 0 33.33%;
+                max-width: 33.33%;
+                .title{
+                    span{
+                        display: inline-block;
+                        color: #eda52c;
+                        letter-spacing: 3px;
+                        padding-bottom: 15px
+                    }
+                }
+            }
+            .trending-right{
+                flex: 0 0 66.66%;
+                max-width: 66.66%;
+                .tab-box{
+                    display: flex;
+                    justify-content: end;
+                    .nav-list{
+                        display: flex;
+                        flex-wrap: wrap;
+                        li{
+                            position: relative;
+                            margin: 30px;
+                            line-height: 30px;
+                            &:hover{
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .trending-content-box{
+        .trending-lists{
+            display: flex;
+            flex-wrap: wrap;
+            .list{
+                flex: 0 0 33.333%;
+                max-width: 33.333%;
+                padding: 0 15px;
+                .list-box{
+                    margin-top: 30px;
+                    img{
+                        width: 100%;
+                        max-width: 100%;
+                        vertical-align: middle;
+                    }
+                    a{
+                        display: inline-block;
+                        font-weight: 600;
+                        font-size: 16px;
+                        color: #222222;
+                        padding-top: 25px;
+                        padding-bottom: 5px;
+                    }
+                    p{
+                        color: #eda52c;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Popular Products样式开始
+.popular-box{
+    padding-bottom: 70px;
+    .title{
+        margin:0 60px;
+        text-align: center;
+        h3{
+            padding-bottom: 28px;
+            font-size: 35px;
+            color: #222;  
+        }
+    }
+    .popular-lists{
+        display: flex;
+        flex-wrap: wrap;
+        .list{   
+            flex: 0 0 50%;
+            max-width: 50%;
+            padding: 15px;
+            .list-box{
+                display: flex;
+                align-items: center; 
+                .img-box{
+                    img{
+                        width: 100%;
+                        max-width: 100%;
+                        vertical-align: middle;
+                    }
+                }
+                .text-box{
+                    a{
+                        display: block;
+                    }
+                    span{
+                        color: #eda52c;
+                        line-height: 28px;
+                    }
+                    p{
+                        color: #888;
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width:1200px){
+    .homeThird{
+        .btn{
+            display: none;
+        }
+    }
+    // 描述
+    .decript-box{
+        .title{
+            font-size: 134px;
+        }
+    }
+}
+@media only screen and (min-width:768px) and (max-width:992px){
+    .homeThird{
+        .homeThird-lists{
+            .content-text{
+                margin: 0 40px;
+            }
+         }
+    }
+    // 描述
+    .decript-box{
+        .title{
+            font-size: 110px;
+        }
+    }
+    // 瀑布流
+    .fall-box{
+        .content-box{
+            .fall-content{
+                .img-box{
+                    max-width: 50%;
+                    flex: 0 0 50%;
+                    margin-top: 30px;
+                    .img-center{
+                        margin-top: 0;
+                    }
+                } 
+            }
+        }
+    }
+    // Fresh Cakes Sale Off开始
+    .fresh-box{
+        padding:92px 0;
+        .fresh-content-box{
+            .fresh-content{
+                .fresh-left{
+                    display: none;
+                }
+            }
+        }
+    }
+    // Popular Products样式开始
+    .popular-box{
+        .popular-lists{
+            .list{
+                flex:  0 0 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}
+@media only screen and (max-width:768px){
+    .homeThird{
+        .homeThird-lists{
+            height: 600px;
+            .item:first-child,.item:nth-child(2){
+                &::before{
+                    width: 0;
+                }
+                .content-text{
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%)
+                }
+            }
+           
+        }
+    }
+    // 描述
+    .decript-box{
+        .title{
+            font-size: 60px;
+            margin-bottom: -30px;
+        }
+    }
+     // 瀑布流
+     .fall-box{
+        .content-box{
+            .fall-content{
+                .img-box{
+                    max-width: 66.66%;
+                    flex: 0 0 66.66%;
+                    .btn-box{
+                        margin-top: 30px;
+                    }
+                } 
+            }
+        }
+    }
+    // trending food样式
+    .tranding-box{
+        margin: 0 80px;
+        .title-box{
+            .tranding-content{
+                .trending-left{
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+                .trending-right{
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                    .tab-box{
+                        .nav-list{
+                            li{
+                                margin: 0 30px 20px 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .trending-content-box{
+            .trending-lists{
+                .list{
+                    flex:0 0 50%;
+                    max-width: 50%;
+                }
+            }
+        }
+    }
+    
+     // Fresh Cakes Sale Off开始
+     .fresh-box{
+        padding: 92px 0;
+        &::before{
+            right: -290px;
+        }
+        .fresh-content-box{
+            .fresh-content{
+                .fresh-left{
+                    display: none;
+                }
+            }
+        }
+    }
+     // Popular Products样式开始
+    .popular-box{
+        .popular-lists{
+            .list{
+                flex:  0 0 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}
+@media only screen and (max-width:572px){
+
+     // 瀑布流
+     .fall-box{
+         margin: 0;
+        .content-box{
+            .fall-content{
+                margin: 0;
+                .img-box{
+                    max-width: 100%;
+                    flex: 0 0 100%;
+                    padding: 0;
+                } 
+            }
+        }
+    }
+    // trending food样式
+    .tranding-box{
+        margin: 0 0px;
+        .title-box{
+            margin: 0 15px;
+        }
+        .trending-content-box{
+            .trending-lists{
+                .list{
+                    flex:0 0 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    //  // Fresh Cakes Sale Off开始
+     .fresh-box{
+        padding: 92px 0;
+        &::before{
+            right: -290px;
+        }
+        .fresh-content-box{
+            .fresh-content{
+                .fresh-left{
+                    display: none;
+                }
+                .fresh-right{
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+     // Popular Products样式开始
+     .popular-box{
+        .content-box{
+            margin: 0 10px;
+            .popular-content{
+                .popular-left{
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+                .popular-right{
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}
