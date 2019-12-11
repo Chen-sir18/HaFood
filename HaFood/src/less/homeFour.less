@@ -1,0 +1,477 @@
+.banner-area{
+    background: url('../img/banner_bg_5.jpg');
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    &::before{
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+    }
+    .banner-img{
+        height: 900px;
+        background-position: bottom center;
+        background-size: cover;
+        position: relative;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        &::before{
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: #000;
+            opacity: .3;
+        }
+        .banner-content{
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+            .area-text-box{
+                display: flex;
+                flex-wrap: wrap;
+                .area-text{
+                    position: relative;
+                    width: 100%;
+                    padding-right: 15px;
+                    padding-left: 15px;
+                    .text-content{
+                        text-align: center;
+                        position: relative;
+                        color: #fff;
+                        h1{
+                            font-size: 220px;
+                            font-weight: 600;
+                            padding-bottom: 42px;
+                            font-family: "Vivaldi", cursive;
+                        }
+                        .time-box{
+                            position: absolute;
+                            left: 0;
+                            bottom: -235px;
+                            text-align: left!important;
+                            .time{
+                                text-decoration: underline;
+                            }
+                        }
+                        .phone-box{
+                            position: absolute;
+                            right:0 ;
+                            bottom: -235px;
+                            text-align: right!important;
+                            span{
+                                text-decoration: underline; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// 1、2、3样式开始
+.four-fall-box{
+    margin: 60px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .content-box{
+        padding: 0 15px;
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+        .distance{
+            border-radius: 25px;
+            background: #ede7ba;
+            padding: 100px 0;
+            position: relative;
+            text-align: center;
+            margin-top: 80px;
+            &::before{
+                position: absolute;
+                content: '1';
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                color: #fff;
+                opacity: .3;
+                font-size: 80px;
+                font-weight: 700;
+            }
+            a{
+                color: #fff;
+                font-weight: 600;
+                font-size: 20px;
+            }
+
+            &.item2{
+                margin-top: 30px;
+                background-color: #eca62a;
+                box-shadow: 8.604px 12.287px 27px 0px rgba(34, 34, 34, 0.2)
+            }
+            &.item2::before{
+                content: '2';
+            }
+            &.item3{
+                 background-color:#9e5b22;
+            }
+             &.item3::before{
+                content: '3';
+            }
+        }        
+    }
+}
+// tea样式开始
+.tea-box{
+    padding: 60px 0 90px;
+    margin: 7px 0 82px;
+    position: relative;
+    &::before{
+        position: absolute;
+        content: '';
+        right: 0;
+        top: 0;
+        background: #f6efe8;
+        width: 78%;
+        height: 100%;
+        z-index: -1;
+        border-radius: 140px 0 0 0;
+    }
+    .four-fall-box{
+        margin: 60px 40px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .content-box{
+            padding: 0 15px;
+            flex: 0 0 33.33%;
+            max-width: 33.33%;
+            .tea-distance{
+                position: relative;
+                margin-top: 120px;
+                &.tea2{
+                    margin-top: 30px;
+                }
+                img{
+                    width: 100%;
+                    max-width: 100%;
+                    vertical-align: middle;
+                    border: 10px solid #fff;
+                    border-radius: 25px;
+                }
+                span{
+                    display: inline-block;
+                    position: absolute;
+                    content: '';
+                    left: 50%;
+                    bottom: 0;
+                    background: #fff;
+                    transform: translateX(-50%);
+                    color: #222222;
+                    line-height: 45px;
+                    padding: 0 60px;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+            }    
+        }
+    }
+}
+// 预定座位样式开始
+.reserve-box{
+    padding: 90px 0 80px;
+    position: relative;
+    &::before{
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 0;
+        width: 70%;
+        height: 75%;
+        background-image: url(../img/table_bg.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 0 140px 0 0;
+        z-index: -1;
+    }
+    .reserve-row{
+        margin: 0 40px;
+        padding: 0 15px;
+        .reserve-content-box{
+            display: flex;
+            flex-wrap: wrap;
+            .reserve-content{
+                margin-left: 41%;
+                flex: 0 0 59%;
+                max-width: 59%;
+                .table-box{
+                    box-shadow: 6.309px 9.011px 117px 0px rgba(34, 34, 34, 0.2);
+                    padding: 60px;
+                    background: #fff;
+                    text-align: center;
+                }
+                .form{
+                    .form-text{
+                        display: flex;
+                        flex-wrap: wrap;
+                        .input-box{
+                            flex: 0 0 50%;
+                            max-width: 50%;
+                            margin-top: 30px;
+                            .error-input{
+                                text-align: left;
+                                color: red;
+                                font-size: 14px;
+                                padding-left: 20px;
+                            }
+                            .input{
+                                width: 100%;
+                                background: #f6f6f6;
+                                border: 0;
+                                padding-left: 20px;
+                                line-height: 45px;
+                                font-size: 12px;
+                                color: #999;
+                            }
+                        }
+                        .textarea-box{
+                            width: 100%;
+                            text-align: left;
+                            .textarea{
+                                padding-left: 20px;
+                                border: none;
+                                background: #f6f6f6;
+                                color: #999;
+                                &:focus{
+                                    outline: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// latest news样式开始
+.latest-box {
+    padding-bottom: 85px;
+    .latest-content-box{
+        margin: 0 40px;
+        .title-box{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            .title-content-box{
+                flex: 0 0 50%;
+                max-width: 50%;
+                .title-content{
+                    text-align: center;
+                    h3{
+                        color: #222222;
+                        padding-bottom: 14px
+                    }
+                    p{
+                        padding: 0 70px 25px;
+                        font-size: 15px;
+                        color: #888;
+                        line-height: 24px;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+        .content-box{
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center;
+            .lates-item{
+                flex: 0 0 33.33%;
+                max-width: 33.33%;
+                padding: 0 15px;
+                .latest-news-item{
+                    position: relative;
+                    margin-top: 125px;
+                    &.news-item2{
+                        margin-top: 30px;
+                    }
+                    img{
+                        width: 100%;
+                        max-width: 100%;
+                        vertical-align: middle;
+                    }
+                    span{
+                        display: inline-block;
+                        position: absolute;
+                        top: 10px;
+                        left: -15px;
+                        text-transform: uppercase;
+                        font-size: 12px;
+                        color: #555;
+                        background: #fff;
+                        border: 1px solid #eee;
+                        padding: 0 16px;
+                        line-height: 44px;
+                        letter-spacing: 3px;
+                    }
+                    a{
+                        display: inline-block;
+                        font-weight: 600;
+                        font-size: 18px;
+                        color: #222222;
+                        margin-top: 26px;
+                    }
+                }
+            }
+        }
+        .view-btn{
+            margin: 0 auto;
+            margin-top: 51px;
+            text-align: center;
+            a{
+                display: inline-block;
+                color: #eda52c;
+                text-transform: uppercase;
+                font-size: 15px;
+                font-weight: 600;
+                text-decoration: underline;
+                letter-spacing: 2px;
+            }
+        }
+    }
+}
+// 调频
+@media only screen and (min-width:992px) and (max-width:1200px){
+   
+}
+@media only screen and (max-width:992px){
+    .reserve-box{
+        .reserve-row{
+            .reserve-content-box{
+                .reserve-content{
+                    margin-left: 5%;
+                    flex: 0 0 95%;
+                    max-width: 95%;
+                    .form{
+                        .form-text{
+                            .input-box{
+                                flex: 0 0 100%;
+                                max-width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // latest news样式开始
+    .latest-box{
+        .latest-content-box{
+            .title-box{
+                .title-content-box{
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    
+}
+@media only screen and (max-width:768px){
+    // 1、2、3
+    .four-fall-box{
+        .content-box{
+            flex: 0 0 50%;
+            max-width: 50%;
+            .distance{
+                margin-top: 30px;
+            }
+        }
+    }
+    // tea样式开始
+    .tea-box{
+        .four-fall-box{
+            .content-box{
+                flex: 0 0 50%;
+                max-width: 50%;
+                .tea-distance{
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+    // latest news样式开始
+    .latest-box{
+        .latest-content-box{
+            .content-box{
+                .lates-item{
+                    flex: 0 0 66.66%;
+                    max-width: 66.66%;
+                    .latest-news-item{
+                        margin-top: 40px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width:572px){
+    // // 1、2、3
+    .four-fall-box{
+        margin: 60px 0px;
+        .content-box{
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+    // // tea样式开始
+    .tea-box{
+        .four-fall-box{
+            margin: 0;
+            .content-box{
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    }
+    // table a book
+    .reserve-box{
+        .reserve-row{
+            margin: 0;
+            .reserve-content-box{
+                .reserve-content{
+                    margin-left: 0%;
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    // latest news样式开始
+    .latest-box{
+        .latest-content-box{
+            margin: 0;
+            .content-box{
+                .lates-item{
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                    .latest-news-item{
+                        margin-top: 40px;
+                    }
+                }
+            }
+        }
+    }
+}

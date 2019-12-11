@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home1 from '../components/home/Home1.vue'
 import Home2 from '../components/home/Home2.vue'
+import Home3 from '../components/home/Home3.vue'
+import Home4 from '../components/home/Home4.vue'
 import Login from '../components/public/login.vue'
 import Blogdetail from '../components/blogs/blogdetail.vue'
 import Bloggrid from '../components/blogs/bloggrid.vue'
@@ -28,6 +30,14 @@ export default new Router({
         {
         	path: '/Home2',
       		component: Home2
+        },
+        {
+        	path: '/Home3',
+      		component: Home3
+        },
+        {
+        	path: '/Home4',
+      		component: Home4
         },
         {
         	path: '/BlogList',
