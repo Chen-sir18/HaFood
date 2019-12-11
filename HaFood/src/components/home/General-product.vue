@@ -3,7 +3,7 @@
   <div class="products-box">
     <div class="products-cont">
       <ul class="products-lists">
-        <li class="products-list mar-t-30" v-for="(item,index) in productsList" :key="index">
+        <li class="products-list mar-t-30" v-for="(item,index) in newProductList" :key="index">
           <div>
             <img :src="item.imgurl">
           </div>
@@ -23,7 +23,8 @@
 export default {
   data () {
     return {
-      productsList: [
+      newProductList: [],
+      firstproductsList: [
         {
           imgurl: require('../../img/product_1.jpg'),
           name: 'Grape',
@@ -56,7 +57,49 @@ export default {
           name: 'Corn',
           price: '$8.00'
         }
+      ],
+      secondProductList: [
+        {
+          imgurl: require('../../img/trending_foods_1.jpg'),
+          name: 'Salted Fried Chicken',
+          price: '$15.00'
+        },
+        {
+          imgurl: require('../../img/trending_foods_2.jpg'),
+          name: 'Fresh Crab With Lemon',
+          price: '$45.00',
+          oldPrice: '$70.00'
+        },
+        {
+          imgurl: require('../../img/trending_foods_3.jpg'),
+          name: 'Lemon-Rosemary Chicken',
+          price: '$32.00'
+        },
+        {
+          imgurl: require('../../img/trending_foods_4.jpg'),
+          name: 'Spicy Crab Ramen',
+          price: '$12.00',
+          oldPrice: '$15.00'
+        },
+        {
+          imgurl: require('../../img/trending_foods_5.jpg'),
+          name: 'Crab With Curry Sources',
+          price: '$45.00'
+        },
+        {
+          imgurl: require('../../img/trending_foods_6.jpg'),
+          name: 'Baked Potato Pizza',
+          price: '$32.00'
+        }
       ]
+    }
+  },
+  mounted () {
+    console.log(this)
+    if (this.$route.fullPath === '/Home1') {
+      this.newProductList = this.firstproductsList
+    } else {
+      this.newProductList = this.secondProductList
     }
   }
 }

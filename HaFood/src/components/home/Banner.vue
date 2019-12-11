@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="banner-slide-box clearfix">
     <div class="banner-box"
-    v-for="(item, index) in bannerSliders"
-    :key="index" v-bind:style="{ 'background-image': 'url(' + item.bgurl + ')'}"
+    v-for="(item, id) in bannerSliders"
+    :key="id" v-bind:style="{ 'background-image': 'url(' + item.bgurl + ')'}"
+    v-show="index === id"
     >
-    <!-- <div class="banner-box"> -->
       <div class="banner-cont">
-        <h1 class="banner-title">Eat Fresh</h1>
+        <h1 class="banner-title">{{item.title}}</h1>
         <p class="main-btn main-button">
           <span>SHOP NOW</span>
           <span class="hover-status"></span>
@@ -33,12 +33,15 @@ export default {
       bannerSliders: [],
       firstBanner: [
         {
+          title: 'Eat Fresh',
           bgurl: require('../../img/banner_bg.jpg')
         },
         {
+          title: 'Eat Fresh',
           bgurl: require('../../img/banner_bg_2.jpg')
         },
         {
+          title: 'Eat Fresh',
           bgurl: require('../../img/banner_bg_3.jpg')
         }
       ],
@@ -48,17 +51,30 @@ export default {
       },
       secondBanner: [
         {
+          title: 'fast & tasty',
           bgurl: require('../../img/banner_bg_2.jpg')
         },
         {
+          title: 'fast & tasty',
           bgurl: require('../../img/banner_bg_4.jpg')
         },
         {
+          title: 'fast & tasty',
           bgurl: require('../../img/banner_bg_5.jpg')
         }
       ],
       secondShape: {
         imgurl: require('../../img/banner_shape_2.png')
+      }
+    }
+  },
+  methods: {
+    changeBanner (num) {
+      this.index += num
+      if (this.index < 0) {
+        this.index = 2
+      } else if (this.index > 2) {
+        this.index = 0
       }
     }
   },

@@ -1,0 +1,370 @@
+// home2 样式开始
+@home2-main-color: #eda52c;
+// 封装部分
+.font-style {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+// 图片在盒子中上下左右居中
+.vertical-box {
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+}
+.vertical-img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+//封装结束
+
+// 菜单开始
+.popular-menu {
+  width: 1140px;
+  margin: 0 auto;
+}
+.menu-items {
+  width: 100%;
+  margin: 80px 0;
+}
+.menu-item-box {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.menu-item {
+  padding: 0 15px;
+}
+.menu-item-descript {
+  color: #222;
+  font-size: 14px;
+  letter-spacing: 3px;
+  padding-top: 25px;
+}
+.choose-menu {
+  padding: 0 15px;
+  z-index: 10;
+}
+.item-choose {
+  padding: 85px 0;
+  margin-top: -160px;
+  background: #f6f6f6;
+}
+.icon-style {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60px;
+  background: #fff;
+  margin-right: 20px;
+}
+.choose-title {
+  font-size: 24px;
+  color: @home2-main-color;
+  font-weight: 600;
+  padding-bottom: 30px;
+}
+.choose-tips {
+  padding: 0 58px;
+}
+.choose-tip {
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  color: #222;
+  font-weight: 600;
+  .icon-xiaoqiche1, .icon-wancheng, .icon-bijiben-copy-copy {
+    font-size: 20px;
+    color: #888;
+  }
+}
+// Trending Foods Start
+.trending-box {
+  width: 1140px;
+  margin: 0 auto;
+}
+.trending-title-box {
+  width: 100%;
+  padding: 0 15px;
+}
+.trending-title {
+  display: flex;
+}
+.trending-title {
+  padding: 0 15px;
+}
+.trending-title-l {
+  width: 40%;
+  .best-seller {
+    color: @home2-main-color;
+    font-size: 14px;
+    padding-bottom: 15px;
+    letter-spacing: 3px;
+  }
+  .trending-foods {
+    color: #222;
+    font-size: 24px;
+    padding-bottom: 30px;
+    font-weight: 600;
+  }
+}
+
+.trending-title-r {
+  width: 60%;
+  line-height: 100px;
+  .trending-tip {
+    float: left;
+  }
+  .trending-nav-link {
+    color: #555;
+    margin-left: 35px;
+    font-weight: 500;
+  }
+}
+//Trending Foods End
+
+// Create sweet Memories Start
+.memory-area {
+  width: 100%;
+  // height: 90%;
+  margin-bottom: 80px;
+  // height: 530px;
+  background-image: url(../img/memories_bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.memory-area-cont {
+  width: 1140px;
+  margin: 0 auto;
+}
+.memory-area-item {
+  display: flex;
+  padding: 0 15px;
+  position: relative;
+}
+.memory-play {
+  max-width: 50%;
+  padding-top: 97px;
+  position: relative;
+  img {
+    max-width: 98%;
+    box-shadow: 0px 38px 90px 0px rgba(0, 79, 104, 0.2)
+  }
+}
+.memory-readmore {
+  display: inline-block;
+  background: #fff;
+  color: @home2-main-color;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 0 115px;
+  line-height: 70px;
+  position: absolute;
+  right: -312px;
+  bottom: 48px;
+  box-shadow: 0px 1px 3px 0px rgba(34, 34, 34, 0.13);
+}
+.memory-title {
+  color: #fff;
+  position: absolute;
+  top: 36%;
+  right: -36px;
+}
+.memory-title-top {
+  font-size: 14px;
+  letter-spacing: 3px;
+  padding-bottom: 7px;
+}
+.memory-title-bottom {
+  font-size: 38px;
+  width: 61%;
+  line-height: 60px;
+}
+// Create sweet Memories End
+
+// 菜单结束
+
+// Our popular menu
+.popular-Most-menu {
+  width: 1140px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+.popular-area {
+  width: 100%;
+  padding: 0 15px;
+}
+.popular-menu-item {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.popular-menu-list {
+  width: 50%;
+  margin-top: 30px;
+  display: flex;
+}
+.popular-menu-title {
+  font-size: 35px;
+  color: #222222;
+  font-weight: 600;
+  padding-bottom: 28px;
+}
+.popular-menu-img, .popular-menu-detail {
+  display: inline-block;
+}
+.popular-menu-img {
+  margin-right: 30px;
+}
+.popular-menu-flex {
+  display: flex;
+  justify-content: space-between;
+}
+.popular-menu-detail {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 10px 0;
+  .foods-title {
+    font-weight: 600;
+    font-size: 16px;
+    padding-bottom: 10px;
+  }
+  .foods-price {
+    font-size: 14px;
+    color: @home2-main-color;
+    padding-bottom: 10px;
+  }
+  .foods-descript {
+    color: #888;
+    font-size: 14px;
+  }
+}
+
+// Responsive Start
+@media (min-width: 992px) and (max-width:1200px) {
+  // Menu
+  .popular-menu {
+    width: 960px;
+  }
+  .menu-item {
+    width: 32%;
+    padding-top: 20px;
+  }
+  .choose-tips {
+    padding: 0 30px
+  }
+  // trending foods
+  .trending-box {
+    width: 960px;
+  }
+}
+@media (min-width: 767px) and (max-width:992px) {
+  // Menu
+  .popular-menu {
+    width: 720px;
+  }
+  .menu-item-box {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .menu-item {
+    width: 50%;
+  }
+  .item-choose {
+    margin-top: 30px;
+  }
+  // trending foods
+  .trending-box {
+    width: 720px;
+  }
+  .trending-title-r {
+    .trending-nav-link {
+      margin-left: 20px;
+      font-size: 14px;
+    }
+  }
+}
+@media (min-width: 576px) and (max-width:768px) {
+  // Menu
+  .popular-menu {
+    width: 540px;
+  }
+  .menu-item-box {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .menu-item {
+    width: 50%;
+  }
+  .item-choose {
+    width: 100%;
+    margin-top: 30px;
+  }
+  // trending foods
+  .trending-box {
+    width: 540px;
+  }
+  .trending-title {
+    flex-wrap: wrap;
+  }
+  .trending-title-r {
+    width: 100%;
+    line-height: 20px;
+    .trending-nav-link {
+      margin-left: 0;
+      margin-right: 35px;
+      font-size: 14px;
+    }
+  }
+}
+@media only screen and (max-width:576px) {
+  // Menu
+  .popular-menu {
+    width: 100%;
+  }
+  .menu-item-box {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .menu-item {
+    width: 100%;
+    margin-top: 40px;
+    img {
+      width: 100%;
+    }
+  }
+  .item-choose {
+    width: 100%;
+    margin-top: 30px;
+  }
+  // trending foods
+  .trending-box {
+    width: 100%;
+  }
+  .trending-title {
+    flex-wrap: wrap;
+  }
+  .trending-title-l {
+    width: 100%;
+  }
+  .trending-title-r {
+    width: 100%;
+    line-height: 20px;
+    .trending-nav-link {
+      margin: 0 30px 20px 0;
+      font-size: 14px;
+    }
+  }
+}
+// Responsive End
