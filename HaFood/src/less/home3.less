@@ -271,183 +271,125 @@
         }
     }
 }
-//Trending Foods样式开始
-.trending-content-box{
-    display: flex;
-    flex-wrap: wrap;
-    .trending-item{
-        flex: 0 0 33.33%;
-        max-width: 33.33%;
-        .trending-item-content{
-            position: relative;
-            img{
-                width: 100%;
-                max-width: 100%;
-                vertical-align: middle;
+// trending foods
+.tranding-box{
+    margin: 0 40px;
+    padding-bottom: 70px;
+    .title-box{
+        max-width: 1140px;
+        margin: 0 auto;
+        .tranding-content{
+            display: flex;
+            // padding: 0 15px;
+            flex-wrap: wrap;
+            align-items: center !important;
+            .trending-left{
+                flex: 0 0 33.33%;
+                max-width: 33.33%;
+                .title{
+                    span{
+                        display: inline-block;
+                        color: #eda52c;
+                        letter-spacing: 3px;
+                        padding-bottom: 15px
+                    }
+                }
             }
-            a{
-                display: inline-block;
-                font-size: 16px;
-                color: #222222;
-                padding-top: 25px;
-                padding-bottom: 5px;
-                line-height: 1.2;
-                font-weight: 600;
+            .trending-right{
+                flex: 0 0 66.66%;
+                max-width: 66.66%;
+                .tab-box{
+                    display: flex;
+                    justify-content: end;
+                    .nav-list{
+                        display: flex;
+                        flex-wrap: wrap;
+                        li{
+                            position: relative;
+                            margin: 30px;
+                            line-height: 30px;
+                            &:hover{
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
             }
-            p{
-                color: #eda52c;
-                font-size: 14px;
+        }
+    }
+    .trending-content-box{
+        .trending-lists{
+            display: flex;
+            flex-wrap: wrap;
+            .list{
+                flex: 0 0 33.333%;
+                max-width: 33.333%;
+                padding: 0 15px;
+                .list-box{
+                    margin-top: 30px;
+                    img{
+                        width: 100%;
+                        max-width: 100%;
+                        vertical-align: middle;
+                    }
+                    a{
+                        display: inline-block;
+                        font-weight: 600;
+                        font-size: 16px;
+                        color: #222222;
+                        padding-top: 25px;
+                        padding-bottom: 5px;
+                    }
+                    p{
+                        color: #eda52c;
+                    }
+                }
             }
         }
     }
 }
-// .tranding-box{
-//     padding-bottom: 70px;
-//     .title-box{
-//         max-width: 1140px;
-//         margin: 0 auto;
-//         .tranding-content{
-//             display: flex;
-//             // padding: 0 15px;
-//             flex-wrap: wrap;
-//             align-items: center !important;
-//             .trending-left{
-//                 flex: 0 0 33.33%;
-//                 max-width: 33.33%;
-//                 .title{
-//                     span{
-//                         display: inline-block;
-//                         color: #eda52c;
-//                         letter-spacing: 3px;
-//                         padding-bottom: 15px
-//                     }
-//                 }
-//             }
-//             .trending-right{
-//                 flex: 0 0 66.66%;
-//                 max-width: 66.66%;
-//                 .tab-box{
-//                     display: flex;
-//                     justify-content: end;
-//                     .nav-list{
-//                         display: flex;
-//                         flex-wrap: wrap;
-//                         li{
-//                             position: relative;
-//                             margin: 30px;
-//                             line-height: 30px;
-//                             &.active::before{
-//                                 width: 100%;
-//                                 left: 0;
-//                                 right: auto;
-//                             }
-//                             &::before{
-//                                 position: absolute;
-//                                 content: '';
-//                                 right: 0;
-//                                 left: auto;
-//                                 bottom: 2px;
-//                                 height: 2px;
-//                                 width: 0%;
-//                                 background: #9e9e9e;
-//                                 transition: all 0.3s ease-out 0s;
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
+
 // Popular Products样式开始
 .popular-box{
     padding-bottom: 70px;
-    .content-box{
+    .title{
         margin:0 60px;
-        .title{
-            text-align: center;
-            h3{
-                padding-bottom: 28px;
-                font-size: 35px;
-                color: #222;
-            }
+        text-align: center;
+        h3{
+            padding-bottom: 28px;
+            font-size: 35px;
+            color: #222;  
         }
-        .popular-content{
-            display: flex;
-            flex-wrap: wrap;
-            .popular-left{
-                flex: 0 0 50%;
-                max-width: 50%;
-                position: relative;
-                padding: 0 15px;
-                .title-box{
-                    margin-bottom: 60px;
-                    margin-top: 23px;
-                    h4{
-                        padding-bottom: 22px;
-                        border-bottom: 1px solid #eee;
+    }
+    .popular-lists{
+        display: flex;
+        flex-wrap: wrap;
+        .list{   
+            flex: 0 0 50%;
+            max-width: 50%;
+            padding: 15px;
+            .list-box{
+                display: flex;
+                align-items: center; 
+                .img-box{
+                    img{
+                        width: 100%;
+                        max-width: 100%;
+                        vertical-align: middle;
                     }
                 }
-                .popular-list{
-                    display: flex;
-                    align-items: center;
-                    .img-box{
-                        img{
-                            width: 100%;
-                            max-width: 100%;
-                            vertical-align: middle;
-                        }
+                .text-box{
+                    a{
+                        display: block;
                     }
-                    .text-box{
-                        a{
-                            display: block;
-                        }
-                        span{
-                            color: #eda52c;
-                            line-height: 28px;
-                        }
-                        p{
-                            color: #888;
-                        }
+                    span{
+                        color: #eda52c;
+                        line-height: 28px;
+                    }
+                    p{
+                        color: #888;
                     }
                 }
-            }
-            .popular-right{
-                flex: 0 0 50%;
-                max-width: 50%;
-                position: relative;
-                padding: 0 15px; 
-                .title-box{
-                    margin-bottom: 60px;
-                    margin-top: 23px;
-                    h4{
-                        padding-bottom: 22px;
-                        border-bottom: 1px solid #eee;
-                    }
-                }
-                .popular-list{
-                    display: flex;
-                    align-items: center;
-                    .img-box{
-                        img{
-                            width: 100%;
-                            max-width: 100%;
-                            vertical-align: middle;
-                        }
-                    }
-                    .text-box{
-                        a{
-                            display: block;
-                        }
-                        span{
-                            color: #eda52c;
-                            line-height: 28px;
-                        }
-                        p{
-                            color: #888;
-                        }
-                    }
-                } 
             }
         }
     }
@@ -507,16 +449,10 @@
     }
     // Popular Products样式开始
     .popular-box{
-        .content-box{
-            .popular-content{
-                .popular-left{
-                    flex: 0 0 100%;
-                    max-width: 100%;
-                }
-                .popular-right{
-                    flex: 0 0 100%;
-                    max-width: 100%;
-                }
+        .popular-lists{
+            .list{
+                flex:  0 0 100%;
+                max-width: 100%;
             }
         }
     }
@@ -561,12 +497,37 @@
         }
     }
     // trending food样式
-    .trending-content-box{
-        .trending-item{
-            flex: 0 0 50%;
-            max-width: 50%;
+    .tranding-box{
+        margin: 0 80px;
+        .title-box{
+            .tranding-content{
+                .trending-left{
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+                .trending-right{
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                    .tab-box{
+                        .nav-list{
+                            li{
+                                margin: 0 30px 20px 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .trending-content-box{
+            .trending-lists{
+                .list{
+                    flex:0 0 50%;
+                    max-width: 50%;
+                }
+            }
         }
     }
+    
      // Fresh Cakes Sale Off开始
      .fresh-box{
         padding: 92px 0;
@@ -582,47 +543,18 @@
         }
     }
      // Popular Products样式开始
-     .popular-box{
-        .content-box{
-            .popular-content{
-                .popular-left{
-                    flex: 0 0 100%;
-                    max-width: 100%;
-                }
-                .popular-right{
-                    flex: 0 0 100%;
-                    max-width: 100%;
-                }
+    .popular-box{
+        .popular-lists{
+            .list{
+                flex:  0 0 100%;
+                max-width: 100%;
             }
         }
     }
 }
 @media only screen and (max-width:572px){
-    // .homeThird{
-    //     .homeThird-lists{
-    //         height: 600px;
-    //         .item:first-child,.item:nth-child(2){
-    //             &::before{
-    //                 width: 0;
-    //             }
-    //             .content-text{
-    //                 position: absolute;
-    //                 left: 50%;
-    //                 top: 50%;
-    //                 transform: translate(-50%, -50%)
-    //             }
-    //         }
-           
-    //     }
-    // }
-    // // 描述
-    // .decript-box{
-    //     .title{
-    //         font-size: 60px;
-    //         margin-bottom: -30px;
-    //     }
-    // }
-    //  // 瀑布流
+
+     // 瀑布流
      .fall-box{
          margin: 0;
         .content-box{
@@ -632,10 +564,22 @@
                     max-width: 100%;
                     flex: 0 0 100%;
                     padding: 0;
-                    // .btn-box{
-                    //     margin-top: 30px;
-                    // }
                 } 
+            }
+        }
+    }
+    // trending food样式
+    .tranding-box{
+        margin: 0 0px;
+        .title-box{
+            margin: 0 15px;
+        }
+        .trending-content-box{
+            .trending-lists{
+                .list{
+                    flex:0 0 100%;
+                    max-width: 100%;
+                }
             }
         }
     }

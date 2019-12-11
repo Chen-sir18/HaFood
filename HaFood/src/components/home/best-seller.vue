@@ -4,16 +4,16 @@
           <div class="tranding-content">
               <div class="trending-left">
                   <div class="title">
-                      <span class="font-14">BSET SELLER</span>
-                      <h3 class="pad-b-30 font-24">Trending Foods</h3>
+                      <span class="font-14">OUR PRODUCT</span>
+                      <h3 class="pad-b-30 font-24">Best Seller</h3>
                   </div>
               </div>
               <div class="trending-right">
                 <div class="tab-box">
                     <ul class="nav-list">
-                        <li class="active" @click="changeTab(1)">Cupcakes</li>
-                        <li class="active" @click="changeTab(2)">Donuts</li>
-                        <li class="active" @click="changeTab(3)">Cheesecake</li>
+                        <li class="active" @click="changeTab(1)">Coffee</li>
+                        <li class="active" @click="changeTab(2)">Tea</li>
+                        <li class="active" @click="changeTab(3)">Equipment</li>
                     </ul>
                 </div>
               </div>
@@ -53,7 +53,7 @@ export default {
   mounted () {
     axios({
       method: 'get',
-      url: 'http://192.168.97.241:3000/cakes'
+      url: 'http://192.168.97.241:3000/drink'
     }).then((res) => {
       console.log(res.data)
       if (res.data.status === 200) {

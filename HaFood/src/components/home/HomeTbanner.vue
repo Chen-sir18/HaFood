@@ -20,8 +20,8 @@
                 </div>
             </li>
         </ul>
-        <a class="btn" id="prev">></a>
-        <a class="btn" id="next">></a>
+        <a class="btn" id="prev"><span class="iconfont icon-xiayiye"></span></a>
+        <a class="btn" id="next"><span class="iconfont icon-xiayiye"></span></a>
     </div>
 </template>
 
@@ -31,6 +31,47 @@ import HomeButton from './homeButton'
 export default {
   components: {
     HomeButton
+  },
+  mounted () {
+    //   轮播
+      (function () {
+          let index = 0
+          let items = document.getElementsByClassName('item')
+          let prev = document.getElementById('prev') 	//按钮  
+          let next = document.getElementById('next')
+          let clearActive = function () {
+              for (let i = 0; i< items.length; i++) {
+                  items[i].className = 'item'
+              }
+          }
+          let goIndex = function () {
+              clearActive()
+              items[index].className = 'item active'
+          }
+          //下一张
+        let nextBtn = function () {
+            if (index < 1) {
+                index++
+            } else {
+                index = 0
+            }
+            goIndex()
+        }
+        let prevBtn = function () {
+            if (index <= 0) {
+                index = 1
+            } else {
+                index--
+            }
+            goIndex()
+        }
+        next.addEventListener('click', function () {
+            nextBtn()
+        })
+        prev.addEventListener('click',function () {
+            prevBtn()
+        })
+      })()
   }
 }
 </script>

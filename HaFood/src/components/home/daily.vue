@@ -1,12 +1,12 @@
 <template>
   <div class="popular-box">
-      <div  class="content-box">
-        <div class="title">
+      <div class="title">
           <h2>Daily Specials</h2>
-        </div>
-        <div :key="index" class="popular-content"  v-for="(item,index) in popularData">
-          <div class="popular-left">
-            <div class="popular-list mar-t-30">
+      </div>
+      <div class="popular-content">
+        <ul class="popular-lists">
+          <li :key="index" class="list" v-for="(item,index) in popularData">
+            <div class="list-box">
               <div class="img-box mar-r-30">
                 <img :src='"http://192.168.97.241:3000/" + item.picstr' alt="">
               </div>
@@ -16,20 +16,8 @@
                 <p>{{item.depict}}</p>
               </div>
             </div>
-          </div>
-          <div class="popular-right">
-            <div class="popular-list mar-t-30">
-              <div class="img-box mar-r-30">
-                <img :src='"http://192.168.97.241:3000/" + item.picstr' alt="">
-              </div>
-              <div class="text-box font-14">
-                <a class="font-16 font-wei-600">{{item.goodsname}}</a>
-                <span>{{item.price}}</span>
-                <p>{{item.depict}}</p>
-              </div>
-            </div>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
   </div>
 </template>
@@ -50,7 +38,7 @@ export default {
   mounted () {
     axios({
       method: 'get',
-      url: 'http://192.168.97.241:3000/popular'
+      url: 'http://192.168.97.241:3000/drink'
     }).then((res) => {
       console.log(res.data)
       if (res.data.status === 200) {
