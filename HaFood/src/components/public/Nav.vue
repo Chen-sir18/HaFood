@@ -231,14 +231,22 @@ export default {
 	},
 	watch: {
 		scrollTop (val) {
-			if (val >= 30 && !this.navobj.classList.contains('headerbox1')) {
-				  this.navobj.style.background = '#fb7e00'
-			} else if (val >= 30 && this.navobj.classList.contains('headerbox1')) {
-					this.navobj.style.boxShadow = '0 2px 10px #343a40'
-			} else if (val < 30 && !this.navobj.classList.contains('headerbox1')) {
-			  	this.navobj.style.background = 'transparent'
-			} else {
-					this.navobj.style.boxShadow = 'none'
+			if (val >= 30 && this.routepath !== '/Home3' && this.routepath !== '/Home4') {
+			  this.navobj.style.background = '#fb7e00'
+			} else if (val < 30 && this.routepath !== '/Home3' && this.routepath !== '/Home4') {
+			  this.navobj.style.background = 'transparent'
+			}
+		},
+		routepath (val) {
+			if (val === '/Home3' || val === '/Home4') {
+				this.navobj.style.color = '#222'
+				this.navobj.style.background = '#fff'
+			} else if (this.scrollTop < 30) {
+				this.navobj.style.color = '#fff'
+				this.navobj.style.background = 'transparent'
+			} else if (this.scrollTop >= 30) {
+				this.navobj.style.color = '#fff'
+				this.navobj.style.background = '#fb7e00'
 			}
 		}
 	}
