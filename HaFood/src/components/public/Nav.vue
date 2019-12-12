@@ -181,7 +181,10 @@ export default {
 		// 关于购物车渲染的问题
 		axios({
 			method: 'GET',
-			url: 'http://192.168.97.241:3000/shopcar'
+			url: 'http://192.168.97.241:3000/shopcar',
+			params: {
+				userid: 1
+			}
 		}).then((response) => {
 			let goodsdata = response.data.data
 			goodsdata.forEach(item => {

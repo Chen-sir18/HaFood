@@ -33,11 +33,10 @@ export default {
     HomeButton
   },
   mounted () {
-    //   �ֲ�
       (function () {
           let index = 0
           let items = document.getElementsByClassName('item')
-          let prev = document.getElementById('prev') 	// ��ť
+          let prev = document.getElementById('prev')
           let next = document.getElementById('next')
           let clearActive = function () {
               for (let i = 0; i < items.length; i++) {
@@ -48,7 +47,6 @@ export default {
               clearActive()
               items[index].className = 'item active'
           }
-          // ��һ��
         let nextBtn = function () {
             if (index < 1) {
                 index++

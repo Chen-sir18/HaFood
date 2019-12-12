@@ -5,7 +5,7 @@
       </div>
       <div class="popular-content">
         <ul class="popular-lists">
-          <li :key="index" class="list" v-for="(item,index) in popularData">
+          <li :key="index" class="list" v-if="!(item.picstr === undefined)" v-for="(item,index) in popularData">
             <div class="list-box">
               <div class="img-box mar-r-30">
                 <img :src='"http://192.168.97.241:3000/" + item.picstr' alt="">
