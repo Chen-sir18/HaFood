@@ -108,7 +108,6 @@ export default {
         console.log(res.data)
         if (res.status === 200) {
           this.blogData1 = res.data.data
-          this.loading = false
         } else {
           return false
         }
@@ -127,7 +126,6 @@ export default {
         console.log(res.data)
         if (res.status === 200) {
           this.blogData1 = res.data.data
-          this.loading = false
         } else {
             return false
         }

@@ -96,7 +96,7 @@
           <!-- 第四层评论内容 -->
           <div class="h-detail-comments">
             <h3 class="h-comment-number">{{commtentData.length}} comments</h3>
-            <div :key="index" v-for="(item, index) in commtentData" class="h-comments-item">
+            <div :key="index" v-if="!(item.headpic === undefined)" v-for="(item, index) in commtentData" class="h-comments-item">
               <div class="h-comments-in">
                 <img :src='"http://192.168.97.241:3000/" + item.headpic' />
                 <span>FEB 15, 2019</span>
@@ -186,7 +186,7 @@
           </div>
         </div>
         <div class="h-row-outer">
-          <div :key="index" v-for="(item, index) in relatedData" class="h-row-item">
+          <div :key="index" v-if="!(item.headpic === undefined)" v-for="(item, index) in relatedData" class="h-row-item">
             <div class="h-row-list">
               <img :src='"http://192.168.97.241:3000/" + item.picstr'/>
               <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
@@ -279,7 +279,6 @@ export default {
       // console.log(res.data)
       if (res.data.status === 200) {
         let comData = res.data.data
-        // console.log(comData)
         this.commtentData = comData
       } else {
         return false
@@ -295,7 +294,7 @@ export default {
         // 从后台获取参数 此处不用传参
       }
     }).then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       if (res.status === 200) {
         let latedMount = res.data.data
         latedMount.splice(6, latedMount.length - 6)
@@ -315,53 +314,66 @@ export default {
         // console.log(valid)
         // 通过验证后的操作
         if (valid) {
-          axios({
-            url: 'api/comments',
-            method: 'get',
-            params: {
-              // this.commitData.name 前面数据里的东西
-              username: this.commitData.username,
-              email: this.commitData.email,
-              comments: this.commitData.comments
-            }
-          }).then((res) => {
-            // console.log(res)
-            if (res.data.status === 200) {
-              this.$message({
-                message: '发表评论成功',
-                type: 'success',
-                showClose: true,
-                // 显示时间
-                duration: 3000,
-                onClose: () => {
-                  // 定义对象初始值
-                  let returnData = {
-                    content: '',
-                    headpic: '',
-                    nickname: ''
+          let userinfo = JSON.parse(window.localStorage.getItem('info'))
+          let token = window.localStorage.getItem('token')
+          if (userinfo && token) {
+            console.log(valid, userinfo.id)
+            axios({
+              url: 'api/incomment',
+              method: 'get',
+              params: {
+                // this.commitData.name 前面数据里的东西
+                username: this.commitData.username,
+                email: this.commitData.email,
+                comments: this.commitData.comments,
+                userid: userinfo.id
+              }
+            }).then((res) => {
+              console.log(res)
+              if (res.data.status === 200) {
+                this.$message({
+                  message: '发表评论成功',
+                  type: 'success',
+                  showClose: true,
+                  // 显示时间
+                  duration: 3000,
+                  onClose: () => {
+                    // 定义对象初始值
+                    let returnData = {
+                      content: '',
+                      headpic: '',
+                      nickname: ''
+                    }
+                    // 给对象传值
+                    returnData.content = res.config.params.comments
+                    returnData.nickname = res.config.params.username
+                    returnData.headpic = 'customer_1.png'
+                    // this.commitData = res.config.params
+                    this.commtentData.unshift(returnData)
                   }
-                  // 给对象传值
-                  returnData.content = res.config.params.comments
-                  returnData.nickname = res.config.params.username
-                  returnData.headpic = 'customer_1.png'
-                  // this.commitData = res.config.params
-                  this.commtentData.unshift(returnData)
-                }
-              })
-            } else {
-              this.$message({
-                message: '登录后发表评论',
-                type: 'error',
-                showClose: true,
-                duration: 2000,
-                onClose: () => {
-                  this.$router.push('/login')
-                }
-              })
-            }
-          }).catch((error) => {
-            console.log(error)
-          })
+                })
+              } else {
+                this.$message({
+                  message: '此邮箱不是登录账号',
+                  type: 'error',
+                  showClose: true,
+                  duration: 2000
+                })
+              }
+            }).catch((error) => {
+              console.log(error)
+            })
+          } else {
+            this.$message({
+              message: '登录后发表评论',
+              type: 'error',
+              showClose: true,
+              duration: 2000,
+              onClose: () => {
+                this.$router.push('/login')
+              }
+            })
+          }
         }
       })
     }
