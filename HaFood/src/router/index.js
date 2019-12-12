@@ -11,7 +11,9 @@ import Blogmasonry from '../components/blogs/blogmasonry.vue'
 import Bloglist from '../components/blogs/blogsbody.vue'
 import App from '../App.vue'
 const Shopcart = () => import('../components/public/Shopcar.vue')
-
+const ProductList = () => import('../components/product/Prlist.vue')
+const ProductGrid = () => import('../components/product/Prgrid.vue')
+const ProductDetails = () => import('../components/product/Prdetails.vue')
 Vue.use(Router)
 
 let Router1 = new Router({
@@ -21,7 +23,6 @@ let Router1 = new Router({
       redirect: '/register'
     },
     {
-
       path: '/Index',
       component: App,
       children: [
@@ -60,6 +61,18 @@ let Router1 = new Router({
         {
           path: '/Shopcar',
           component: Shopcart
+        },
+        {
+          path: '/ProductList',
+          component: ProductList
+        },
+        {
+          path: '/ProductGrid',
+          component: ProductGrid
+        },
+        {
+          path: '/ProductDetails',
+          component: ProductDetails
         }
       ]
     },

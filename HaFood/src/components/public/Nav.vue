@@ -1,7 +1,7 @@
 <template>
 	<div>
   <!-- 头部导航部分 -->
-		<div class="btn-back-color header header-box font-white">
+		<div v-bind:class="{header:true,headerbox:true,headerbox1:routepath === '/Home3' || routepath === '/Home4' || routepath === '/shopcar'}">
 			<div class="change-content">
 				<span class="logo font-wi-900 font-30">
 					HaFood
@@ -184,6 +184,8 @@ export default {
 		}
   },
   mounted: function () {
+		// 关于头部导航样式不同的触发
+		this.routepath = this.$route.fullPath
 		// 判断购物车是否已经登录的问题
 		let userinfo = JSON.parse(window.localStorage.getItem('info'))
 		let token = window.localStorage.getItem('token')
@@ -212,17 +214,12 @@ export default {
 				that.scrollTop = window.scrollTop
       })()
 		}
-		setInterval(() => {
-			if (that.routepath === that.$route.fullPath) {
-				return false
-			} else {
-				that.routepath = that.$route.fullPath
-			}
-		}, 200)
 		// 关于头部整体的变化
-		this.navobj = document.querySelector('.header-box')
+		this.navobj = document.querySelector('.headerbox')
 		},
 	updated: function () {
+		//  关于路由改变的监控
+		this.routepath = this.$route.fullPath
 		// 关注购物车商品的数量
 		this.cartgoodscount = this.shopgoods.length
 		// 关注购物车总价格
@@ -234,22 +231,14 @@ export default {
 	},
 	watch: {
 		scrollTop (val) {
-			if (val >= 30 && this.routepath !== '/Home3' && this.routepath !== '/Home4') {
-			  this.navobj.style.background = '#fb7e00'
-			} else if (val < 30 && this.routepath !== '/Home3' && this.routepath !== '/Home4') {
-			  this.navobj.style.background = 'transparent'
-			}
-		},
-		routepath (val) {
-			if (val === '/Home3' || val === '/Home4') {
-				this.navobj.style.color = '#222'
-				this.navobj.style.background = '#fff'
-			} else if (this.scrollTop < 30) {
-				this.navobj.style.color = '#fff'
-				this.navobj.style.background = 'transparent'
-			} else if (this.scrollTop >= 30) {
-				this.navobj.style.color = '#fff'
-				this.navobj.style.background = '#fb7e00'
+			if (val >= 30 && !this.navobj.classList.contains('headerbox1')) {
+				  this.navobj.style.background = '#fb7e00'
+			} else if (val >= 30 && this.navobj.classList.contains('headerbox1')) {
+					this.navobj.style.boxShadow = '0 2px 10px #343a40'
+			} else if (val < 30 && !this.navobj.classList.contains('headerbox1')) {
+			  	this.navobj.style.background = 'transparent'
+			} else {
+					this.navobj.style.boxShadow = 'none'
 			}
 		}
 	}
