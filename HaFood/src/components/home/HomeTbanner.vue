@@ -33,14 +33,14 @@ export default {
     HomeButton
   },
   mounted () {
-    //   ÂÖ²¥
+    //   ï¿½Ö²ï¿½
       (function () {
           let index = 0
           let items = document.getElementsByClassName('item')
-          let prev = document.getElementById('prev') 	//°´Å¥  
+          let prev = document.getElementById('prev') 	// ï¿½ï¿½Å¥
           let next = document.getElementById('next')
           let clearActive = function () {
-              for (let i = 0; i< items.length; i++) {
+              for (let i = 0; i < items.length; i++) {
                   items[i].className = 'item'
               }
           }
@@ -48,7 +48,7 @@ export default {
               clearActive()
               items[index].className = 'item active'
           }
-          //ÏÂÒ»ÕÅ
+          // ï¿½ï¿½Ò»ï¿½ï¿½
         let nextBtn = function () {
             if (index < 1) {
                 index++
@@ -68,7 +68,7 @@ export default {
         next.addEventListener('click', function () {
             nextBtn()
         })
-        prev.addEventListener('click',function () {
+        prev.addEventListener('click', function () {
             prevBtn()
         })
       })()

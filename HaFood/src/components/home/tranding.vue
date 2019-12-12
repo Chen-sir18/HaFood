@@ -23,7 +23,7 @@
       <div>
         <TabFirst v-if="tabValue === 1"></TabFirst>
         <TabSecond v-else-if="tabValue === 2"></TabSecond>
-        <TabThird v-else></TabThird>        
+        <TabThird v-else></TabThird>
       </div>
   </div>
 </template>
