@@ -1,7 +1,7 @@
 <template>
 <div>
   <transition-group name="flip-list"  class="h-blogmary-box">
-    <div :key="item" v-for="item in blogData1" class="h-blogmary-item">
+    <div :key="item.id" v-for="item in blogData1" class="h-blogmary-item">
     <div class="h-bgid-inner">
       <img :src='"http://192.168.97.241:3000/" + item.picstr' />
       <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
@@ -19,8 +19,7 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      blogData1: [],
-      loading: true
+      blogData1: []
     }
   },
   mounted () {
@@ -34,7 +33,6 @@ export default {
       console.log(res.data)
       if (res.status === 200) {
         this.blogData1 = res.data.data
-        this.loading = false
       } else {
         return false
       }
