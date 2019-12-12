@@ -10,13 +10,15 @@ import Bloggrid from '../components/blogs/bloggrid.vue'
 import Blogmasonry from '../components/blogs/blogmasonry.vue'
 import Bloglist from '../components/blogs/blogsbody.vue'
 import App from '../App.vue'
+const Shopcart = () => import('../components/public/Shopcar.vue')
+
 Vue.use(Router)
 
-export default new Router({
+let Router1 = new Router({
   routes: [
     {
       path: '/',
-      redirect: '/Home1'
+      redirect: '/register'
     },
     {
 
@@ -54,7 +56,11 @@ export default new Router({
        	{
        		path: '/BlogDetails',
         	component: Blogdetail
-       	}
+        },
+        {
+          path: '/Shopcar',
+          component: Shopcart
+        }
       ]
     },
     {
@@ -67,4 +73,13 @@ export default new Router({
     }
   ],
   mode: 'history'
+})
+export default Router1
+Router1.beforeEach((to, from, next) => {
+  if (to.fullPath === '/Home' || to.fullPath === '/Product' || to.fullPath === '/Blog') {
+   return false
+  } else {
+    document.body.scrollTop = document.documentElement.scrollTop = 0
+    next()
+  }
 })
