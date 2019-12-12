@@ -4,7 +4,7 @@
     <section class="h-blog-grid" style="min-height: 800px">
       <div class="h-menu-outer">
         <ul>
-          <li :key="index" v-for="(item, index) in tabs" @click="styleClick(index)" :class="{active:active==index}" class="h-list-menu">{{item.title}}</li>
+          <li :key="index" v-for="(item, index) in tabs" @click="styleClick(index, item.view)" :class="{active:active==index}" class="h-list-menu">{{item.title}}</li>
           <!-- <li @click="styleClick" :class="{active:active==index}" class="h-list-menu">Restaurant</li>
           <li :key="index" v-for="{tab, index} in tabs" @click="styleClick(index)" @click="styleClick" class="h-list-menu">Bakery</li>
           <li @click="styleClick" class="h-list-menu">Salads</li> -->
@@ -67,8 +67,7 @@ export default {
           view: 'Blogitem4'
         }
       ],
-      blogData1: [],
-      loading: true
+      blogData1: []
     }
   },
   mounted () {
@@ -103,7 +102,7 @@ export default {
         url: 'api/cakes',
         method: 'get',
         params: {
-          // ´Ë´¦²»´«²Î
+          // æ­¤å¤„ä¸ä¼ å‚
         }
       }).then((res) => {
         console.log(res.data)
@@ -122,7 +121,7 @@ export default {
         url: 'api/foodclass',
         method: 'get',
         params: {
-          // ´Ë´¦²»´«²Î
+          // æ­¤å¤„ä¸ä¼ å‚
         }
       }).then((res) => {
         console.log(res.data)
@@ -138,21 +137,21 @@ export default {
     },
     getPopular () {
       axios({
-      url: 'api/popular',
-      method: 'get',
-      params: {
-        // ´Ë´¦²»´«²Î
-      }
-    }).then((res) => {
-      console.log(res.data)
-      if (res.status === 200) {
-        this.blogData1 = res.data.data
-      } else {
-        return false
-      }
-    }).catch((error) => {
-      console.log(error)
-    })
+        url: 'api/popular',
+        method: 'get',
+        params: {
+          // æ­¤å¤„ä¸ä¼ å‚
+        }
+      }).then((res) => {
+        console.log(res.data)
+        if (res.status === 200) {
+          this.blogData1 = res.data.data
+        } else {
+          return false
+        }
+      }).catch((error) => {
+        console.log(error)
+      })
     }
   },
   components: {
