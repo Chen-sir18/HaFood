@@ -62,12 +62,21 @@
   .shopcar-table {
     margin-top: 20px;
     margin-bottom: 100px;
-    .shopcar-goods-box {
+    .shopcargoodsboxchecked {
+      background:yellowgreen;
+      color: #fff;
+    }
+    .shopcargoodsbox {
       overflow: hidden;
-      padding-left: 40px;
+      // padding-left: 40px;
       height: 120px;
       border: 1px solid #cccccc;
       padding-top: 20px;
+      padding-left: 10px;
+      .goods-checked {
+        float: left;
+        margin-right: 20px;
+      }
       .goodsimg-box {
         float: left;
         .goodsimg {
@@ -82,7 +91,7 @@
       }
       .goodsprice {
         float: left;
-        width: 260px;
+        width: 240px;
         text-align: right;
       }
       .goodscount {
@@ -98,6 +107,10 @@
             text-align: center;
             line-height: 20px;
             display: inline-block;
+            cursor: pointer;
+            &:hover {
+              color: #fb7e00;
+            }
           }
           .count {
             width: 30px;
@@ -106,6 +119,8 @@
             border: none;
             color: #666666;
             outline: none;
+            cursor: pointer;
+            background: none;
           }
           .add-count {
             border-left: 1px solid #cccccc;
@@ -123,7 +138,59 @@
       .goodsoperate {
         float: left;
         margin-left: 110px;
+        .goods-operate {
+          cursor: pointer;
+          &:hover {
+            color: #fb7e00;
+          }
+        }
       }
+    }
+  }
+  // 大屏幕时的商品结算栏
+  .shopcar-pay {
+    width: 100%;
+    background: #f3F3F3;
+    color: #666666;
+    border: 1px solid #cccccc;
+    height: 50px;
+    line-height: 50px;
+    .allchecked-box {
+      float: left;
+      padding-left: 10px;
+      .allchecked {
+        vertical-align: text-top;
+      }
+    }
+    .checked-delete {
+      width: 200px;
+      height: 100%;
+      float: left;
+      text-align: center;
+    }
+    .checked-goods-count {
+      width: 160px;
+      height: 100%;
+      float: right;
+      text-align: right;
+      .checkedcount {
+        color: #fb7e00;
+        margin-left: 10px;
+      }
+    }
+    .all-money {
+      float: right;
+      margin: 0 20px;
+      .allmoney {
+        color: #fb7e00;
+      }
+    }
+    .go-pay {
+      width: 94px;
+      height: 100%;
+      background: #fb7e00;
+      float: right;
+      color: #fff;
     }
   }
 }

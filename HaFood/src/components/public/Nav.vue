@@ -83,7 +83,7 @@
 					<div class="totalmoney">
 						<span class="subtotal">Subtotal:</span><span class="allmoney">${{shopallmoney}}.00</span>
 					</div>
-					<div class="view-cart">
+					<div @click="linktoshopcar" class="view-cart">
 						<span class="">VIEW CART</span>
 					</div>
 				</div>
@@ -181,6 +181,9 @@ export default {
 		},
 		linktologin: function (e) {
 			this.$router.push('/login')
+		},
+		linktoshopcar: function () {
+			this.$router.push('/shopcar')
 		}
   },
   mounted: function () {
