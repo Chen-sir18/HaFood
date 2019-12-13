@@ -5,12 +5,12 @@
         <section class="h-top-imgbox">
           <div class="h-top-container">
             <div class="h-inner-box">
-              <h3 class="h-inner-title">Blog List</h3>
+              <h3 class="h-inner-title">{{routername}}</h3>
             </div>
             <nav class="h-nav-outer">
               <ul class="h-nav-inner">
                 <li class="h-nav-text">Home</li>
-                <li class="h-nav-righttext">Blog List</li>
+                <li class="h-nav-righttext">{{routername}}</li>
               </ul>
             </nav>
           </div>
@@ -25,7 +25,19 @@
 
 <script>
 export default {
-
+  data () {
+    return {
+      routername: ''
+    }
+  },
+  mounted () {
+    let fillname = this.$route.path
+    let aa = fillname.split('/')
+    let newName = aa.join('')
+    let resultName = newName.replace(/[g]/, 'g ')
+    console.log(resultName)
+    this.routername = resultName
+  }
 }
 </script>
 
