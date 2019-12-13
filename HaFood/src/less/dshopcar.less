@@ -1,0 +1,230 @@
+.d-shopcar-box {
+  width: 100%;
+  .d-shopcar-top {
+    width: 100%;
+    height: 60px;
+  }
+}
+.change-shopcar-content {
+  margin: 0 auto;
+  overflow: hidden;
+  .d-shopcar-logo {
+    color: #fb7e00;
+  }
+  .all-goods {
+    color: #fb7e00;
+    margin-top: 20px;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 2px solid #fb7e00;
+    width: 120px;
+  }
+  .shopcar-table-title {
+    width: 100%;
+    height: 44px;
+    padding: 5px 0;
+    color: #666666;
+    background: #f3f3f3;
+    border: 1px solid #cccccc;
+    line-height: 34px;
+    .all-choose-box {
+      padding-left: 10px;
+      width: 150px;
+      float: left;
+      .all-choose {
+        vertical-align: text-top;
+      }
+    }
+    .goods-name {
+      float: left;
+      width: 370px;
+    }
+    .goods-price {
+      float: left;
+      width: 160px;
+    }
+    .goods-count {
+      float: left;
+      width: 80px;
+    }
+    .goods-subtotal {
+      float: left;
+      width: 140px;
+      text-align: right;
+    }
+    .goods-operate {
+      float: left;
+      width:160px;
+      text-align: right;
+    }
+  }
+  // 大屏幕时的商品信息
+  .shopcar-table {
+    margin-top: 20px;
+    margin-bottom: 100px;
+    .shopcargoodsboxchecked {
+      background:yellowgreen;
+      color: #fff;
+    }
+    .shopcargoodsbox {
+      overflow: hidden;
+      // padding-left: 40px;
+      height: 120px;
+      border: 1px solid #cccccc;
+      padding-top: 20px;
+      padding-left: 10px;
+      .goods-checked {
+        float: left;
+        margin-right: 20px;
+      }
+      .goodsimg-box {
+        float: left;
+        .goodsimg {
+          width: 80px;
+          height: 80px;
+        }
+      }
+      .goodsinfo {
+        float: left;
+        width: 200px;
+        text-align: center;
+      }
+      .goodsprice {
+        float: left;
+        width: 240px;
+        text-align: right;
+      }
+      .goodscount {
+        float: left;
+        width: 180px;
+        text-align: right;
+        .goods-count{
+          display: inline-block;
+          border: 1px solid #cccccc;
+          .add-count, .reduce-count {
+            width: 30px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            display: inline-block;
+            cursor: pointer;
+            &:hover {
+              color: #fb7e00;
+            }
+          }
+          .count {
+            width: 30px;
+            display: inline-block;
+            text-align: center;
+            border: none;
+            color: #666666;
+            outline: none;
+            cursor: pointer;
+            background: none;
+          }
+          .add-count {
+            border-left: 1px solid #cccccc;
+          }
+          .reduce-count {
+            border-right: #cccccc 1px solid;
+          }
+        }
+      }
+      .goods-subtotal {
+        float: left;
+        width: 140px;
+        text-align: right;
+      }
+      .goodsoperate {
+        float: left;
+        margin-left: 110px;
+        .goods-operate {
+          cursor: pointer;
+          &:hover {
+            color: #fb7e00;
+          }
+        }
+      }
+    }
+  }
+  // 大屏幕时的商品结算栏
+  .shopcar-pay {
+    width: 100%;
+    background: #f3F3F3;
+    color: #666666;
+    border: 1px solid #cccccc;
+    height: 50px;
+    line-height: 50px;
+    .allchecked-box {
+      float: left;
+      padding-left: 10px;
+      .allchecked {
+        vertical-align: text-top;
+      }
+    }
+    .checked-delete {
+      width: 200px;
+      height: 100%;
+      float: left;
+      text-align: center;
+    }
+    .checked-goods-count {
+      width: 160px;
+      height: 100%;
+      float: right;
+      text-align: right;
+      .checkedcount {
+        color: #fb7e00;
+        margin-left: 10px;
+      }
+    }
+    .all-money {
+      float: right;
+      margin: 0 20px;
+      .allmoney {
+        color: #fb7e00;
+      }
+    }
+    .go-pay {
+      width: 94px;
+      height: 100%;
+      background: #fb7e00;
+      float: right;
+      color: #fff;
+    }
+  }
+}
+@media only screen and (max-width: 567px) {
+  .change-shopcar-content {
+    width: 100%;
+    padding: 0 15px;
+  }
+}
+@media only screen and (min-width:568px) {
+  .change-shopcar-content {
+    width: 540px;
+    padding: 0 15px;
+  }
+}
+@media only screen and (min-width:768px) {
+  .change-shopcar-content {
+    width: 720px;
+    padding: 0 15px;
+  }
+}
+@media only screen and (min-width:992px) {
+  .change-shopcar-content {
+    width: 960px;
+    padding: 0 15px;
+  }
+}
+@media only screen and (min-width:1201px) {
+  .change-shopcar-content {
+    width: 1140px;
+    padding: 0 15px;
+  }
+}
+
+
+
+

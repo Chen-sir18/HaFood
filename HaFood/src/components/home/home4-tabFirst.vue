@@ -1,7 +1,7 @@
 <template>
   <div class="trending-content-box">
       <ul class="trending-lists">
-          <li :key="index" class="list" v-for="(item,index) in tabChange">
+          <li :key="index" class="list" v-if="!(item.picstr === undefined)" v-for="(item,index) in tabChange">
               <div class="list-box">
                   <img :src='"http://192.168.97.241:3000/" + item.picstr' alt="">
                   <a>{{item.goodsname}}</a>

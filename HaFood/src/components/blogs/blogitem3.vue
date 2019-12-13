@@ -1,7 +1,7 @@
 <template>
 <div>
   <transition-group name="flip-list" class="h-blogmary-box">
-    <div :key="item" v-for="item in blogData3" class="h-blogmary-item">
+    <div :key="item.id" v-for="item in blogData3" class="h-blogmary-item">
       <div class="h-bgid-inner">
         <img :src='"http://192.168.97.241:3000/" + item.picstr' />
         <span>Feb 11, 2019  -  Rachel  -  Fashion </span>

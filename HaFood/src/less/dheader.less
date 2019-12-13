@@ -1,11 +1,16 @@
 // 头部导航部分
-.header-box {
+.headerbox1{
+    background: #ffff !important;
+    color: black !important;
+}
+.headerbox {
     width: 100%;
     height: 60px;
     padding:  10px 0;
     position: fixed;
     background: transparent;
     z-index: 1000;
+    color: #fff;
     .change-content {
         display: flex;
         flex-direction: row;
@@ -306,6 +311,24 @@
     .cart-goods-box + .cart-goods-box {
         border-top: 1px solid #ccc;
     }
+    .login-button {
+        width: 100%;
+        height: 60px;
+        background: #fb7e00;
+        border-radius: 4px;
+        color: #ffffff;
+        text-align: center;
+        line-height:60px;
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 200px;
+        box-shadow:4px 6px 0px 0px rgba(251, 126, 0, 0.4); ;
+        &:hover {
+          box-shadow:0px 0px 0px 0px rgba(251, 126, 0, 0.4); ;
+          transition: all 0.4s;
+          cursor: pointer;
+        }
+      }
 }
 @media only screen and (max-width:768px) {
     .right-cart-box {

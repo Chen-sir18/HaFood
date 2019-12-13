@@ -33,14 +33,13 @@ export default {
     HomeButton
   },
   mounted () {
-    //   轮播
       (function () {
           let index = 0
           let items = document.getElementsByClassName('item')
-          let prev = document.getElementById('prev') 	//按钮  
+          let prev = document.getElementById('prev')
           let next = document.getElementById('next')
           let clearActive = function () {
-              for (let i = 0; i< items.length; i++) {
+              for (let i = 0; i < items.length; i++) {
                   items[i].className = 'item'
               }
           }
@@ -48,7 +47,6 @@ export default {
               clearActive()
               items[index].className = 'item active'
           }
-          //下一张
         let nextBtn = function () {
             if (index < 1) {
                 index++
@@ -68,7 +66,7 @@ export default {
         next.addEventListener('click', function () {
             nextBtn()
         })
-        prev.addEventListener('click',function () {
+        prev.addEventListener('click', function () {
             prevBtn()
         })
       })()

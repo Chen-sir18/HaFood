@@ -1,7 +1,7 @@
 <template>
 	<div>
   <!-- 头部导航部分 -->
-		<div class="btn-back-color header header-box font-white">
+		<div v-bind:class="{header:true,headerbox:true,headerbox1:routepath === '/Home3' || routepath === '/Home4' || routepath === '/shopcar'}">
 			<div class="change-content">
 				<span class="logo font-wi-900 font-30">
 					HaFood
@@ -69,21 +69,28 @@
 			<div class="cart-title">
 				<span class="font-wi-600">Shopping Cart</span> <span @click="closeshopcart" class="font-20 font-wi-600 close-shopcart">X</span>
 			</div>
-			<div class="cart-goods-box" v-for="(item, index) in shopgoods" v-bind:key="index">
-				<div class="goods-img-box">
-					<img class="goods-img" v-if="!(item.picstr === undefined)" :src="'api/'+ item.picstr">
+			<!-- 购物车登录实际内容 -->
+			<div v-if="islogin">
+				<div class="cart-goods-box"  v-for="(item, index) in shopgoods" v-bind:key="index">
+					<div class="goods-img-box">
+						<img class="goods-img" v-if="!(item.picstr === undefined)" :src="'api/'+ item.picstr">
+					</div>
+					<div  class="goods-infos">
+						<div class="goods-name goods-info">{{item.goodsname}}</div>
+						<div class="goods-count goods-info"><span>QTY:</span><span class="count">{{item.goodscount}}</span></div>
+						<div class="goods-money goods-info">${{item.goodscount * item.price}}.00</div>
+					</div>
+					<div class="totalmoney">
+						<span class="subtotal">Subtotal:</span><span class="allmoney">${{shopallmoney}}.00</span>
+					</div>
+					<div @click="linktoshopcar" class="view-cart">
+						<span class="">VIEW CART</span>
+					</div>
 				</div>
-				<div  class="goods-infos">
-					<div class="goods-name goods-info">{{item.goodsname}}</div>
-					<div class="goods-count goods-info"><span>QTY:</span><span class="count">{{item.goodscount}}</span></div>
-					<div class="goods-money goods-info">${{item.goodscount * item.price}}.00</div>
-				</div>
-				<div class="totalmoney">
-					<span class="subtotal">Subtotal:</span><span class="allmoney">${{shopallmoney}}.00</span>
-				</div>
-				<div class="view-cart">
-					<span class="">VIEW CART</span>
-				</div>
+			</div>
+			<!-- 购物车未登录的实际内容 -->
+			<div v-if="!islogin" class="login-button" @click="linktologin">
+				<span>LOGIN UP NOW</span>
 			</div>
 		</div>
 		<div class="body">
@@ -98,7 +105,9 @@ export default {
   data: function () {
   	return {
 			cartgoodscount: 0,
-		  navobj: {},
+			navobj: {},
+			// 判断是否已经登录
+			islogin: false,
 		  navlist: [
 			  {title: 'Home', content: ['Home1', 'Home2', 'Home3', 'Home4']},
 			  {title: 'About Us', content: []},
@@ -111,12 +120,6 @@ export default {
 		  navShow: false,
 		  // 购物车商品
 		  shopgoods: [
-			  {
-				  goodsname: 'Grape',
-				  goodscount: 2,
-				  price: 30.00,
-				  goodspic: ''
-			  }
 			],
 			// 购物车总价格
 			shopallmoney: '00',
@@ -175,13 +178,29 @@ export default {
 	  },
 	  closeshopcart: function (e) {
 		  e.currentTarget.parentNode.parentNode.style.transform = 'translateX(100%)'
-	  }
+		},
+		linktologin: function (e) {
+			this.$router.push('/login')
+		},
+		linktoshopcar: function () {
+			this.$router.push('/shopcar')
+		}
   },
   mounted: function () {
-		// 关于购物车渲染的问题
+		// 关于头部导航样式不同的触发
+		this.routepath = this.$route.fullPath
+		// 判断购物车是否已经登录的问题
+		let userinfo = JSON.parse(window.localStorage.getItem('info'))
+		let token = window.localStorage.getItem('token')
+		if (userinfo && token) {
+			// 关于购物车渲染的问题
+		this.islogin = true
 		axios({
 			method: 'GET',
-			url: 'http://192.168.97.241:3000/shopcar'
+			url: 'api/shopcar',
+			params: {
+				userid: userinfo.id
+			}
 		}).then((response) => {
 			let goodsdata = response.data.data
 			goodsdata.forEach(item => {
@@ -189,6 +208,7 @@ export default {
 			})
 			this.shopgoods = goodsdata
 		})
+		}
 		// 关于滚动条的绑定
 		const that = this
     window.onscroll = () => {
@@ -197,17 +217,12 @@ export default {
 				that.scrollTop = window.scrollTop
       })()
 		}
-		setInterval(() => {
-			if (that.routepath === that.$route.fullPath) {
-				return false
-			} else {
-				that.routepath = that.$route.fullPath
-			}
-		}, 200)
 		// 关于头部整体的变化
-		this.navobj = document.querySelector('.header-box')
+		this.navobj = document.querySelector('.headerbox')
 		},
 	updated: function () {
+		//  关于路由改变的监控
+		this.routepath = this.$route.fullPath
 		// 关注购物车商品的数量
 		this.cartgoodscount = this.shopgoods.length
 		// 关注购物车总价格

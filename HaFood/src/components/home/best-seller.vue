@@ -23,7 +23,7 @@
       <div>
         <TabFirst v-if="tabValue === 1"></TabFirst>
         <TabSecond v-else-if="tabValue === 2"></TabSecond>
-        <TabThird v-else></TabThird>        
+        <TabThird v-else></TabThird>
       </div>
   </div>
 </template>
@@ -55,7 +55,7 @@ export default {
       method: 'get',
       url: 'http://192.168.97.241:3000/drink'
     }).then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       if (res.data.status === 200) {
         let trenData = res.data.data
         this.trendingData = trenData

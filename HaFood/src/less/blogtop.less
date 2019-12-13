@@ -219,12 +219,72 @@
     justify-content: space-between;
 }
 .h-pagination-item1{
+    width: 100%;
+    position: relative;
     ul li {
-        display: block;
+        display: inline-block;
         width: 30px;
         height: 24px;
     }
+    .btn-prev{
+        position: absolute;
+        right: 80px;
+        top: -10px;
+        padding-right: 0px;
+        color: #222222;
+        width: 50px;
+        height: 50px;
+        background: #f5f5f5;
+        border-radius: 50%;
+        text-align: center;
+        vertical-align: middle;
+        transition: all 0.45s ease;
+        cursor: pointer;
+        .el-icon{
+            line-height: 50px;
+            color: #222222;
+            font-weight: 600;
+            transition: all 0.45s ease;
+        }
+        &:hover{
+            background: #fb7e00;
+            .el-icon{
+                color: #fff;
+            }
+        }
+    }
+    .btn-next{
+        position: absolute;
+        right: 0px;
+        top: -10px;
+        padding-left: 0px;
+        color: #222222;
+        width: 50px;
+        height: 50px;
+        background: #f5f5f5;
+        border-radius: 50%;
+        text-align: center;
+        vertical-align: middle;
+        transition: all 0.45s ease;
+        cursor: pointer;
+        button{
+            padding: 0 0px;
+        }
+        .el-icon{
+            line-height: 50px;
+            color: #222222;
+            font-weight: 600;
+            transition: all 0.45s ease;
+        }
+        &:hover{
+            background: #fb7e00;
+            .el-icon{
+                color: #fff;
+            }
+        }
+    }
 }
+
 .h-pagination-item2{
     margin-top: -10px;
     .h-item-icon{
@@ -501,6 +561,7 @@
 }
 .h-bloggrid-outer{
     width: 100%;
+    overflow: hidden;
     position: relative;
     display: flex;
     flex-wrap: wrap;

@@ -232,7 +232,10 @@ methods: {
           valicode: this.valicode
         }
       }).then((response) => {
-        alert(response.data.message)
+        if (response.data.status === 200) {
+          alert('注册成功请登录')
+          this.$router.push('/login')
+        }
       })
     }
   }

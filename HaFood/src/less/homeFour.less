@@ -221,42 +221,61 @@
                     padding: 60px;
                     background: #fff;
                     text-align: center;
-                }
-                .form{
-                    .form-text{
+                    .table-form{
                         display: flex;
                         flex-wrap: wrap;
-                        .input-box{
-                            flex: 0 0 50%;
+                        .table-item{
+                            flex:  0 0 50%;
                             max-width: 50%;
-                            margin-top: 30px;
-                            .error-input{
-                                text-align: left;
-                                color: red;
-                                font-size: 14px;
-                                padding-left: 20px;
-                            }
-                            .input{
-                                width: 100%;
-                                background: #f6f6f6;
-                                border: 0;
-                                padding-left: 20px;
-                                line-height: 45px;
-                                font-size: 12px;
-                                color: #999;
+                            .el-form-item__content{
+                                .el-input{
+                                    width: 70%;
+                                    input{
+                                        border: none;
+                                        background: #f6f6f6;
+                                    }
+                                }
+                                .el-form-item__error{
+                                    padding-left: 50px;
+                                }
+                                .el-textarea{
+                                    textarea{
+                                        border:none;
+                                        background: #f6f6f6;
+                                        padding-left: 48px;
+                                    }
+                                }
                             }
                         }
-                        .textarea-box{
-                            width: 100%;
-                            text-align: left;
-                            .textarea{
-                                padding-left: 20px;
-                                border: none;
-                                background: #f6f6f6;
-                                color: #999;
-                                &:focus{
-                                    outline: none;
-                                }
+                        .table-item-textarea{
+                            flex:  0 0 100%;
+                            max-width: 100%;
+                        }
+                    }
+                    .button-box{
+                        .home-button{
+                            position: relative;
+                            display: inline-block;
+                            width: 178px;
+                            height: 52px;
+                            line-height: 52px;
+                            padding: 0 44px;
+                            color: #fff;
+                            font-size: 14px;
+                            background: #eda52c;
+                            &::before{
+                                content: "";
+                                width: 100%;
+                                height: 100%;
+                                background: rgba(237,165,44,.8);
+                                position: absolute;
+                                left: 5px;
+                                top: 5px;
+                                opacity: .4;
+                                transition: all .5s;
+                            };
+                            &:hover::before{
+                                opacity: 0;
                             }
                         }
                     }
@@ -357,6 +376,7 @@
    
 }
 @media only screen and (max-width:992px){
+    // 预定表单
     .reserve-box{
         .reserve-row{
             .reserve-content-box{
@@ -364,11 +384,24 @@
                     margin-left: 5%;
                     flex: 0 0 95%;
                     max-width: 95%;
-                    .form{
-                        .form-text{
-                            .input-box{
-                                flex: 0 0 100%;
+                    .table-box{
+                        .table-form{
+                            .table-item{
+                                flex:  0 0 100%;
                                 max-width: 100%;
+                                .el-form-item__content{
+                                    .el-input{
+                                        width: 100%;
+                                    }
+                                    .el-form-item__error{
+                                        padding-left: 14px;
+                                    }
+                                    .el-textarea{
+                                        textarea{
+                                            padding-left: 15px;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
