@@ -8,8 +8,14 @@
       <ProductGeneral></ProductGeneral>
       <!-- 视频播放 -->
       <Video></Video>
+      <!-- 商标自动轮播 -->
+      <AutoBanner></AutoBanner>
+      <!-- Best Seller Banner -->
+      <SellerBanner></SellerBanner>
       <!-- 点击去到product页面 -->
       <DiscountArea></DiscountArea>
+      <!-- 人物轮播 -->
+      <PersonBanner></PersonBanner>
       <!-- LatestNews -->
       <LatestNews></LatestNews>
       <!-- 底部产品 -->
@@ -21,17 +27,24 @@
 import Banner from './Banner.vue'
 import ProductTop from './Product-top.vue'
 import ProductGeneral from './General-product.vue'
+import AutoBanner from './Home1-autoBanner'
 import Video from './Home1-video.vue'
+import SellerBanner from './Home2-sellerBanner.vue'
 import DiscountArea from './Home1-discount.vue'
+import PersonBanner from './Home1-personbanner.vue'
 import LatestNews from './LatestNews.vue'
 import HomeBottom from './Home1-bottom.vue'
+
 export default {
   components: {
     Banner,
     ProductTop,
     ProductGeneral,
+    AutoBanner,
+    SellerBanner,
     Video,
     DiscountArea,
+    PersonBanner,
     LatestNews,
     HomeBottom
   }

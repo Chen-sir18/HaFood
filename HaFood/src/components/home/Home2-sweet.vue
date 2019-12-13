@@ -7,8 +7,10 @@
           <a class="memory-readmore">Read More</a>
         </div>
         <div class="memory-title">
-          <span class="memory-title-top">THE BEST RESTAURANT</span>
-          <h4 class="memory-title-bottom">We Create Sweet Memories</h4>
+          <div class="memory-title-detail">
+            <p class="memory-title-top">THE BEST RESTAURANT</p>
+            <p class="memory-title-bottom">We Create Sweet Memories</p>
+          </div>
         </div>
       </div>
     </div>

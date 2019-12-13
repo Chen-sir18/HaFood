@@ -7,9 +7,18 @@
       <!-- Trending Foods -->
       <TrendingFood></TrendingFood>
       <!-- Sweei Memories -->
-      <!-- <SweetMemory></SweetMemory> -->
+      <SweetMemory></SweetMemory>
       <!-- Our Popular Menu -->
       <PopularMenu></PopularMenu>
+      <!-- banner -->
+      <div class="customer-saying">
+        <p class="customer-title">Customer Saying</p>
+        <PersonBanner></PersonBanner>
+      </div>
+      <!-- Cooking Tips -->
+      <div class="cooking-cont-box">
+          <CookingTips></CookingTips>
+      </div>
   </div>
 </template>
 
@@ -19,13 +28,17 @@ import Menu from './Home2-menu.vue'
 import TrendingFood from './Hom2-trending.vue'
 import SweetMemory from './Home2-sweet.vue'
 import PopularMenu from './Home2-popular.vue'
+import PersonBanner from './Home1-personbanner.vue'
+import CookingTips from './LatestNews.vue'
 export default {
   components: {
     Banner,
     Menu,
     TrendingFood,
     SweetMemory,
-    PopularMenu
+    PopularMenu,
+    PersonBanner,
+    CookingTips
   }
 }
 </script>

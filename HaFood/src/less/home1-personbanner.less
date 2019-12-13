@@ -1,0 +1,105 @@
+.t-banner {
+  color: #888;
+}
+.t-banner-content {
+  width: 1140px;
+  // height: 296px;
+  margin: 0 auto;
+}
+.t-banner-box {
+  width: 100%;
+  overflow: hidden;
+}
+.t-banner-sliders {
+  width: 0px;
+  transition: all 1s;
+  padding: 0;
+  font-size: 0;
+}
+.t-banner-item {
+  width: 570px;
+  padding: 0 15px;
+  display: inline-block;
+}
+.person-avater {
+  width: 60px;
+  height: 60px;
+  float: left;
+  border-radius: 50%;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 60px;
+  overflow: hidden;
+  img {
+    width: 100%;
+    vertical-align: middle;
+  }
+}
+.person-name {
+  float: left;
+  padding-left: 20px;
+  font-size: 12px;
+  line-height: 60px;
+}
+.info-l {
+  color: #222;
+  font-weight: 600;
+}
+.info-detail {
+  font-size: 14px;
+  padding-top: 30px;
+}
+.btn-group {
+  padding-top: 60px;
+  text-align: center;margin-bottom: 40px;
+}
+.btn-item {
+  display: inline-block;
+  width: 15px;
+  height: 5px;
+  border: 0;
+  background: #ddd;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-out 0s;
+}
+.on {
+  width: 45px;
+  background: #222;
+}
+
+@media (min-width: 992px) and (max-width:1200px) {
+  .t-banner-content {
+    width: 960px;
+  }
+  .btn-group {
+    margin-bottom: 40px;
+  }
+}
+@media (min-width: 767px) and (max-width:992px) {
+  .t-banner-content {
+    width: 720px;
+  }
+  .btn-group {
+    margin-bottom: 40px;
+  }
+}
+@media (min-width: 576px) and (max-width:768px) {
+  .t-banner-content {
+    width: 580px;
+  }
+  .btn-group {
+    margin-bottom: 40px;
+  }
+}
+@media only screen and (max-width:576px) {
+  .t-banner-content {
+    width: 100%;
+  }
+  .btn-group {
+    margin-bottom: 40px;
+  }
+  .t-banner-item {
+    width: 455px;
+  }
+}

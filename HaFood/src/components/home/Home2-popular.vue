@@ -7,13 +7,13 @@
         <div class="popular-menu-item">
           <div class="popular-menu-list" v-for="(item, index) in menuLists" :key="index">
             <div class="popular-menu-img vertical-box">
-              <img :src="item.imgUrl" class="vertical-img" alt="图片资源错误">
+              <img :src="'http://192.168.97.241:3000/' + item.picstr" class="vertical-img" v-if="!(item.picstr === undefined)" alt="图片资源错误">
             </div>
             <div class="popular-menu-flex">
               <div class="popular-menu-detail">
-                <a class="foods-title">{{item.title}}</a>
+                <a class="foods-title">{{item.goodsname}}</a>
                 <p class="foods-price">{{item.price}}</p>
-                <p class="foods-descript">{{item.descript}}</p>
+                <p class="foods-descript">{{item.depict}}</p>
               </div>
             </div>
           </div>
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
    data () {
      return {
@@ -65,7 +66,19 @@ export default {
          }
        ]
      }
-   }
+   },
+   mounted () {
+    axios({
+      method: 'get',
+      url: 'api/popular'
+    }).then((res) => {
+      if (res.status === 200) {
+        this.menuLists = res.data.data
+      }
+    }).catch((error) => {
+      console.log(error)
+    })
+  }
 }
 </script>
 

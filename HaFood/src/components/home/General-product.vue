@@ -3,14 +3,14 @@
   <div class="products-box">
     <div class="products-cont">
       <ul class="products-lists">
-        <li class="products-list mar-t-30" v-for="(item,index) in newProductList" :key="index">
+        <li class="products-list mar-t-30" v-if="!(item.picstr === undefined)" v-for="(item,index) in newProductList.slice(0,6)" :key="index">
           <div>
-            <img :src="item.imgurl">
+            <img :src="'http://192.168.97.241:3000/' + item.picstr">
           </div>
-          <div class="product-title"><a>{{item.name}}</a></div>
+          <div class="product-title"><a>{{item.goodsname}}</a></div>
           <div>
             <span class="product-price">{{item.price}}</span>
-            <span class="product-oldprice">{{item.oldPrice}}</span>
+            <span class="product-oldprice">{{item.overprice}}</span>
           </div>
           <!-- <div class="product-sale">SALE</div> -->
         </li>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -95,11 +96,18 @@ export default {
     }
   },
   mounted () {
-    console.log(this)
     if (this.$route.fullPath === '/Home1') {
       this.newProductList = this.firstproductsList
-    } else {
-      this.newProductList = this.secondProductList
+      axios({
+        method: 'get',
+        url: 'api/ingredients'
+      }).then((res) => {
+        if (res.status === 200) {
+          this.newProductList = res.data.data
+        }
+      }).catch((error) => {
+        console.log(error)
+      })
     }
   }
 }

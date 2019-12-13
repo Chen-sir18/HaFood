@@ -129,17 +129,29 @@
     margin-left: 35px;
     font-weight: 500;
   }
+  .on {
+    color: #222;
+    text-decoration: underline #9e9e9e;
+  }
 }
+
 //Trending Foods End
 
 // Create sweet Memories
 .memory-area {
   width: 100%;
-  // height: 90%;
+  height: 100%;
   margin-bottom: 80px;
-  // height: 530px;
-  background-image: url(../img/memories_bg.png);
-  background-repeat: no-repeat;
+  position: relative;
+}
+.memory-area::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: url(../img/memories_bg.png) no-repeat;
   background-position: center;
   background-size: cover;
 }
@@ -153,13 +165,35 @@
   position: relative;
 }
 .memory-play {
-  max-width: 50%;
+  // width: 60%;
   padding-top: 97px;
   position: relative;
   img {
     max-width: 98%;
     box-shadow: 0px 38px 90px 0px rgba(0, 79, 104, 0.2)
   }
+}
+.memory-title {
+  color: #fff;
+  margin-left: 100px;
+  padding-top: 180px;
+}
+.memory-title-detail {
+  display: flex;
+  flex-wrap: wrap;
+}
+.memory-title-top {
+  width: 100%;
+  font-size: 14px;
+  letter-spacing: 3px;
+  padding-bottom: 7px;
+}
+.memory-title-bottom {
+  width: 100%;
+  font-size: 36px;
+  width: 61%;
+  line-height: 60px;
+  font-weight: 600;
 }
 .memory-readmore {
   display: inline-block;
@@ -170,25 +204,9 @@
   padding: 0 115px;
   line-height: 70px;
   position: absolute;
-  right: -312px;
-  bottom: 48px;
+  right: -313px;
+  bottom: 30px;
   box-shadow: 0px 1px 3px 0px rgba(34, 34, 34, 0.13);
-}
-.memory-title {
-  color: #fff;
-  position: absolute;
-  top: 36%;
-  right: -36px;
-}
-.memory-title-top {
-  font-size: 14px;
-  letter-spacing: 3px;
-  padding-bottom: 7px;
-}
-.memory-title-bottom {
-  font-size: 38px;
-  width: 61%;
-  line-height: 60px;
 }
 // Create sweet Memories End
 
@@ -250,6 +268,20 @@
     font-size: 14px;
   }
 }
+// banner
+.customer-saying {
+  .customer-title {
+    font-size: 38px;
+    color: #222222;
+    text-align: center;
+    font-weight: 600;
+    padding-bottom: 60px;
+  }
+}
+// Cooking Tips 
+.cooking-cont-box {
+  padding: 85px 0;
+}
 
 // Responsive Start
 @media (min-width: 992px) and (max-width:1200px) {
@@ -268,6 +300,25 @@
   .trending-box {
     width: 960px;
   }
+  // Memories
+  .memory-area-cont {
+    width: 960px;
+  }
+  .memory-title {
+    margin-left: 20px;
+    padding-top: 120px;
+  }
+  .memory-readmore {
+    right: -315px;
+    bottom: 60px;
+  }
+  // our populaer menu
+  .popular-Most-menu {
+    width: 960px;
+  }
+  .popular-menu-list {
+    width: 45%;
+  }
 }
 @media (min-width: 767px) and (max-width:992px) {
   // Menu
@@ -284,6 +335,24 @@
   .item-choose {
     margin-top: 30px;
   }
+  // Memories
+  .memory-area-cont {
+    width: 720px;
+  }
+  .memory-title {
+    margin-left: 20px;
+    padding-top: 120px;
+  }
+  .memory-readmore {
+    right: -317px;
+    bottom: 60px;
+  }
+  .memory-title-bottom {
+    width: 100%;
+    font-size: 30px;
+    line-height: 35px;
+    font-weight: 600;
+  }
   // trending foods
   .trending-box {
     width: 720px;
@@ -293,6 +362,17 @@
       margin-left: 20px;
       font-size: 14px;
     }
+  }
+  // our populaer menu
+  .popular-Most-menu {
+    width: 720px;
+  }
+  .popular-menu-item {
+    justify-content: center;
+  }
+  .popular-menu-list {
+    width: 100%;
+    margin-top: 40px;
   }
 }
 @media (min-width: 576px) and (max-width:768px) {
@@ -311,6 +391,35 @@
     width: 100%;
     margin-top: 30px;
   }
+  // Memories
+  .memory-area-cont {
+    width: 540px;
+  }
+  .memory-area-item {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .memory-play {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+  .memory-title {
+    width: 100%;
+    padding: 30px 0 170px 0;
+    margin: 0;
+  }
+  .memory-title-top {
+    padding-bottom: 0;
+  }
+  .memory-title-bottom {
+    width: 100%;
+    font-size: 32px;
+  }
+  .memory-readmore {
+    display: none;
+  }
   // trending foods
   .trending-box {
     width: 540px;
@@ -326,6 +435,17 @@
       margin-right: 35px;
       font-size: 14px;
     }
+  }
+  // our populaer menu
+  .popular-Most-menu {
+    width: 540px;
+  }
+  .popular-menu-item {
+    justify-content: center;
+  }
+  .popular-menu-list {
+    width: 100%;
+    margin-top: 40px;
   }
 }
 @media only screen and (max-width:576px) {
@@ -343,6 +463,9 @@
     img {
       width: 100%;
     }
+  }
+  .choose-menu {
+    width: 100%;
   }
   .item-choose {
     width: 100%;
@@ -364,6 +487,55 @@
     .trending-nav-link {
       margin: 0 30px 20px 0;
       font-size: 14px;
+    }
+  }
+   // Memories
+   .memory-area-cont {
+    width: 100%;
+  }
+  .memory-area-item {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .memory-play {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+  .memory-title {
+    width: 100%;
+    padding: 30px 0 80px 0;
+    margin: 0;
+  }
+  .memory-title-top {
+    padding-bottom: 0;
+  }
+  .memory-title-bottom {
+    width: 100%;
+    font-size: 32px;
+  }
+  .memory-readmore {
+    display: none;
+  }
+  // our populaer menu
+  .popular-Most-menu {
+    width: 100%;
+  }
+  .popular-menu-item {
+    justify-content: center;
+  }
+  .popular-menu-list {
+    width: 100%;
+  }
+  .popular-menu-img {
+    img {
+      width: 100%;
+    }
+  }
+  .popular-menu-detail {
+    .foods-descript {
+      display: none;
     }
   }
 }
