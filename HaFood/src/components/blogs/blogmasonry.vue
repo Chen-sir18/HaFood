@@ -175,7 +175,7 @@ export default {
         url: 'api/cakes',
         method: 'get',
         params: {
-          // æ­¤å¤„ä¸ä¼ å‚
+          // ´Ë´¦²»´«²Î
         }
       }).then((res) => {
         // console.log(res.data)
@@ -193,7 +193,7 @@ export default {
         url: 'api/foodclass',
         method: 'get',
         params: {
-          // æ­¤å¤„ä¸ä¼ å‚
+          // ´Ë´¦²»´«²Î
         }
       }).then((res) => {
         console.log(res.data)
@@ -211,7 +211,7 @@ export default {
         url: 'api/popular',
         method: 'get',
         params: {
-          // æ­¤å¤„ä¸ä¼ å‚
+          // ´Ë´¦²»´«²Î
         }
       }).then((res) => {
         console.log(res.data)

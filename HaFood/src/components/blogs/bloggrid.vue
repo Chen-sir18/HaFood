@@ -58,7 +58,7 @@
           </div>
         </div> -->
       </div>
-      <!-- ç¿»é¡µ -->
+      <!-- ·­Ò³ -->
       <div class="h-pagination">
         <el-pagination
           @size-change="handleSizeChange"
@@ -91,9 +91,9 @@ export default {
   data () {
     return {
       tableNme: '',
-      currentPage: 1, // åˆå§‹é¡µ
-      pagesize: 6, // æ¯é¡µæ˜¾ç¤ºæ¡æ•°
-      pageData: [] // é¡µé¢æ•°æ®æ•°ç»„å¯¹è±¡
+      currentPage: 1, // ³õÊ¼Ò³
+      pagesize: 6, // Ã¿Ò³ÏÔÊ¾ÌõÊı
+      pageData: [] // Ò³ÃæÊı¾İÊı×é¶ÔÏó
     }
   },
   created () {
@@ -101,7 +101,7 @@ export default {
   },
   computed: {
     tabList () {
-      // slice(aa, mm) æ•°ç»„æ–¹æ³• é€‰å–æ•°ç»„ä¸‹æ ‡ä»aaå¼€å§‹å¾€åçš„mmä¸ªæ•°æ®
+      // slice(aa, mm) Êı×é·½·¨ Ñ¡È¡Êı×éÏÂ±ê´Óaa¿ªÊ¼ÍùºóµÄmm¸öÊı¾İ
       var list = this.pageData.slice((this.currentPage - 1) * this.pagesize, this.currentPage * this.pagesize)
       return list
     }
@@ -110,7 +110,7 @@ export default {
 
   },
   methods: {
-    // åˆå§‹é¡µcurrentPageã€åˆå§‹æ¯é¡µæ•°æ®æ•°pagesizeå’Œæ•°æ®data
+    // ³õÊ¼Ò³currentPage¡¢³õÊ¼Ã¿Ò³Êı¾İÊıpagesizeºÍÊı¾İdata
     handleSizeChange (size) {
       console.log(size)
       this.pagesize = size
@@ -118,14 +118,14 @@ export default {
     },
     handleCurrentChange (currentPage) {
       this.currentPage = currentPage
-      console.log(this.currentPage) // ç‚¹å‡»ç¬¬å‡ é¡µ
+      console.log(this.currentPage) // µã»÷µÚ¼¸Ò³
     },
     getList () {
       axios({
         url: 'api/bloglists',
         method: 'get',
         params: {
-          // æ­¤å¤„ä¸ç”¨ä¸Šä¼ å‚æ•° ä»æ•°æ®åº“è·å–
+          // ´Ë´¦²»ÓÃÉÏ´«²ÎÊı ´ÓÊı¾İ¿â»ñÈ¡
         }
       }).then((res) => {
         if (res.status === 200) {
