@@ -37,7 +37,7 @@
       <div ref="shopcartable" class="shopcar-table clearfix text-no-blue">
         <div :ref = "'num' + index"  :class="{shopcargoodsbox: true, shopcargoodsboxchecked:shopcargoods[index].checked}" :key="index" v-for="(item,index) in shopcargoods">
           <!-- 商品选中框 -->
-          <input @change="inputchecked" class="goods-checked" v-model="shopcargoods[index].checked" type="checkbox" >
+          <input @change="inputchecked" :goodsindex='index' class="goods-checked" v-model="shopcargoods[index].checked" type="checkbox" >
           <div class="goodsimg-box">
             <img class="goodsimg" :src=" 'api/' + item.picstr " alt="">
           </div>
@@ -56,17 +56,17 @@
           <div class="goodscount">
             <div class="goods-count">
               <span @click="changecount(-1, $event)" class="reduce-count text-no-blue">-</span>
-              <input @blur="writecount" :goodsid='index' class="count" type="number" v-model="shopcargoods[index].goodscount">
+              <input @blur="writecount"  :goodsindex='index' class="count" type="number" v-model="shopcargoods[index].goodscount">
               <span @click="changecount(1, $event)" class="add-count text-no-blue">+</span>
             </div>
           </div>
           <!-- 商品小计价格 -->
           <div class="goodssubtotal">
-            <span class="goods-subtotal">{{'$' + item.goodscount * parseInt(item.price.replace(/\$/,'')) + '.00'}}</span>
+            <span class="goods-subtotal">{{'$' + item.subtotal + '.00'}}</span>
           </div>
           <!-- 商品删除 -->
           <div class="goodsoperate">
-            <span @click="deletegoods" :goodsid = 'index' class="goods-operate">Delete</span>
+            <span @click="deletegoods" :goodsindex = 'index' class="goods-operate">Delete</span>
           </div>
         </div>
       </div>
@@ -86,11 +86,11 @@
         </div>
         <!-- 已选中商品所有的小计相加 -->
         <div class="all-money">
-          Total Money：<span class="allmoney">{{'$' + '1.000000'}}</span>
+          Total Money：<span class="allmoney">{{'$' + checkedmoney + '.00'}}</span>
         </div>
-        <!-- 已选中商品渲染 -->
+        <!-- 已选中商品数量 -->
         <div class="checked-goods-count">
-          Checked Goods<span class="checkedcount">1</span>
+          Checked Goods<span class="checkedcount">{{checkedgoods.length}}</span>
         </div>
       </div>
     </div>
@@ -104,7 +104,9 @@ export default {
 data: function () {
   return {
     shopcargoods: [],
-    allchecked: false
+    allchecked: false,
+    checkedgoods: [],
+    checkedmoney: 0
   }
 },
 mounted: function () {
@@ -118,19 +120,44 @@ mounted: function () {
       },
       method: 'get'
     }).then((response) => {
-        response.data.data.forEach((item) => {
+//  		console.log(response.data.data)
+      	response.data.data.forEach((item) => {
         item.checked = false
+        item.subtotal = item.goodscount * parseInt(item.price.replace(/^\$/, ''))
       })
       this.shopcargoods = response.data.data
     })
   }
 },
 methods: {
+	changeallmoney: function () {
+		let allmoney = 0
+		this.shopcargoods.forEach((item, index) => {
+			this.checkedgoods.forEach((content, id) => {
+				if (content === item.ingredientsid) {
+					allmoney += item.subtotal
+				}
+			})
+		})
+		this.checkedmoney = allmoney
+	},
   // 点击每个商品的选中框
   inputchecked: function () {
     this.allchecked = this.shopcargoods.every(function (item) {
 			return item.checked
 		})
+    this.checkedgoods.splice(0)
+    this.shopcargoods.forEach((item) => {
+    	if (item.checked) {
+    		this.checkedgoods.push(item.ingredientsid)
+    	} else {
+    		this.checkedgoods.some((content, i) => {
+    			if (item.ingredientsid === content) {
+    				this.checkedgoods.splice(i, 1)
+    			}
+    		})
+    	}
+    })
   },
   //  点击加减改变count的值
   changecount: function (num, event) {
@@ -141,38 +168,63 @@ methods: {
       alert('商品数量不能大于100')
       return false
     } else {
-      let goodsid = event.target.parentNode.children[1].getAttribute('goodsid')
-      this.shopcargoods[goodsid].goodscount = countnum + num
+      let goodsindex = event.target.parentNode.children[1].getAttribute('goodsindex')
+      this.shopcargoods[goodsindex].goodscount = countnum + num
+      this.shopcargoods[goodsindex].subtotal = this.shopcargoods[goodsindex].goodscount * parseInt(this.shopcargoods[goodsindex].price.replace(/^\$/, ''))
+      this.changeallmoney()
     }
   },
   //  改变count的值
   writecount: function (e) {
-    let goodsid = event.target.getAttribute('goodsid')
+    let goodsindex = event.target.getAttribute('goodsindex')
     if (parseInt(e.target.value) > 100) {
       alert('商品数量不能大于100')
-      this.shopcargoods[goodsid].goodscount = 100
+      this.shopcargoods[goodsindex].goodscount = 100
     } else if (parseInt(e.target.value) < 1) {
       alert('商品数量不能小于1')
-      this.shopcargoods[goodsid].goodscount = 1
+      this.shopcargoods[goodsindex].goodscount = 1
     }
+    this.shopcargoods[goodsindex].subtotal = this.shopcargoods[goodsindex].goodscount * parseInt(this.shopcargoods[goodsindex].price.replace(/^\$/, ''))
+    this.changeallmoney()
   },
+  // 删除商品
   deletegoods: function (e) {
-    // 去绑定好的父级元素
-    let deletestr = 'num' + e.target.getAttribute('goodsid')
-    let shopcartable = this.$refs.shopcartable
-    shopcartable.removeChild(this.$refs[deletestr][0])
+    // 删掉页面上的元素
+    let goodsindex = e.target.getAttribute('goodsindex')
+    // 删除 被选中的数组
+    let deleteingredientsid = this.shopcargoods[goodsindex].ingredientsid
+    this.checkedgoods.forEach((item, i) => {
+    	if (item === deleteingredientsid) {
+    		this.checkedgoods.splice(i, 1)
+    	}
+    })
+		// 删除 shopcargoods的内容,重新渲染到页面上
+    this.shopcargoods.splice(goodsindex, 1)
+    // 重新给予所选的全部价格
+    this.changeallmoney()
+    console.log(this.shopcargoods)
   },
+  // 全选或者 全不选
   changeallchecked: function () {
     if (this.allchecked) {
-      this.shopcargoods.forEach((item) => {
+      this.shopcargoods.forEach((item, index) => {
         item.checked = true
+        this.checkedgoods.push(item.ingredientsid)
       })
+//    console.log(this.checkedgoods)
     } else {
       this.shopcargoods.forEach((item) => {
         item.checked = false
       })
+      this.checkedgoods.splice(0)
+//    console.log(this.checkedgoods)
     }
   }
+},
+watch: {
+	checkedgoods: function (val) {
+		this.changeallmoney()
+	}
 }
 }
 </script>
