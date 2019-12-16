@@ -87,7 +87,18 @@
           <!-- recent posts -->
           <div class="h-recent-posts">
             <h4 class="h-post-title">Recent Posts</h4>
-            <div class="h-posd-item">
+            <div :key="item.id" v-for="item in recentData" class="h-posd-item">
+              <div class="h-posd-thumb">
+                <img :src='"http://192.168.97.241:3000/" + item.picstr' />
+              </div>
+              <div class="h-posd-content">
+                <a>
+                  <h6 class="h-posd-title">{{item.goodsname}}</h6>
+                </a>
+                <span>Feb 12, 2019</span>
+              </div>
+            </div>
+            <!-- <div class="h-posd-item">
               <div class="h-posd-thumb">
                 <img src="../../img/posts_sidebar_1.jpg" />
               </div>
@@ -108,18 +119,7 @@
                 </a>
                 <span>Feb 12, 2019</span>
               </div>
-            </div>
-            <div class="h-posd-item">
-              <div class="h-posd-thumb">
-                <img src="../../img/posts_sidebar_1.jpg" />
-              </div>
-              <div class="h-posd-content">
-                <a>
-                  <h6 class="h-posd-title">Eam mutat suscipit</h6>
-                </a>
-                <span>Feb 12, 2019</span>
-              </div>
-            </div>
+            </div> -->
           </div>
           <!-- tags -->
           <div class="h-tags-sidebar">
@@ -158,6 +158,7 @@
 import '../../font/iconfont.css'
 import '../../font/demo.css'
 import Blogtop from './blogstop.vue'
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -235,11 +236,29 @@ export default {
           ]
         }
       ],
+      cookData: [],
+      recentData: [],
       defaultProps: {
         children: 'children',
         label: 'label'
       }
     }
+  },
+  mounted () {
+    axios({
+      url: 'api/drink',
+      method: 'get',
+      params: {
+        // 此处不传参
+      }
+    }).then((res) => {
+      let resData = res.data.data
+      resData.splice(3, resData.length - 3)
+      this.recentData = resData
+      // console.log(res.data.data)
+    }).catch((error) => {
+      console.log(error)
+    })
   },
   methods: {
     handleNodeClick (data) {

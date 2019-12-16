@@ -401,7 +401,7 @@
 .h-posd-content{
     margin-left: 18px;
     a{
-        display: inline-block;
+        display: block;
         text-decoration: none;
         background-color: transparent;
     }
@@ -664,88 +664,58 @@
     flex-wrap: wrap;
     overflow: hidden;
 }
-.flip-list-enter, .flip-list-leave-to {
-    transform: scale(0.2);
-    opacity: 0.2;
-    transform: translateY(100px);
-}
-.flip-list-enter-to, .flip-list-leave {
-    transform: scale(1);
-    opacity: 1;
-    transform: translateY(0px);
-
-}
-.flip-list-enter-active, .flip-list-leave-active {
-    transition: all 1.5s;
-    // position: absolute;
-}
-
-// .flip-list-move {
-//     transition: transform 1.5s; 
-// }
-// .flip-list-enter-active, .flip-list-leave-active {
-//     position: absolute;
-// }
 .h-blogmary-item{
     width: 33.333%;
     height: auto;
     padding: 0 15px;
-    // position: relative;
-    // left: 0px;
-    // top: 0px;
 }
-// .h-blogmary-item2{
-//     width: 33.333%;
-//     height: auto;
-//     padding: 0 15px;
-//     position: absolute;
-//     left: 380px;
-//     top: 0px;
-// }
-// .h-blogmary-item3{
-//     width: 33.333%;
-//     height: auto;
-//     padding: 0 15px;
-//     position: absolute;
-//     left: 760px;
-//     top: 0px;
-// }
-// .h-blogmary-item4{
-//     width: 33.333%;
-//     height: auto;
-//     padding: 0 15px;
-//     position: absolute;
-//     left: 0px;
-//     top: 379.938px;
-// }
-// .h-blogmary-item5{
-//     width: 33.333%;
-//     height: auto;
-//     padding: 0 15px;
-//     position: absolute;
-//     left: 380px;
-//     top: 599.656px;
-// }
-// .h-blogmary-item6{
-//     width: 33.333%;
-//     height: auto;
-//     padding: 0 15px;
-//     position: absolute;
-//     left: 760px;
-//     top: 379.938px;
-// }
-// .h-blogmary-inner1{
-//     width: 100%;
-//     position: relative;
-//     margin-top: 30px;
-//     margin-bottom: 25px;
-//     img{
-//         width: 100%;
-//         vertical-align: middle;
-//     }
-// }
-
-
+@media (min-width: 992px) and (max-width: 1200px) {
+    .h-menu-outer{
+        width: 100%;
+        padding: 0 15px;
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
+}
+@media (min-width:767px) and (max-width:992px) {
+    .h-menu-outer{
+        width: 100%;
+        padding: 0 15px;
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
+    .h-blogmary-item{
+        width: 50%;
+    }
+}
+@media (min-width:567px) and (max-width:767px) {
+    .h-menu-outer{
+        width: 100%;
+        padding: 0 15px;
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
+    .h-list-menu{
+        margin:  0 20px;
+    }
+    .h-blogmary-item{
+        width: 50%;
+    }
+}
+@media only screen and (max-width:567px) {
+    .h-menu-outer{
+        width: 100%;
+        padding: 0 15px;
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
+    .h-list-menu{
+        margin:  0 4px;
+    }
+    .h-blogmary-item{
+        width: 100%;
+    }
+}
 // blog details页面
 .h-detail-area{
     width: 1140px;
