@@ -70,21 +70,23 @@
 				<span class="font-wi-600">Shopping Cart</span> <span @click="closeshopcart" class="font-20 font-wi-600 close-shopcart">X</span>
 			</div>
 			<!-- 购物车登录实际内容 -->
-			<div v-if="islogin">
-				<div class="cart-goods-box"  v-for="(item, index) in shopgoods" v-bind:key="index">
-					<div class="goods-img-box">
-						<img class="goods-img" v-if="!(item.picstr === undefined)" :src="'api/'+ item.picstr">
-					</div>
-					<div  class="goods-infos">
-						<div class="goods-name goods-info">{{item.goodsname}}</div>
-						<div class="goods-count goods-info"><span>QTY:</span><span class="count">{{item.goodscount}}</span></div>
-						<div class="goods-money goods-info">${{item.goodscount * item.price}}.00</div>
-					</div>
-					<div class="totalmoney">
-						<span class="subtotal">Subtotal:</span><span class="allmoney">${{shopallmoney}}.00</span>
-					</div>
-					<div @click="linktoshopcar" class="view-cart">
-						<span class="">VIEW CART</span>
+			<div v-if="islogin && shopgoods.length !== 0">
+				<div class="cart-goods-big-box">
+					<div class="cart-goods-box"  v-for="(item, index) in shopgoods" v-bind:key="index">
+						<div class="goods-img-box">
+							<img class="goods-img" v-if="!(item.picstr === undefined)" :src="'api/'+ item.picstr">
+						</div>
+						<div  class="goods-infos">
+							<div class="goods-name goods-info">{{item.goodsname}}</div>
+							<div class="goods-count goods-info"><span>QTY:</span><span class="count">{{item.goodscount}}</span></div>
+							<div class="goods-money goods-info">${{item.goodscount * item.price}}.00</div>
+						</div>
+						<div class="totalmoney">
+							<span class="subtotal">Subtotal:</span><span class="allmoney">${{shopallmoney}}.00</span>
+						</div>
+						<div @click="linktoshopcar" class="view-cart">
+							<span class="">VIEW CART</span>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -92,9 +94,19 @@
 			<div v-if="!islogin" class="login-button" @click="linktologin">
 				<span>LOGIN UP NOW</span>
 			</div>
+			<!-- 购物车登录却没有内容 -->
+			<div v-if="shopgoods.length === 0" class='shopgoods-none'>
+				暂无数据
+				<div class="login-button">
+					<span>ADD GOODS</span>
+				</div>
+				<div></div>
+			</div>
 		</div>
 		<div class="body">
-			<router-view></router-view>
+			<keep-alive>
+				<router-view></router-view>
+			</keep-alive>
 		</div>
 	</div>
 </template>
@@ -124,6 +136,7 @@ export default {
 			// 购物车总价格
 			shopallmoney: '00',
 			scrollTop: document.body.scrollTop,
+			// 当前的路由
 			routepath: this.$route.fullPath
   	}
   },

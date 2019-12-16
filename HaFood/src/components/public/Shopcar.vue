@@ -81,7 +81,7 @@
           Delete Checked
         </div>
         <!-- 去结算 -->
-        <div class="go-pay">
+        <div @click="gotopay" class="go-pay">
           Settlement
         </div>
         <!-- 已选中商品所有的小计相加 -->
@@ -106,17 +106,20 @@ data: function () {
     shopcargoods: [],
     allchecked: false,
     checkedgoods: [],
-    checkedmoney: 0
+    checkedmoney: 0,
+    userid: ''
   }
 },
 mounted: function () {
+  // 获取登录信息，
   let userinfo = JSON.parse(window.localStorage.getItem('info'))
+  this.userid = userinfo.id
   let token = window.localStorage.getItem('token')
   if (userinfo && token) {
     Axios({
       url: 'api/shopcar',
       params: {
-        userid: userinfo.id
+        userid: this.userid
       },
       method: 'get'
     }).then((response) => {
@@ -161,48 +164,100 @@ methods: {
   },
   //  点击加减改变count的值
   changecount: function (num, event) {
+    if (this.cancel) {
+      this.cancel()
+    }
+    let goodsindex = event.target.parentNode.children[1].getAttribute('goodsindex')
+    let ingredientsid = this.shopcargoods[goodsindex].ingredientsid
     let countnum = parseInt(event.target.parentNode.children[1].value)
+    let goodscount = countnum + num
     if (countnum <= 1 && num === -1) {
       alert('商品数量不能小于1')
+      return false
     } else if (countnum >= 100 && num === 1) {
       alert('商品数量不能大于100')
       return false
     } else {
-      let goodsindex = event.target.parentNode.children[1].getAttribute('goodsindex')
-      this.shopcargoods[goodsindex].goodscount = countnum + num
-      this.shopcargoods[goodsindex].subtotal = this.shopcargoods[goodsindex].goodscount * parseInt(this.shopcargoods[goodsindex].price.replace(/^\$/, ''))
-      this.changeallmoney()
+        // 如果数字符合规范，就请求接口
+        let CancelToken = Axios.CancelToken
+        let self = this
+        Axios.get('api/addshopcar', {
+          cancelToken: new CancelToken(function executor (c) {
+          self.cancel = c
+      // 这个参数 c 就是CancelToken构造函数里面自带的取消请求的函数，这里把该函数当参数用
+          }),
+          params: {
+          userid: this.userid,
+          ingredientsid: ingredientsid,
+          goodscount: goodscount
+        }
+        }).then((response) => {
+          if (response.data.status === 200) {
+            console.log(1111)
+            this.shopcargoods[goodsindex].goodscount = goodscount
+            this.shopcargoods[goodsindex].subtotal = this.shopcargoods[goodsindex].goodscount * parseInt(this.shopcargoods[goodsindex].price.replace(/^\$/, ''))
+            this.changeallmoney()
+          }
+      })
     }
   },
   //  改变count的值
   writecount: function (e) {
     let goodsindex = event.target.getAttribute('goodsindex')
-    if (parseInt(e.target.value) > 100) {
+    let ingredientsid = this.shopcargoods[goodsindex].ingredientsid
+    let goodscount = e.target.value
+    if (parseInt(goodscount) > 100) {
       alert('商品数量不能大于100')
-      this.shopcargoods[goodsindex].goodscount = 100
-    } else if (parseInt(e.target.value) < 1) {
+      goodscount = 100
+    } else if (parseInt(goodscount) < 1) {
       alert('商品数量不能小于1')
-      this.shopcargoods[goodsindex].goodscount = 1
+      goodscount = 1
     }
-    this.shopcargoods[goodsindex].subtotal = this.shopcargoods[goodsindex].goodscount * parseInt(this.shopcargoods[goodsindex].price.replace(/^\$/, ''))
+    // 请求服务器
+    Axios({
+      method: 'GET',
+      url: 'api/addshopcar',
+      params: {
+        userid: this.userid,
+        ingredientsid: ingredientsid,
+        goodscount: goodscount
+      }
+    }).then((response) => {
+      if (response.data.status === 200) {
+        this.shopcargoods[goodsindex].goodscount = goodscount
+      }
+    })
+    // 商品数量改变后，改变小计
+    this.shopcargoods[goodsindex].subtotal = goodscount * parseInt(this.shopcargoods[goodsindex].price.replace(/^\$/, ''))
     this.changeallmoney()
   },
   // 删除商品
   deletegoods: function (e) {
-    // 删掉页面上的元素
     let goodsindex = e.target.getAttribute('goodsindex')
-    // 删除 被选中的数组
-    let deleteingredientsid = this.shopcargoods[goodsindex].ingredientsid
-    this.checkedgoods.forEach((item, i) => {
-    	if (item === deleteingredientsid) {
-    		this.checkedgoods.splice(i, 1)
-    	}
+    let ingredientsid = this.shopcargoods[goodsindex].ingredientsid
+    // 点击之后立即请求
+    Axios({
+      method: 'GET',
+      url: 'api/delshopcar',
+      params: {
+        userid: this.userid,
+        ingredientsid: ingredientsid
+      }
+    }).then((response) => {
+      if (response.data.status === 200) {
+        // 删除 被选中的数组
+        let deleteingredientsid = this.shopcargoods[goodsindex].ingredientsid
+        this.checkedgoods.forEach((item, i) => {
+          if (item === deleteingredientsid) {
+            this.checkedgoods.splice(i, 1)
+          }
+        })
+        // 删除 shopcargoods的内容,重新渲染到页面上
+        this.shopcargoods.splice(goodsindex, 1)
+        // 重新给予所选的全部价格
+        this.changeallmoney()
+      }
     })
-		// 删除 shopcargoods的内容,重新渲染到页面上
-    this.shopcargoods.splice(goodsindex, 1)
-    // 重新给予所选的全部价格
-    this.changeallmoney()
-    console.log(this.shopcargoods)
   },
   // 全选或者 全不选
   changeallchecked: function () {
@@ -211,20 +266,33 @@ methods: {
         item.checked = true
         this.checkedgoods.push(item.ingredientsid)
       })
-//    console.log(this.checkedgoods)
     } else {
       this.shopcargoods.forEach((item) => {
         item.checked = false
       })
       this.checkedgoods.splice(0)
-//    console.log(this.checkedgoods)
     }
+  },
+  // 将订单页面需要的数据保存到vuex中，并跳转到订单页面
+  gotopay: function () {
+    let ordergoodsdata = this.shopcargoods.filter((item) => {
+      return item.checked === true
+    })
+    let orderdata = {
+      checkedmoney: this.checkedmoney,
+      ordergoodsdata: ordergoodsdata
+    }
+    this.$store.commit({
+      type: 'createordergoods',
+      orderdata: orderdata
+    })
+    this.$router.push('/order')
   }
 },
 watch: {
 	checkedgoods: function (val) {
 		this.changeallmoney()
-	}
+  }
 }
 }
 </script>

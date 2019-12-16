@@ -6,9 +6,13 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   //  定义的公共变量,小组成员不要在这里面定义任何东西
   	state: {
+			ordergoods: {}
   	},
   //  state中的变量只能在mutations中通过方法修改
   	mutations: {
+			createordergoods: function (state, playload) {
+				state.ordergoods = playload.orderdata
+			}
   	},
   	actions: {
   	},

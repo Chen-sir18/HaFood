@@ -6,7 +6,9 @@
         <img src="../../img/logo.png">
       </div>
       <div class="link-box">
-        <span class="link mar-r-20" @click="linktoregister" v-show="this.$route.fullPath === '/login'">REGISTER</span> <span class="link mar-r-20" @click="linktologin" v-show="this.$route.fullPath === '/register'">LOGIN</span>  <span class="link">FEEDBACK</span>
+        <span class="link mar-r-20" @click="linktoregister" v-show="this.$route.fullPath === '/login'">REGISTER</span> <span class="link mar-r-20" @click="linktologin" v-show="this.$route.fullPath === '/register'">LOGIN</span>
+        <span class="link mar-r-20" @click="linktoforget" v-show="this.$route.fullPath === '/login'">FORGET</span>
+        <span class="link">FEEDBACK</span>
       </div>
       <div class="login-content">
         <div class="login-title">Welcome to HaFood</div>
@@ -168,8 +170,10 @@ methods: {
   },
   linktologin: function () {
     this.$router.replace('/login')
-    console.log()
     this.$forceUpdate(this.$route.fullPath)
+  },
+  linktoforget: function () {
+    this.$router.replace('/forget')
   },
   login: function () {
     this.vali(this.emailinput)
