@@ -3,9 +3,9 @@
   <div class="products-box">
     <div class="products-cont">
       <ul class="products-lists">
-        <li class="products-list mar-t-30" v-if="!(item.picstr === undefined)" v-for="(item,index) in newProductList.slice(0,6)" :key="index">
+        <li class="products-list mar-t-30" v-for="(item,index) in newProductList.slice(0,6)" :key="index">
           <div>
-            <img :src="'http://192.168.97.241:3000/' + item.picstr">
+            <img :src="'http://192.168.97.241:3000/' + item.picstr" v-if="!(item.picstr === undefined)">
           </div>
           <div class="product-title"><a>{{item.goodsname}}</a></div>
           <div>

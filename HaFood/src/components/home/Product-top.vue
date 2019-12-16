@@ -14,7 +14,6 @@
 
 <script>
 import axios from 'axios'
-import api from './api.js'
 export default {
   data () {
     return {
@@ -45,7 +44,7 @@ export default {
   mounted () {
     axios({
       method: 'get',
-      url: api + 'foodclass'
+      url: 'api/foodclass'
     }).then((res) => {
       if (res.status === 200) {
         this.productlists = res.data.data
