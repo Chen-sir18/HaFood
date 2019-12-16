@@ -1,0 +1,75 @@
+.form-box{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 500px;
+    height: 400px;
+    .forget{
+        .code-box{
+            .el-form-item__content{
+                display: flex;
+                .el-input{
+                    width: 66%;
+                    input{
+                        height: 50px;
+                        line-height: 50px;
+                        border-radius: 6px;
+                    }
+                }
+                .code-btn{
+                    width: 30%;
+                    height: 50px;
+                    line-height: 50px;
+                    border-radius: 4px;
+                    text-align: center;
+                    box-shadow: 4px 6px 0px 0px rgba(251, 126, 0, 0.4);
+                    background: #fb7e00;
+                    color: #fff;
+                    font-size: 20px;
+                    font-weight: 700;
+                    transition: all 1s;
+                    margin-left: 16px;
+                    &:hover{
+                        box-shadow: none;
+                    }
+                    a{
+                        color: #fff;
+                    }
+                }
+            }
+        }
+        .el-form-item{
+            .el-form-item__content{
+                .el-input{
+                    input{
+                        height: 50px;
+                        line-height: 50px;
+                        border-radius: 6px; 
+                    }
+                }
+            }
+        }
+    }
+    .confirm-btn{
+        transform: translateX(100%);
+        width: 30%;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 4px;
+        text-align: center;
+        box-shadow: 4px 6px 0px 0px rgba(251, 126, 0, 0.4);
+        background: #fb7e00;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+        transition: all 1s;
+        margin-left: 16px;
+        &:hover{
+            box-shadow: none;
+        }
+        a{
+            color: #fff;
+        }
+    }
+}

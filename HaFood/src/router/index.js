@@ -5,6 +5,7 @@ import Home2 from '../components/home/Home2.vue'
 import Home3 from '../components/home/Home3.vue'
 import Home4 from '../components/home/Home4.vue'
 import Login from '../components/public/login.vue'
+import Forget from '../components/forget/forget.vue'
 import Blogdetail from '../components/blogs/blogdetail.vue'
 import Bloggrid from '../components/blogs/bloggrid.vue'
 import Blogmasonry from '../components/blogs/blogmasonry.vue'
@@ -83,6 +84,10 @@ let Router1 = new Router({
     {
       path: '/register',
       component: Login
+    },
+    {
+      path: '/forget',
+      component: Forget
     }
   ],
   mode: 'history'
