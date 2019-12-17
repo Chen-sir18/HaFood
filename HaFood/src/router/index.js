@@ -9,7 +9,7 @@ const Blogdetail = () => import('../components/blogs/blogdetail.vue')
 const Bloggrid = () => import('../components/blogs/bloggrid.vue')
 const Blogmasonry = () => import('../components/blogs/blogmasonry.vue')
 const Bloglist = () => import('../components/blogs/blogsbody.vue')
-const Center => () => import('../components/center/center.vue')
+const Center = () => import('../components/center/center.vue')
 const App = () => import('../App.vue')
 const Shopcart = () => import('../components/public/Shopcar.vue')
 const ProductList = () => import('../components/product/Prlist.vue')
@@ -90,7 +90,7 @@ let Router1 = new Router({
       component: Forget
     },
 	{
-	  path: './center',
+	  path: '/center',
 	  component: Center
 	}
   ],

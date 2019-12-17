@@ -5,13 +5,18 @@ Vue.use(Vuex)
 //  创建一个store对象
 const store = new Vuex.Store({
   //  定义的公共变量,小组成员不要在这里面定义任何东西
-  	state: {
-			ordergoods: {}
-  	},
+	state: sessionStorage.getItem('state') ? JSON.parse(sessionStorage.getItem('state')) : {
+	ordergoods: {},
+	shopcargoods: []
+  },
   //  state中的变量只能在mutations中通过方法修改
   	mutations: {
 			createordergoods: function (state, playload) {
 				state.ordergoods = playload.orderdata
+			},
+			changeshopcargoods: function (state, playload) {
+				console.log(playload.shopcargoods)
+				state.shopcargoods = playload.shopcargoods
 			}
   	},
   	actions: {

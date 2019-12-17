@@ -72,7 +72,7 @@
 			<!-- 购物车登录实际内容 -->
 			<div v-if="islogin && shopgoods.length !== 0">
 				<div class="cart-goods-big-box">
-					<div class="cart-goods-box"  v-for="(item, index) in shopgoods" v-bind:key="index">
+					<div class="cart-goods-box"  v-for="(item, index) in this.$store.state.shopcargoods" v-bind:key="index">
 						<div class="goods-img-box">
 							<img class="goods-img" v-if="!(item.picstr === undefined)" :src="'api/'+ item.picstr">
 						</div>
@@ -95,7 +95,7 @@
 				<span>LOGIN UP NOW</span>
 			</div>
 			<!-- 购物车登录却没有内容 -->
-			<div v-if="shopgoods.length === 0" class='shopgoods-none'>
+			<div v-if="this.$store.state.shopcargoods.length === 0" class='shopgoods-none'>
 				暂无数据
 				<div class="login-button">
 					<span>ADD GOODS</span>
@@ -125,7 +125,7 @@ export default {
 			  {title: 'About Us', content: []},
 			  {title: 'Product', content: ['Product List', 'Product Grid', 'Product Details']},
 			  {title: 'Blog', content: ['Blog List', 'Blog Grid', 'Blog Masonry', 'Blog Details']},
-			  {title: 'Shop', content: []},
+			  {title: 'Center', content: []},
 			  {title: 'Contact', content: []}
 		  ],
 		  serachvalue: '',
@@ -215,11 +215,18 @@ export default {
 				userid: userinfo.id
 			}
 		}).then((response) => {
-			let goodsdata = response.data.data
-			goodsdata.forEach(item => {
-				item.price = item.price.slice(1)
-			})
-			this.shopgoods = goodsdata
+			if (response.data.status === 200) {
+				let goodsdata = response.data.data
+				goodsdata.forEach(item => {
+					item.price = item.price.slice(1)
+				})
+				// 将数据保存到vuex的shopcargoods中
+				this.$store.commit({
+					type: 'changeshopcargoods',
+					shopcargoods: goodsdata
+				})
+				this.shopgoods = goodsdata
+			}
 		})
 		}
 		// 关于滚动条的绑定
