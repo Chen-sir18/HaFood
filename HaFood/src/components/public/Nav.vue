@@ -196,7 +196,7 @@ export default {
 			this.$router.push('/login')
 		},
 		linktoshopcar: function () {
-			this.$router.push('/shopcar')
+			this.$router.push('/Shopcar')
 		}
   },
   mounted: function () {

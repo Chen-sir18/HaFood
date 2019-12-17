@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import OrderDa from '../components/blogs/order.js'
 //  使用vuex的插件
 Vue.use(Vuex)
 //  创建一个store对象
@@ -25,6 +26,7 @@ const store = new Vuex.Store({
   	},
   //  小组成员的数据全部放到modules里面
   	modules: {
+		OrderDa
   	}
 })
 //  导出这个对象
