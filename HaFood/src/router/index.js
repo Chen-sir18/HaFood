@@ -14,6 +14,7 @@ const Shopcart = () => import('../components/public/Shopcar.vue')
 const ProductList = () => import('../components/product/Prlist.vue')
 const ProductGrid = () => import('../components/product/Prgrid.vue')
 const ProductDetails = () => import('../components/product/Prdetails.vue')
+const Forget = () => import('../components/forget/forget.vue')
 Vue.use(Router)
 let Router1 = new Router({
   routes: [
