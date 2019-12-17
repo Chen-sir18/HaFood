@@ -96,9 +96,9 @@
           <!-- 第四层评论内容 -->
           <div class="h-detail-comments">
             <h3 class="h-comment-number">{{commtentData.length}} comments</h3>
-            <div :key="index" v-if="!(item.headpic === undefined)" v-for="(item, index) in commtentData" class="h-comments-item">
+            <div :key="index" v-for="(item, index) in commtentData" class="h-comments-item">
               <div class="h-comments-in">
-                <img :src='"http://192.168.97.241:3000/" + item.headpic' />
+                <img v-if="!(item.headpic === undefined)" :src='"http://192.168.97.241:3000/" + item.headpic' />
                 <span>FEB 15, 2019</span>
                 <h5 class="h-Vanessa">{{item.nickname}}</h5>
                 <a class="h-return-box">
