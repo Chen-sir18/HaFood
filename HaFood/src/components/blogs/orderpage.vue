@@ -116,7 +116,7 @@
                   <div :data="detailaddress" class="detail-message">寄送至：{{this.detailaddress}}</div>
                   <div :data="iphonenumber" class="detail-message">收件人号码：{{this.iphonenumber}}</div>
                   <el-button @click="returnCart" class="add-newaddress">返回购物车</el-button>
-                  <el-button class="add-newaddress">提交订单</el-button>
+                  <el-button @click="commitOrder" class="add-newaddress">提交订单</el-button>
                 </div>
               </div>
             </form>
@@ -261,6 +261,10 @@ export default {
     returnCart () {
       // 点击回到购物车跳转到购物车页面
       this.$router.push('/Shopcar')
+    },
+    commitOrder () {
+      // 点击提交订单跳转到订单状态页面
+      this.$router.push('/state')
     }
   }
 }
