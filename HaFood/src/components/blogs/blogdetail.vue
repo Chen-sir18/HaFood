@@ -256,10 +256,13 @@ export default {
       },
       // 表单验证的规则
       rules: {
-        name: [
+        username: [
           { required: true, message: '请输入用户昵称', trigger: 'blur' },
           { min: 3, max: 15, message: '昵称长度为3~15个字符', trigger: 'blur' }
         ],
+        // comments: [
+        //   { required: true, message: '请输入内容', trigger: 'blur' }
+        // ],
         email: [
           { validator: testEmail, trigger: 'blur' }
         ]

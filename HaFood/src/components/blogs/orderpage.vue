@@ -30,7 +30,7 @@
                     <div class="address-info clearfix">
                       <input @click="inputClick(index)" name="radiocheck" class="radio-box" type="radio" />
                       <label class="user-address">
-                        {{item.region + ' ' + item.name}}收
+                        {{item.region + ' ' + item.name}}
                         <em>{{item.phonenumber}}</em>
                       </label>
                       <a class="edit-address">编辑</a>
@@ -114,6 +114,7 @@
                 <div class="settle-accounts">
                   <div class="detail-message">实付款：{{this.orderData.total}}$</div>
                   <div :data="detailaddress" class="detail-message">寄送至：{{this.detailaddress}}</div>
+                  <div :data="receiveName" class="detail-message">收件人：{{this.receiveName}}</div>
                   <div :data="iphonenumber" class="detail-message">收件人号码：{{this.iphonenumber}}</div>
                   <el-button @click="returnCart" class="add-newaddress">返回购物车</el-button>
                   <el-button @click="commitOrder" class="add-newaddress">提交订单</el-button>
@@ -174,7 +175,8 @@ export default {
         }
       ],
       detailaddress: '',
-      iphonenumber: ''
+      iphonenumber: '',
+      receiveName: ''
     }
   },
   mounted () {
@@ -185,10 +187,10 @@ export default {
     // 收货地址从vuex里拿出来并渲染到页面上
     let vuexData = this.$store.state.orderpage
     this.addressData.unshift(vuexData)
-    console.log(vuexData)
+    // console.log(vuexData)
   },
   beforeRouteEnter (to, from, next) {
-    console.log(from)
+    // console.log(from)
     // 组件守卫
     if (from.path === '/Shopcar' || from.path === '/') {
       next()
@@ -202,7 +204,7 @@ export default {
       // this.dialogFormVisible = false
       // 验证表单
       this.$refs[formname].validate((valid) => {
-        console.log(this.$refs[formname])
+        // console.log(this.$refs[formname])
         // 通过验证后的操作
         if (valid) {
           this.dialogFormVisible = false
@@ -227,6 +229,8 @@ export default {
                 region: returnData.region,
                 phonenumber: returnData.phonenumber
               })
+              let vuexData = this.$store.state.orderpage
+              this.addressData.unshift(vuexData)
             }
           })
         } else {
@@ -239,13 +243,29 @@ export default {
       let radioData = document.querySelectorAll("input[name='radiocheck']")
       // console.log(radioData)
       let address = radioData[i].nextElementSibling.innerText
-      let phonenumber = address.substring(address.length - 11)
+      // 将字符串以空格为间隔分成数组存入变量arr
+      let arr = address.split(' ')
+      console.log(arr)
+      // let phonenumber = arr[2]
+      // console.log(phonenumber)
+      // substring(address.length - 11) 字符串方法 截取字符串倒数11位字符
+      // let phonenumber = address.substring(address.length - 11)
       // console.log(address.substring(address.length - 11))
       // let addstring = address.toString()
       // console.log(addstring)
       // console.log(typeof (address))
-      this.detailaddress = address
-      this.iphonenumber = phonenumber
+      // this.detailaddress = arr[0]
+      // this.receiveName = arr[1]
+      // this.iphonenumber = arr[2]
+      // 将数据存入vuex中
+      this.$store.commit('checkedData', {
+        detailaddress: arr[0],
+        receiveName: arr[1],
+        iphonenumber: arr[2]
+      })
+      this.detailaddress = this.$store.state.checkedAddress.detailaddress
+      this.receiveName = this.$store.state.checkedAddress.receiveName
+      this.iphonenumber = this.$store.state.checkedAddress.iphonenumber
       // for (let i = 0; i < radioData.length; i++) {
       //   if (radioData[i].checked === true) {
 

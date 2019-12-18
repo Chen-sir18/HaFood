@@ -12,6 +12,11 @@ const store = new Vuex.Store({
 		name: '',
 		region: '',
 		phonenumber: ''
+	},
+	checkedAddress: {
+		detailaddress: '',
+		iphonenumber: '',
+		receiveName: ''
 	}
   },
   //  state中的变量只能在mutations中通过方法修改
@@ -25,6 +30,9 @@ const store = new Vuex.Store({
 			},
 			changeOrder (state, data) {
 				state.orderpage = data
+			},
+			checkedData (state, data) {
+				state.checkedAddress = data
 			}
   	},
   	actions: {
