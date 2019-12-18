@@ -11,7 +11,9 @@ const Bloggrid = () => import('../components/blogs/bloggrid.vue')
 const Blogmasonry = () => import('../components/blogs/blogmasonry.vue')
 const Blogstate = () => import('../components/blogs/state.vue')
 const Bloglist = () => import('../components/blogs/blogsbody.vue')
-const Center => () => import('../components/center/center.vue')const App = () => import('../App.vue')
+const Blogorder = () => import('../components/blogs/orderpage.vue')
+const Center = () => import('../components/center/center.vue')
+const App = () => import('../App.vue')
 const Shopcart = () => import('../components/public/Shopcar.vue')
 const ProductList = () => import('../components/product/Prlist.vue')
 const ProductGrid = () => import('../components/product/Prgrid.vue')
@@ -100,11 +102,14 @@ let Router1 = new Router({
       path: '/forget',
       component: Forget
     },
+	{
+	  path: '/Center',
 	  component: Center,
 	  meta: {
 	    requireLogin: 1
 	  }
-	}  ],
+	}
+  ],
   mode: 'history'
 })
 export default Router1
