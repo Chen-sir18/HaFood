@@ -25,6 +25,7 @@ module.exports = {
 	  'no-tabs': 'off',    
     'no-mixed-spaces-and-tabs': 'off',
     'generator-star-spacing': 'off',
+    'no-use-v-if-with-v-for': 'off',
     'indent': 'off',
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'

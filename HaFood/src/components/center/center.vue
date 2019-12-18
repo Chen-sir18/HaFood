@@ -21,7 +21,7 @@
           </li>
           <li class="header-list"><a>帮助中心</a></li>
           <li class="header-list"><a>我的资料</a></li>
-          <li class="header-list"><a>退出</a></li>
+          <li class="header-list"><a @click="logOut">退出</a></li>
         </ul>
       </div>
     </div>
@@ -33,7 +33,7 @@
           <div class="avatar-cont">
             <img src="../../img/about_team_1.jpg" alt="">
           </div>
-          <span class="nickname">欢迎你 ,&nbsp;&nbsp;&nbsp;&nbsp;sunshine</span>
+          <span class="nickname">欢迎你 ,&nbsp;&nbsp;&nbsp;&nbsp;{{nickName}}</span>
         </div>
         <div class="nav-name">
           <a>我的HaFood</a>
@@ -248,12 +248,78 @@
         </div>
       </div>
     </div>
+    <div>
+      <Bottom></Bottom>
+    </div>
   </div>
 </template>
 
 <script>
+import Bottom from '../public/bottom.vue'
 export default {
-
+  data () {
+    return {
+      nickName: ''
+    }
+  },
+  components: {
+    Bottom
+  },
+  beforeRouteEnter: (to, from, next) => {
+    next(vm => {
+      // judge login
+      let token = window.localStorage.getItem('token')
+      if (to.meta.requireLogin && to.meta.requireLogin === 1) {
+        if (token) {
+          next()
+        } else {
+          next('/login')
+        }
+      } else if (to.meta.requireLogin && to.meta.requireLogin === 2) {
+        if (token) {
+          next('/Home1')
+        } else {
+          next()
+        }
+      } else {
+        next()
+      }
+    })
+  },
+  methods: {
+    toCenter () {
+      let token = window.localStorage.getItem('token')
+      let info = JSON.parse(window.localStorage.getItem('info'))
+      if (token) {
+        let nickName = info.nickname
+        let email = info.email
+        if (nickName !== null && nickName !== '') {
+          this.nickName = nickName
+        } else {
+          this.nickName = email
+        }
+      }
+    },
+    logOut () {
+      this.$confirm('您将退出登录，是否继续?', '提示', {
+        confirmButtonText: '退出',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        window.localStorage.removeItem('info')
+        window.localStorage.removeItem('token')
+        this.$router.push('/Home1')
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '网络登录异常，请稍后再试！'
+        })
+      })
+    }
+  },
+  mounted () {
+    this.toCenter()
+  }
 }
 </script>
 

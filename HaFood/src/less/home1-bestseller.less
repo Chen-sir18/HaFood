@@ -21,6 +21,7 @@
 .banner-top {
   padding: 0 15px;
   position: relative;
+  width: 100%;
 }
 .banner-title {
   font-size: 32px;
@@ -48,17 +49,21 @@
 }
 .banner-box {
   overflow: hidden;
+  position: relative;
 }
 .banner-sliders {
   padding-top: 25px;
-  // transition: all 3s;
+  transition: all 0.5s;
   padding: 0;
+  display: -webkit-box;
   font-size: 0;
 }
 .banner-item {
   padding: 0 15px;
-  // width: 280px;
   display: inline-block;
+}
+.transition {
+  transition: all 1s;
 }
 .banner-item-detail {
   margin-top: 50px;
@@ -91,7 +96,7 @@
 }
 @media (min-width: 576px) and (max-width:768px) {
   .banner-content {
-    width: 580px;
+    width: 570px;
   }
 }
 @media only screen and (max-width:576px) {

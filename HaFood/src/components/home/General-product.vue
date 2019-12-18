@@ -102,7 +102,7 @@ export default {
         method: 'get',
         url: 'api/ingredients'
       }).then((res) => {
-        if (res.status === 200) {
+        if (res.data.status === 200) {
           this.newProductList = res.data.data
         }
       }).catch((error) => {

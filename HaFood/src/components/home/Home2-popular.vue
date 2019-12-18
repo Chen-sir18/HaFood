@@ -72,7 +72,7 @@ export default {
       method: 'get',
       url: 'api/popular'
     }).then((res) => {
-      if (res.status === 200) {
+      if (res.data.status === 200) {
         this.menuLists = res.data.data
       }
     }).catch((error) => {

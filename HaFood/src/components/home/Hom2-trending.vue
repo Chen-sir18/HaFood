@@ -91,8 +91,10 @@ export default {
           //
         }
       }).then((res) => {
-        let dataList = res.data.data.splice(6, res.data.data.length - 6)
-        this.trendingLists = dataList
+        if (res.data.status === 200) {
+          let dataList = res.data.data.splice(6, res.data.data.length - 6)
+          this.trendingLists = dataList
+        }
       }).catch((error) => {
         console.log(error)
       })

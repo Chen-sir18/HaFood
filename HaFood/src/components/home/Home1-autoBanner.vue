@@ -89,7 +89,7 @@ export default {
   mounted () {
     this.banner()
     window.onresize = () => {
-      if (document.body.clientWidth < 1200 && document.body.clientWidth >= 992) {
+      if (document.body.clientWidth >= 992) {
         this.carouselItem.forEach(item => {
           item.style.width = this.carouselSlide.parentNode.clientWidth / 5 + 'px'
         })

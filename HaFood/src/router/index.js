@@ -5,11 +5,12 @@ const Home2 = () => import('../components/home/Home2.vue')
 const Home3 = () => import('../components/home/Home3.vue')
 const Home4 = () => import('../components/home/Home4.vue')
 const Login = () => import('../components/public/login.vue')
+const Forget = () => import('../components/forget/forget.vue')
 const Blogdetail = () => import('../components/blogs/blogdetail.vue')
 const Bloggrid = () => import('../components/blogs/bloggrid.vue')
 const Blogmasonry = () => import('../components/blogs/blogmasonry.vue')
 const Bloglist = () => import('../components/blogs/blogsbody.vue')
-const Center => () => import('../components/center/center.vue')
+const Center = () => import('../components/center/center.vue')
 const App = () => import('../App.vue')
 const Shopcart = () => import('../components/public/Shopcar.vue')
 const ProductList = () => import('../components/product/Prlist.vue')
@@ -28,7 +29,10 @@ let Router1 = new Router({
       children: [
         {
           path: '/Home1',
-          component: Home1
+          component: Home1,
+          meta: {
+            requireLogin: 1
+          }
         },
         {
         	path: '/Home2',
@@ -88,10 +92,13 @@ let Router1 = new Router({
       path: '/forget',
       component: Forget
     },
-	{
-	  path: './center',
-	  component: Center
-	}
+    {
+		  path: '/center',
+      component: Center,
+      meta: {
+        requireLogin: 1
+      }
+		}
   ],
   mode: 'history'
 })

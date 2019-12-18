@@ -78,7 +78,7 @@ export default {
         method: 'get',
         url: 'api/bloglists'
       }).then((res) => {
-        if (res.status === 200) {
+        if (res.data.status === 200) {
           this.newTitleData = this.firstTitle
           let newsData = res.data.data
           newsData.splice(3, newsData.length - 3)

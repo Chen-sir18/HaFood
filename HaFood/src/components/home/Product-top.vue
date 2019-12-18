@@ -46,7 +46,7 @@ export default {
       method: 'get',
       url: 'api/foodclass'
     }).then((res) => {
-      if (res.status === 200) {
+      if (res.data.status === 200) {
         this.productlists = res.data.data
       }
     }).catch((error) => {
