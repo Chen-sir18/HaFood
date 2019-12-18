@@ -5,8 +5,12 @@
         <a v-for="(item,index) in message.listpag" :key="index">{{item}}</a>
       </ul>
       <ul>
-        <span class="icon iconfont">&#xe60d;</span>
-        <span class="icon iconfont">&#xe607;</span>
+        <li>
+          <span class="icon iconfont" @click="goback()">&#xe60d;</span>
+        </li>
+        <li>
+          <span class="icon iconfont" @click="goto()">&#xe607;</span>
+        </li>
       </ul>
     </div>
   </div>
@@ -20,6 +24,14 @@ export default {
         listpag: ['1', '2', '3']
       }
     }
+  },
+  methods: {
+    goback () {
+      this.$router.go(-1)
+    },
+    goto () {
+      this.$router.go(+1)
+    }
   }
 }
 </script>
@@ -29,14 +41,14 @@ export default {
     padding: 25px 88px;
     margin: 28px 0 0;
     .x-pr-pag{
-      width: 1140px;
+      max-width: 1140px;
       margin: 0 auto;
       border-top: 1px solid #888888;
       padding: 30px 0 0;
       display: flex;
       justify-content: space-between;
       ul:nth-child(1){
-        width: 800px;
+        /*width: 800px;*/
         line-height: 50px;
         padding: 0 15px;
         overflow: hidden;
@@ -48,21 +60,25 @@ export default {
         }
       }
       ul:nth-child(2){
-        span{
-          display: inline-block;
-          height: 50px;
-          width: 50px;
-          background: #f6f5f6;
-          font-size: 20px;
-          text-align: center;
-          line-height: 50px;
-          border-radius: 50%;
-          margin: 0 10px;
-          cursor: pointer;
-        }
-        span:hover{
-          background: #fb7e00;
-          color: #ffffff;
+        display: flex;
+        justify-content: end;
+        li{
+          span{
+            display: inline-block;
+            height: 50px;
+            width: 50px;
+            background: #f6f5f6;
+            font-size: 20px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            margin: 0 10px;
+            cursor: pointer;
+          }
+          span:hover{
+            background: #fb7e00;
+            color: #ffffff;
+          }
         }
       }
     }

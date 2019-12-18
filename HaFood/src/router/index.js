@@ -9,13 +9,14 @@ const Blogdetail = () => import('../components/blogs/blogdetail.vue')
 const Bloggrid = () => import('../components/blogs/bloggrid.vue')
 const Blogmasonry = () => import('../components/blogs/blogmasonry.vue')
 const Bloglist = () => import('../components/blogs/blogsbody.vue')
+const Forget = () => import('../components/forget/forget.vue')
 const Center = () => import('../components/center/center.vue')
+const Blogorder = () => import('../components/blogs/orderpage.vue')
 const App = () => import('../App.vue')
 const Shopcart = () => import('../components/public/Shopcar.vue')
 const ProductList = () => import('../components/product/Prlist.vue')
 const ProductGrid = () => import('../components/product/Prgrid.vue')
 const ProductDetails = () => import('../components/product/Prdetails.vue')
-const Forget = () => import('../components/forget/forget.vue')
 Vue.use(Router)
 let Router1 = new Router({
   routes: [
@@ -74,6 +75,10 @@ let Router1 = new Router({
         {
           path: '/ProductDetails',
           component: ProductDetails
+        },
+        {
+          path: '/order',
+          component: Blogorder
         }
       ]
     },

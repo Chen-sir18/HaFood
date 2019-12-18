@@ -7,7 +7,12 @@ const store = new Vuex.Store({
   //  定义的公共变量,小组成员不要在这里面定义任何东西
 	state: sessionStorage.getItem('state') ? JSON.parse(sessionStorage.getItem('state')) : {
 	ordergoods: {},
-	shopcargoods: []
+	shopcargoods: [],
+	orderpage: {
+		name: '',
+		region: '',
+		phonenumber: ''
+	}
   },
   //  state中的变量只能在mutations中通过方法修改
   	mutations: {
@@ -17,6 +22,9 @@ const store = new Vuex.Store({
 			changeshopcargoods: function (state, playload) {
 				console.log(playload.shopcargoods)
 				state.shopcargoods = playload.shopcargoods
+			},
+			changeOrder (state, data) {
+				state.orderpage = data
 			}
   	},
   	actions: {

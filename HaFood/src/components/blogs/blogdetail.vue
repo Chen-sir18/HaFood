@@ -186,9 +186,9 @@
           </div>
         </div>
         <div class="h-row-outer">
-          <div :key="index" v-if="!(item.headpic === undefined)" v-for="(item, index) in relatedData" class="h-row-item">
+          <div :key="index" v-for="(item, index) in relatedData" class="h-row-item">
             <div class="h-row-list">
-              <img :src='"http://192.168.97.241:3000/" + item.picstr'/>
+              <img v-if="!(item.headpic === undefined)" :src='"http://192.168.97.241:3000/" + item.picstr'/>
               <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
               <a class="h-row-a">
                 <h5 class="title">{{item.reminder}}</h5>
@@ -254,6 +254,7 @@ export default {
         email: '',
         comments: ''
       },
+      // 表单验证的规则
       rules: {
         name: [
           { required: true, message: '请输入用户昵称', trigger: 'blur' },

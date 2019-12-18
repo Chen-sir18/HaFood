@@ -1,11 +1,11 @@
 <template>
-  <div class="promain clearfix">
-    <div class="x-pr-main">
-      <div class="x-pr-mainboy" v-for="(item,index) in message" :key="index">
-        <ul class="x-pr-mainboy-ul">
-          <img :src="item.imgUrl"/>
+  <div class="x-prmain ">
+    <div class="x-pr-main clearfix">
+      <div class="x-pr-mainboy" v-for="(item,index) in info" :key="index">
+        <ul>
+          <img :src='"http://192.168.97.241:3000/"+item.picstr'/>
           <li>
-            <b>{{item.title}}</b>
+            <b>{{item.goodsname}}</b>
             <span>{{item.price}}</span>
           </li>
         </ul>
@@ -15,99 +15,30 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data: function () {
     return {
-      message: [
+      info: [
         {
-          imgUrl: 'api/product_1.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_4.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_2.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_6.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_3.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_7.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_2.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_5.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_6.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_4.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_3.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_2.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_1.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_6.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_4.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_5.jpg',
-          title: 'Grape',
-          price: '$135.00'
+          picstr: '',
+          goodsname: '',
+          price: ''
         }
       ]
     }
+  },
+  mounted () {
+    axios
+      .get('api/ingredients')
+      .then((res) => (this.info = res.data.data))
   }
 }
 </script>
 
 <style lang="less">
   .x-pr-main{
-    width: 1144px;
+    max-width: 1144px;
     margin: 0 auto;
     .x-pr-mainboy{
       height: 360px;
