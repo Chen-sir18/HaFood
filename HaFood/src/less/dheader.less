@@ -85,8 +85,9 @@
                 display: none;
             }
         }
+        // 购物车丶搜索和登录的按钮 
         .search-and-cart {
-            width: 144px;
+            width: 204px;
             height: 100%;
             display: flex;
             flex-direction: row;
@@ -132,7 +133,13 @@
             @media only screen and (max-width:992px)  {
                 .little-nav-btn {
                     display: block;
-                }    
+                }   
+            }
+            .login-btn {
+               vertical-align: text-top; 
+               line-height: 40px;
+               font-size: 18px;
+               cursor: pointer;
             }
         }
     }   
@@ -215,7 +222,6 @@
         display: none;
     }
 }
-
 // 侧边购物车部分
 .right-cart-box {
     width: 400px;
@@ -241,6 +247,24 @@
     .cart-goods-big-box{
         overflow-y: auto;
         height: 400px;
+    }
+    // 改变滚动条的盒子
+    ::-webkit-scrollbar  
+    {  
+    width: 8px;    
+    background-color: #fff;  
+    }
+    // 改变滚动条轨道
+    ::-webkit-scrollbar-track 
+    {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;  
+    }
+    // 改变滚动条的内容
+    ::-webkit-scrollbar-thumb  
+    {  
+    border-radius: 10px;  
+    background-color: #fb7e00;  
     }
     .cart-goods-box {
         width: 100%;

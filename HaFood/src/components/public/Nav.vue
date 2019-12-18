@@ -20,14 +20,18 @@
 					</div>
 					</router-link>
 				</div>
-			  <!--购物车和搜索的开启按钮-->
+			  <!--购物车和搜索丶登录的开启按钮-->
 				<div class="search-and-cart">
 					<div class="search" @click="dropsearch">
 						<span class="icon iconfont font-24">&#xe66b;</span>
 					</div>
-					<div @click="rightcar" class="cart">
+					<div v-if="!(this.$route.fullPath === '/Shopcar' || this.$route.fullPath === '/order')" @click="rightcar" class="cart">
 						<span class="icon iconfont font-18">&#xe61c;</span>
-						<div class="cart-count">{{cartgoodscount}}</div>
+						<div v-if="islogin" class="cart-count">{{this.$store.state.shopcargoods.length}}</div>
+					</div>
+					<div class="login-btn">
+						<span @click="logout" v-if="islogin">LOGOUT</span>
+						<span @click="linktologin" v-else>LOGIN</span>
 					</div>
 					<!--小屏时候出现的导航条-->
 					<div @click="dropnav" class="little-nav-btn">
@@ -65,7 +69,7 @@
 			</div>
 		</div>
 		<!--侧边购物车-->
-		<div class="right-cart-box">
+		<div class="right-cart-box" v-if="!(this.$route.fullPath === '/Shopcar' || this.$route.fullPath === '/order')">
 			<div class="cart-title">
 				<span class="font-wi-600">Shopping Cart</span> <span @click="closeshopcart" class="font-20 font-wi-600 close-shopcart">X</span>
 			</div>
@@ -100,7 +104,6 @@
 				<div class="login-button">
 					<span>ADD GOODS</span>
 				</div>
-				<div></div>
 			</div>
 		</div>
 		<div class="body">
@@ -141,6 +144,13 @@ export default {
   	}
   },
   methods: {
+		// 控制退出登录
+		logout: function () {
+			window.localStorage.removeItem('info')
+			window.localStorage.removeItem('token')
+			this.islogin = false
+		},
+		// 控制线条
   	line: function (e) {
   	  e.currentTarget.children[0].children[0].style.transform = 'translateX(105%)'
   	  setTimeout(() => {
@@ -196,10 +206,11 @@ export default {
 			this.$router.push('/login')
 		},
 		linktoshopcar: function () {
-			this.$router.push('/shopcar')
+			this.$router.push('/Shopcar')
 		}
   },
   mounted: function () {
+		console.log(this.$route.fullPath)
 		// 关于头部导航样式不同的触发
 		this.routepath = this.$route.fullPath
 		// 判断购物车是否已经登录的问题
