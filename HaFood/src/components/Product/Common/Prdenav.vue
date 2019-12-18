@@ -18,7 +18,7 @@
         </li>
       </ul>
       <ul>
-        <li>{{message.title}}</li>
+        <li>{{info.goodsname}}</li>
         <li>
           <span>
             <i class="icon iconfont">&#xe61d;</i>
@@ -44,9 +44,9 @@
         </li>
         <li>
           <i>
-            <button>-</button>
-            <input type="text" value="0"/>
-            <button>+</button>
+            <button @click="add">-</button>
+            <input type="text" v-model="count"/>
+            <button @click="remove">+</button>
           </i>
           <a>ADD TO CARE</a>
           <i class="icon iconfont">&#xe616;</i>
@@ -58,9 +58,19 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data: function () {
     return {
+      info: [
+        {
+          picstr: '',
+          goodsname: '',
+          price: '',
+          depict: ''
+        }
+      ],
+      count: 0,
       message: {
         title: 'Grape',
         price: '$50.00',
@@ -107,6 +117,23 @@ export default {
         ]
       }
     }
+  },
+  methods: {
+    add () {
+      if (this.count <= 0) {
+        this.count = 0
+      } else {
+        this.count--
+      }
+    },
+    remove () {
+      this.count++
+    }
+  },
+  mounted () {
+      axios
+        .get('api/ingredients')
+        .then(res => (this.info = res.data.data))
   }
 }
 </script>

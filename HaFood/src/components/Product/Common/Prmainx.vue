@@ -1,18 +1,18 @@
 <template>
   <div>
-    <div class="x-pr-boyx" v-for="(item,index) in message" :key="index">
+    <div class="x-pr-boyx" v-for="(item,index) in product" :key="index">
       <ul>
-        <img :src="item.imgUrl"/>
+        <img :src='"http://192.168.97.241:3000/"+item.picstr'/>
       </ul>
       <ul>
         <li>
-          <b>{{item.name}}</b>
+          <b>{{item.goodsname}}</b>
         </li>
         <li>
-          <p>{{item.priec}}</p>
+          <p>{{item.price}}</p>
         </li>
         <li>
-          <P>{{item.discription}}</P>
+          <P>{{item.depict}}</P>
         </li>
         <li>
           <a>ADD TO CART</a>
@@ -26,57 +26,26 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data: function () {
     return {
-      message: [
+      product: [
         {
-          imgUrl: 'api/product_6.jpg',
-          name: 'Grape',
-          discription: 'Tacimates sent ucius concludaturque,\n' +
-          '              ea option maiestatis deterruisset sea.\n' +
-          '              Mea dolores perfecto cu,\n' +
-          '              ea dicat ocurreret posidonium quo.\n' +
-          '              An veritus omnesque rationibus quo,\n' +
-          '              ad populo pertinax cotidieque quo.',
-          priec: '$15.00'
-        },
-        {
-          imgUrl: require('../../../img/product_4.jpg'),
-          name: 'Grape',
-          discription: 'Tacimates sent ucius concludaturque,\n' +
-            '              ea option maiestatis deterruisset sea.\n' +
-            '              Mea dolores perfecto cu,\n' +
-            '              ea dicat ocurreret posidonium quo.\n' +
-            '              An veritus omnesque rationibus quo,\n' +
-            '              ad populo pertinax cotidieque quo.',
-          priec: '$15.00'
-        },
-        {
-          imgUrl: require('../../../img/product_2.jpg'),
-          name: 'Grape',
-          discription: 'Tacimates sent ucius concludaturque,\n' +
-            '              ea option maiestatis deterruisset sea.\n' +
-            '              Mea dolores perfecto cu,\n' +
-            '              ea dicat ocurreret posidonium quo.\n' +
-            '              An veritus omnesque rationibus quo,\n' +
-            '              ad populo pertinax cotidieque quo.',
-          priec: '$15.00'
-        },
-        {
-          imgUrl: require('../../../img/product_5.jpg'),
-          name: 'Grape',
-          discription: 'Tacimates sent ucius concludaturque,\n' +
-            '              ea option maiestatis deterruisset sea.\n' +
-            '              Mea dolores perfecto cu,\n' +
-            '              ea dicat ocurreret posidonium quo.\n' +
-            '              An veritus omnesque rationibus quo,\n' +
-            '              ad populo pertinax cotidieque quo.',
-          priec: '$15.00'
+          picstr: '',
+          goodsname: '',
+          price: '',
+          depict: ''
         }
       ]
     }
-  }
+  },
+  mounted () {
+    axios({
+      method: 'get',
+      url: 'api/ingredients'
+    }).then((res) => (this.product = res.data.data))
+   }
 }
 </script>
 
@@ -137,6 +106,11 @@ export default {
           cursor: pointer;
         }
       }
+    }
+  }
+  @media (max-width:992px){
+    .x-pr-main{
+      margin-right: 0px;
     }
   }
 
