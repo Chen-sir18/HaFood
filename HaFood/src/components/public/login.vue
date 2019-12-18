@@ -51,6 +51,7 @@
 <script>
 import axios from 'axios'
 import md5 from 'md5'
+import remind from './JS/remind.js'
 export default {
 data: function () {
   return {
@@ -187,20 +188,22 @@ methods: {
           password: md5(this.password)
         }
       }).then((response) => {
+         remind(response.data.message)
         if (response.data.status === 200) {
           // 登录成功，控制路由跳转
           this.$router.push('/Home1')
           window.localStorage.setItem('token', response.data.data.token)
           let info = JSON.stringify(response.data.data.userinfo)
           window.localStorage.setItem('info', info)
-        } else {
-          // 登录失败，提示重新输入
-          alert('用户名或密码不正确')
         }
       })
     }
   },
-  getcode: function () {
+  //  获取验证码
+  getcode: function (e) {
+    if (e.target.innerText !== 'Get Code') {
+      return false
+    }
     if (this.isemail || !this.email) {
       let emailinput = document.querySelector('.email')
       this.vali(this.emailinput, emailinput)
@@ -213,7 +216,21 @@ methods: {
         },
         url: 'api/code'
       }).then((response) => {
-        alert(response.data.message)
+        remind(response.data.message)
+        // alert(response.data.message)
+        if (response.data.status === 200) {
+          let time = 20
+          setInterval(() => {
+            if (time > 1) {
+              time--
+              e.target.innerText = time + 's后重新获取'
+              e.target.style.background = '#555'
+            } else {
+              e.target.innerText = 'Get Code'
+              e.target.style.background = '#fb7e00'
+            }
+          }, 1000)
+        }
       })
     }
   },
@@ -236,8 +253,8 @@ methods: {
           valicode: this.valicode
         }
       }).then((response) => {
+        remind(response.data.message)
         if (response.data.status === 200) {
-          alert('注册成功请登录')
           this.$router.push('/login')
         }
       })

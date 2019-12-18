@@ -9,9 +9,9 @@ const Forget = () => import('../components/forget/forget.vue')
 const Blogdetail = () => import('../components/blogs/blogdetail.vue')
 const Bloggrid = () => import('../components/blogs/bloggrid.vue')
 const Blogmasonry = () => import('../components/blogs/blogmasonry.vue')
+const Blogstate = () => import('../components/blogs/state.vue')
 const Bloglist = () => import('../components/blogs/blogsbody.vue')
-const Center = () => import('../components/center/center.vue')
-const App = () => import('../App.vue')
+const Center => () => import('../components/center/center.vue')const App = () => import('../App.vue')
 const Shopcart = () => import('../components/public/Shopcar.vue')
 const ProductList = () => import('../components/product/Prlist.vue')
 const ProductGrid = () => import('../components/product/Prgrid.vue')
@@ -77,6 +77,14 @@ let Router1 = new Router({
         {
           path: '/ProductDetails',
           component: ProductDetails
+        },
+        {
+          path: '/order',
+          component: Blogorder
+        },
+        {
+          path: '/state',
+          component: Blogstate
         }
       ]
     },
@@ -92,14 +100,11 @@ let Router1 = new Router({
       path: '/forget',
       component: Forget
     },
-    {
-		  path: '/center',
-      component: Center,
-      meta: {
-        requireLogin: 1
-      }
-		}
-  ],
+	  component: Center,
+	  meta: {
+	    requireLogin: 1
+	  }
+	}  ],
   mode: 'history'
 })
 export default Router1

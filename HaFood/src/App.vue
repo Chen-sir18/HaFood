@@ -13,6 +13,14 @@ export default {
   components: {
     Nav,
     Bottom
+  },
+  mounted: function () {
+     window.addEventListener('unload', this.saveState)
+  },
+  methods: {
+    saveState () {
+      sessionStorage.setItem('state', JSON.stringify(this.$store.state))
+    }
   }
 }
 </script>

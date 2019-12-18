@@ -77,7 +77,7 @@
           <span>All Choose</span>
         </div>
         <!-- 删除所有的选中商品 -->
-        <div class="checked-delete">
+        <div @click="deleteall" class="checked-delete">
           Delete Checked
         </div>
         <!-- 去结算 -->
@@ -287,6 +287,22 @@ methods: {
       orderdata: orderdata
     })
     this.$router.push('/order')
+  },
+  deleteall: function () {
+    Axios({
+      url: 'api/delShopcarMul',
+      method: 'get',
+      params: {
+         userid: this.userid,
+         ingredientsid: JSON.stringify(this.checkedgoods)
+      }
+    }).then((response) => {
+      if (response.data.status === 200) {
+        this.shopcargoods = this.shopcargoods.filter((item) => {
+          return item.checked === false
+        })
+      }
+    })
   }
 },
 watch: {
