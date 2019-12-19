@@ -3,7 +3,7 @@
     <ul class="trending-lists">
       <li :key="index" class="list" v-for="(item,index) in lists" v-if="!(item.picstr === undefined)">
             <div class="list-box">
-                <img :src='"http://192.168.97.241:3000/" + item.picstr' alt="" v-if="!(item.picstr === null)">
+                <img :src='"api/" + item.picstr'  v-if="!(item.picstr === null)">
                 <a>{{item.goodsname}}</a>
                 <p>{{item.price}}</p>
             </div>
@@ -27,9 +27,8 @@ export default {
     mounted () {
     axios({
       method: 'get',
-      url: 'http://192.168.97.241:3000/ingredients'
+      url: 'api/ingredients'
     }).then((res) => {
-      console.log(res.data)
       if (res.data.status === 200) {
         let foodData = res.data.data
         this.lists = foodData
