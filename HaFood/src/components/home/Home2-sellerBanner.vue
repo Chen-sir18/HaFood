@@ -79,7 +79,6 @@ export default {
       this.carouselItem = carouselItem
       this.carouselSlide = carouselSlide
       let itemLength = this.bannerLists.length + 1
-      console.log(itemLength)
       carouselSlide.style.width = parseInt(carouselItem[0].clientWidth) * itemLength + 'px'
       if (this.index === itemLength - 4) {
         this.index = 0

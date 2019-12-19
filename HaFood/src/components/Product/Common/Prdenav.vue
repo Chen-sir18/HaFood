@@ -4,8 +4,8 @@
       <ul>
         <li>
           <ol>
-            <span v-for="(item,index) in message.list" :key="index">
-              <img :src="item.imgUrl"/>
+            <span>
+              <img :src="'api/' + message.picstr"/>
             </span>
           </ol>
         </li>
@@ -18,7 +18,7 @@
         </li>
       </ul>
       <ul>
-        <li>{{message.title}}</li>
+        <li>{{message.goodsname}}</li>
         <li>
           <span>
             <i class="icon iconfont">&#xe61d;</i>
@@ -31,7 +31,7 @@
         </li>
         <li>{{message.price}}</li>
         <li>
-          <p>{{message.describe}}</p>
+          <p>{{message.depict}}</p>
         </li>
         <li>
           <span>Color</span>
@@ -62,10 +62,10 @@ export default {
   data: function () {
     return {
       message: {
-        title: 'Grape',
+        goodsname: 'Grape',
         price: '$50.00',
         measure: 'Weight (kg)',
-        describe: 'Lorem ipsum dolor sit amet,\n' +
+        depict: 'Lorem ipsum dolor sit amet,\n' +
           '            consectetur adipiscing elit,\n' +
           '            sed do eiusmod tempor incididunt ut labore\n' +
           '            et dolore magna aliqua. Ut enim ad minim veniam,\n' +
@@ -106,6 +106,14 @@ export default {
           }
         ]
       }
+    }
+  },
+  mounted: function () {
+
+  },
+  activated () {
+    if (this.$store.state.searchdata.length >= 1) {
+      this.message = this.$store.state.searchdata[0]
     }
   }
 }

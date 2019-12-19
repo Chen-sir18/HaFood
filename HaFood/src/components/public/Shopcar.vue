@@ -110,7 +110,7 @@ data: function () {
     userid: ''
   }
 },
-mounted: function () {
+activated: function () {
   // 获取登录信息，
   let userinfo = JSON.parse(window.localStorage.getItem('info'))
   this.userid = userinfo.id
@@ -306,6 +306,11 @@ methods: {
         this.checkedgoods.splice(0)
         // 重新给予所选的全部价格
         this.changeallmoney()
+        // 将vuex里面保存的购物车内容清空
+        this.$store.commit({
+          type: 'changeshopcargoods',
+          shopcargoods: this.shopcargoods
+        })
       }
     })
   }

@@ -61,7 +61,6 @@ export default {
         // 获取点击商品的id
         let ingredientsid = parseInt(e.target.getAttribute('ingredientsid'))
         // 将id拿到已存在购物车商品的id作比对
-        console.log(this.$store.state.shopcargoods)
         let shopcargoods = this.$store.state.shopcargoods
         let have = false
         let goodscount = 0
@@ -107,7 +106,7 @@ export default {
           }
         }).then((response) => {
           if (response.data.status === 200) {
-            remind('加入购物车成功')
+            remind('success')
           }
         })
       }

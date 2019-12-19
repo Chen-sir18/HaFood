@@ -17,7 +17,8 @@ const store = new Vuex.Store({
 		detailaddress: '',
 		iphonenumber: '',
 		receiveName: ''
-	}
+	},
+	searchdata: []
   },
   //  state中的变量只能在mutations中通过方法修改
   	mutations: {
@@ -32,6 +33,9 @@ const store = new Vuex.Store({
 			},
 			checkedData (state, data) {
 				state.checkedAddress = data
+			},
+			changesearchdata: function (state, playload) {
+				state.searchdata = playload.searchdata
 			}
   	},
   	actions: {

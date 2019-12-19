@@ -1,7 +1,7 @@
 <template>
 	<div>
   <!-- 头部导航部分 -->
-		<div v-bind:class="{header:true,headerbox:true,headerbox1:routepath === '/Home3' || routepath === '/Home4' || routepath === '/shopcar'}">
+		<div v-bind:class="{header:true,headerbox:true,headerbox1:routepath === '/Home3' || routepath === '/Home4' || routepath === '/Shopcar'}">
 			<div class="change-content">
 				<span class="logo font-wi-900 font-30">
 					HaFood
@@ -75,7 +75,7 @@
 			</div>
 			<!-- 购物车登录实际内容 -->
 			<div v-if="islogin && shopgoods.length !== 0">
-				<div class="cart-goods-big-box">
+				<div class="cart-goods-big-box" v-show="this.$store.state.shopcargoods.length >= 0">
 					<div class="cart-goods-box"  v-for="(item, index) in this.$store.state.shopcargoods" v-bind:key="index">
 						<div class="goods-img-box">
 							<img class="goods-img" v-if="!(item.picstr === undefined)" :src="'api/'+ item.picstr">
@@ -102,7 +102,7 @@
 			<div v-if="this.$store.state.shopcargoods.length === 0" class='shopgoods-none'>
 				暂无数据
 				<div class="login-button">
-					<span>ADD GOODS</span>
+					<span @click="linktoproduct">ADD GOODS</span>
 				</div>
 			</div>
 		</div>
@@ -165,13 +165,30 @@ export default {
 	  dropsearch: function (e) {
 		  let dropsearch = document.querySelector('.d-drop-search')
 		  dropsearch.style.transform = 'translateY(0)'
-	  },
+		},
+		// 搜索框所在的位置
 	  closedropsearch: function (e) {
 		  let dropsearch = document.querySelector('.d-drop-search')
 		  dropsearch.style.transform = 'translateY(-120%)'
 		  if (String(e).includes('KeyboardEvent')) {
 		    let serachinput = document.querySelector('.input-search')
-			  this.serachvalue = serachinput.value
+				this.serachvalue = serachinput.value
+				axios({
+					method: 'get',
+					url: 'api/search',
+					params: {
+						goodsname: this.serachvalue
+					}
+				}).then((response) => {
+					if (response.data.status === 200) {
+						let searchdata = response.data.data
+						this.$store.commit({
+							type: 'changesearchdata',
+							searchdata: searchdata
+						})
+						this.$router.push('/ProductDetails')
+					}
+				})
 		  }
 	  },
 	  dropnav: function (e) {
@@ -201,6 +218,9 @@ export default {
 	  },
 	  closeshopcart: function (e) {
 		  e.currentTarget.parentNode.parentNode.style.transform = 'translateX(100%)'
+		},
+		linktoproduct: function () {
+			this.$router.push('/ProductList')
 		},
 		linktologin: function (e) {
 			this.$router.push('/login')
