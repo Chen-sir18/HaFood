@@ -2,7 +2,7 @@
   <div>
     <div class="x-pr-boyx" v-for="(item,index) in product" :key="index">
       <ul>
-        <img :src='"http://192.168.97.241:3000/"+item.picstr'/>
+        <img :src='"api/"+item.picstr'/>
       </ul>
       <ul>
         <li>
@@ -15,18 +15,20 @@
           <P>{{item.depict}}</P>
         </li>
         <li>
-          <a>ADD TO CART</a>
+          <div  :price = item.price :picstr = item.picstr :goodsname = item.goodsname  :ingredientsid = item.id  @click="addtocar" class="add-cart">ADD TO CART</div>
           <i class="icon iconfont">&#xe616;</i>
           <i class="icon iconfont">&#xe66b;</i>
           <i class="icon iconfont">&#xe6c9;</i>
         </li>
       </ul>
     </div>
+    <div>{{this.$store.state.shopcargoods}}</div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import remind from '../../public/JS/remind.js'
 export default {
   data: function () {
     return {
@@ -44,8 +46,76 @@ export default {
     axios({
       method: 'get',
       url: 'api/ingredients'
-    }).then((res) => (this.product = res.data.data))
-   }
+    }).then((response) => {
+      this.product = response.data.data
+    })
+  },
+  methods: {
+    // 添加到购物车
+    addtocar: function (e) {
+      // 判断是否登录
+      let token = window.localStorage.getItem('token')
+      let info = JSON.parse(window.localStorage.getItem('info'))
+      // 如果登录
+      if (token && info) {
+        // 获取userid
+        let userid = parseInt(info.id)
+        // 获取点击商品的id
+        let ingredientsid = parseInt(e.target.getAttribute('ingredientsid'))
+        // 将id拿到已存在购物车商品的id作比对
+        console.log(this.$store.state.shopcargoods)
+        let shopcargoods = this.$store.state.shopcargoods
+        let have = false
+        let goodscount = 0
+        // 判断点击的商品是否已经在购物车中存在
+        shopcargoods.forEach((item) => {
+          if (item.ingredientsid === ingredientsid) {
+            goodscount = item.goodscount
+            item.goodscount = item.goodscount + 1
+            have = true
+          }
+        })
+        //  如果存在，修改购物车的内容
+        if (have) {
+          goodscount++
+        } else {
+         goodscount = 1
+         let price = e.target.getAttribute('price').replace(/\$/, '')
+         let picstr = e.target.getAttribute('picstr')
+         let goodsname = e.target.getAttribute('goodsname')
+         let newshopcargoods = {
+           goodscount: 1,
+           goodsname: goodsname,
+           picstr: picstr,
+           price: price,
+           userid: userid,
+           ingredientsid: ingredientsid
+         }
+         shopcargoods.push(newshopcargoods)
+        }
+        // 更新vuex保存的数据
+        this.$store.commit({
+          type: 'changeshopcargoods',
+          shopcargoods: shopcargoods
+        })
+        // 请求修改购物车数据库
+        axios({
+          method: 'get',
+          url: 'api/addshopcar',
+          params: {
+            userid: userid,
+            ingredientsid: ingredientsid,
+            goodscount: goodscount
+          }
+        }).then((response) => {
+          if (response.data.status === 200) {
+            remind('加入购物车成功')
+          }
+        })
+      } else {
+      }
+    }
+  }
 }
 </script>
 
@@ -82,7 +152,7 @@ export default {
         color: #555555;
       }
       li:nth-child(4){
-        a{
+        .add-cart{
           display: inline-block;
           margin: 35px 30px 0 0;
           height: 50px;

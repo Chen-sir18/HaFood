@@ -33,7 +33,7 @@
 						<span @click="logout" v-if="islogin">LOGOUT</span>
 						<span @click="linktologin" v-else>LOGIN</span>
 					</div>
-					<!--小屏时候出现的导航条-->
+					<!--小屏时候出现的导航条按钮-->
 					<div @click="dropnav" class="little-nav-btn">
 						<span v-show="!navShow" class="icon iconfont little-nav-text font-30">&#xe605;</span>
 					  <span v-show="navShow" class="icon iconfont little-nav-text font-20">&#xe612;</span>
@@ -47,9 +47,9 @@
 							&#xe60c;
 						</span>
 						<!--二级导航栏 -->
-						<div class="little-nav-second-box">
+						<div ref="secondnav" class="little-nav-second-box">
 							<div class="little-nav-second" v-bind:key="id" v-for="(content, id) in item.content">
-								<router-link class="little-nav-second-link" tag="div" :to="content.replace(/\s/g, '')">{{content}}</router-link>
+								<router-link @click.native="dropnav" class="little-nav-second-link" tag="div" :to="content.replace(/\s/g, '')">{{content}}</router-link>
 							</div>
 						</div>
 					</router-link>
@@ -210,7 +210,6 @@ export default {
 		}
   },
   mounted: function () {
-		console.log(this.$route.fullPath)
 		// 关于头部导航样式不同的触发
 		this.routepath = this.$route.fullPath
 		// 判断购物车是否已经登录的问题

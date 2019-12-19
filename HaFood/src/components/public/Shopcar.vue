@@ -288,6 +288,7 @@ methods: {
     })
     this.$router.push('/order')
   },
+  // 删除所有选中的商品
   deleteall: function () {
     Axios({
       url: 'api/delShopcarMul',
@@ -301,6 +302,10 @@ methods: {
         this.shopcargoods = this.shopcargoods.filter((item) => {
           return item.checked === false
         })
+        // 将被选中的数组清空
+        this.checkedgoods.splice(0)
+        // 重新给予所选的全部价格
+        this.changeallmoney()
       }
     })
   }

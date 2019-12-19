@@ -8,7 +8,7 @@ function remind (remindtext) {
   remindelement.style.fontSize = '14px'
   remindelement.style.padding = '8px 16px'
   remindelement.style.position = 'fixed'
-  remindelement.style.top = '50px'
+  remindelement.style.top = '80px'
   remindelement.style.margin = '0 50%'
   remindelement.style.left = '-200px'
   remindelement.style.borderRadius = '8px'

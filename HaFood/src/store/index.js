@@ -25,7 +25,6 @@ const store = new Vuex.Store({
 				state.ordergoods = playload.orderdata
 			},
 			changeshopcargoods: function (state, playload) {
-				console.log(playload.shopcargoods)
 				state.shopcargoods = playload.shopcargoods
 			},
 			changeOrder (state, data) {
