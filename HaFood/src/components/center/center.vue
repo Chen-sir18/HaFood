@@ -20,7 +20,6 @@
             <a>联系我们</a>
           </li>
           <li class="header-list"><a>帮助中心</a></li>
-          <li class="header-list"><a>我的资料</a></li>
           <li class="header-list"><a @click="logOut">退出</a></li>
         </ul>
       </div>
@@ -46,41 +45,35 @@
       </div>
     </div>
     <!-- detail-content -->
-      <div class="detail-cont">
-        <div class="detail content">
-          <!-- left-sidebar -->
+    <div class="detail-cont">
+      <div class="detail content">
+        <!-- left-sidebar -->
         <ul class="left-sidebar">
           <li class="side-list">
             <span class="iconfont icon-gouwuche"></span>
-            <a class="side-item">购物车</a>
-          </li>
-          <li class="side-list">
-            <span class="iconfont icon-gouwuche"></span>
-            <a class="side-item">订单管理</a>
+            <a class="side-item">我的交易</a>
             <ul class="item-lists">
-              <li class="item-list"><a>我的订单</a></li>
-              <li class="item-list"><a>我的收藏</a></li>
-              <li class="item-list"><a>我的评价</a></li>
-              <li class="item-list"><a>我的足迹</a></li>
-              <li class="item-list"><a>我的优惠券</a></li>
+              <li class="item-list"><a>订单管理</a></li>
+              <li class="item-list"><a>退换/售后</a></li>
+              <li class="item-list"><a>收货地址</a></li>
             </ul>
           </li>
           <li class="side-list">
             <span class="iconfont icon-gouwuche"></span>
-            <a class="side-item">资产中心</a>
+            <a class="side-item">我的资产</a>
             <ul class="item-lists">
-              <li class="item-list"><a>我的推荐</a></li>
-              <li class="item-list"><a>我的钱包</a></li>
-              <li class="item-list"><a>我要提现</a></li>
-              <li class="item-list"><a>我的哈豆</a></li>
+              <li class="item-list"><a>优惠券</a></li>
+              <li class="item-list"><a>银行卡</a></li>
+              <li class="item-list"><a>哈豆</a></li>
             </ul>
           </li>
           <li class="side-list">
             <span class="iconfont icon-gouwuche"></span>
-            <a class="side-item">售后服务</a>
+            <a class="side-item">我的账户</a>
             <ul class="item-lists">
-              <li class="item-list"><a>退换货</a></li>
-              <li class="item-list"><a>意见/投诉</a></li>
+              <li class="item-list"><a>我的资料</a></li>
+              <li class="item-list"><a>分享账号</a></li>
+              <li class="item-list"><a>修改密码</a></li>
             </ul>
           </li>
         </ul>
@@ -102,7 +95,7 @@
                   <p class="assets-img"></p>
                 </div>
               </li>
-             <li class="top-list">
+            <li class="top-list">
                 <div class="top-list-cont text-center assets">
                   <p class="list-title">我的资产</p>
                   <span class="top-btn">显示今日收益</span>
@@ -238,7 +231,7 @@
             </div>
           </div>
           <!-- 我的足迹 -->
-           <div class="goods-collect">
+          <div class="goods-collect">
             <div class="collect-title">我的足迹</div>
             <div class="collect-content text-center">
               <img src="./img/center_7.png" alt="">
@@ -248,6 +241,63 @@
         </div>
       </div>
     </div>
+    <!-- 个人资料 -->
+    <div class="update-info">
+      <div class="information">
+        <p class="info-title">基本资料</p>
+        <div class="info-head clearfix">
+          <div class="info-avatar">
+            <img src="../../img/about_team_1.jpg" />
+            <span class="avatar-editor"><a class="editor-txt" @click="messageBox">编辑头像</a></span>
+          </div>
+          <div class="info-describ">
+            <div class="info-nickname">{{nickName}}</div>
+            <div class="info-complete">
+              资料完整度：
+              <span class="complete-percent text-center"><span class="percent">30%</span></span>
+            </div>
+          </div>
+        </div>
+        <el-form :model="infoForm" :rules="rules" ref="infoForm" label-width="100px" class="demo-ruleForm">
+          <el-form-item class="info-item name" label="昵称:" prop="nickname">
+            <el-input type="text" v-model="infoForm.nickname" ref="inputname"></el-input>
+          </el-form-item>
+          <el-form-item class="info-item phone" label="移动电话:" prop="tel">
+            <el-input type="num" v-model="infoForm.tel" ref="inputtel"></el-input>
+          </el-form-item>
+          <el-form-item class="info-item" label="邮箱:" prop="email">
+            <el-input disabled v-model="infoForm.email"></el-input>
+          </el-form-item>
+        </el-form>
+      <div class="text-center">
+        <el-button>重置</el-button>
+        <el-button type="primary" @click="submit">保存</el-button>
+      </div>
+      </div>
+    </div>
+    <!-- 修改头像弹出框 -->
+    <div class="custom-pic">
+      <div class="upload-box">
+        <p>自定义头像</p>
+        <el-upload
+          ref="upload"
+          :action="'http://192.168.97.241:3000/upload'"
+          list-type="picture-card"
+          :on-preview="handlePictureCardPreview"
+          :on-success="handleAvatarSuccess"
+          :on-remove="handleRemove"
+          :auto-upload="false"
+          :before-upload="beforeAvatarUpload"
+          >
+          <i class="el-icon-plus"></i>
+        </el-upload>
+        <el-dialog :visible.sync="dialogVisible">
+          <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
+        <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+      </div>
+    </div>
+    <!-- 底部 -->
     <div>
       <Bottom></Bottom>
     </div>
@@ -256,10 +306,26 @@
 
 <script>
 import Bottom from '../public/bottom.vue'
+import axios from 'axios'
 export default {
   data () {
     return {
-      nickName: ''
+      nickName: '',
+      isShow: false,
+      dialogVisible: false,
+      dialogImageUrl: '',
+      imageUrl: '',
+      infoForm: {},
+      rules: {
+        nickname: [
+          {
+            required: true, message: '请输入您的昵称', trigger: 'blur'
+          },
+          {
+            min: 4, max: 20, message: '长度在4到20个字符之间', trigger: 'blur'
+          }
+        ]
+      }
     }
   },
   components: {
@@ -288,11 +354,13 @@ export default {
   },
   methods: {
     toCenter () {
+      // 判断是否能进入个人中心
       let token = window.localStorage.getItem('token')
       let info = JSON.parse(window.localStorage.getItem('info'))
       if (token) {
         let nickName = info.nickname
         let email = info.email
+        // this.email = email
         if (nickName !== null && nickName !== '') {
           this.nickName = nickName
         } else {
@@ -301,6 +369,7 @@ export default {
       }
     },
     logOut () {
+      // 退出登录
       this.$confirm('您将退出登录，是否继续?', '提示', {
         confirmButtonText: '退出',
         cancelButtonText: '取消',
@@ -315,10 +384,74 @@ export default {
           message: '网络登录异常，请稍后再试！'
         })
       })
+    },
+    handleClose (done) {
+      // 关闭修改头像的弹窗
+      this.$confirm('确认取消?').then(_ => {
+        done()
+      }).catch(_ => {})
+    },
+    submit () {
+      // 修改资料保存触发该方法
+      axios({
+        url: 'api/usercenter',
+        method: 'get',
+        params: {
+          nickname: this.infoForm.nickname,
+          tel: this.infoForm.tel,
+          headpic: this.infoForm.headpic,
+          email: this.infoForm.email
+        }
+      }).then((res) => {
+        if (res.data.status === 200) {
+          this.infoForm = res.data.data
+          window.localStorage.setItem('info', JSON.stringify(this.infoForm))
+          // 刷新本页面
+          this.$router.go(0)
+        }
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    handleRemove (file, fileList) {
+      console.log(file, fileList)
+    },
+    handlePictureCardPreview (file) {
+      this.dialogImageUrl = file.url
+      this.dialogVisible = true
+    },
+    beforeAvatarUpload (file) {
+      console.log(file)
+      const isJPG = file.type === 'image/jpeg'
+      const isLt2M = file.size / 1024 / 1024 < 2
+
+      if (!isJPG) {
+        this.$message.error('上传头像图片只能是 JPG 格式!')
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!')
+      }
+      return isJPG && isLt2M
+    },
+    handleAvatarSuccess (res, file) {
+      // 上传成功
+      console.log(456789123)
+      this.imageUrl = URL.createObjectURL(file.raw)
+      console.log(this.imageUrl)
+    },
+    messageBox () {
+      this.isShow = !this.isShow
+      console.log(this.isShow)
+    },
+    submitUpload () {
+      // 手动上传头像
+      this.$refs.upload.submit()
     }
   },
   mounted () {
     this.toCenter()
+    let infomation = JSON.parse(window.localStorage.getItem('info'))
+    this.infoForm = infomation
   }
 }
 </script>
