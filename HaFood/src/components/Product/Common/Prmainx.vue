@@ -152,7 +152,7 @@ export default {
         line-height: 26px;
       }
       li:nth-child(4){
-        a{
+        .add-cart{
           display: inline-block;
           margin: 35px 30px 0 0;
           height: 50px;
