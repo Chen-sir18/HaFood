@@ -49,22 +49,22 @@ export default {
     })
   },
   methods: {
-    // æ·»åŠ åˆ°è´­ç‰©è½¦
+    // Ìí¼Óµ½¹ºÎï³µ
     addtocar: function (e) {
-      // åˆ¤æ–­æ˜¯å¦ç™»å½•
+      // ÅĞ¶ÏÊÇ·ñµÇÂ¼
       let token = window.localStorage.getItem('token')
       let info = JSON.parse(window.localStorage.getItem('info'))
-      // å¦‚æœç™»å½•
+      // Èç¹ûµÇÂ¼
       if (token && info) {
-        // è·å–userid
+        // »ñÈ¡userid
         let userid = parseInt(info.id)
-        // è·å–ç‚¹å‡»å•†å“çš„id
+        // »ñÈ¡µã»÷ÉÌÆ·µÄid
         let ingredientsid = parseInt(e.target.getAttribute('ingredientsid'))
-        // å°†idæ‹¿åˆ°å·²å­˜åœ¨è´­ç‰©è½¦å•†å“çš„idä½œæ¯”å¯¹
+        // ½«idÄÃµ½ÒÑ´æÔÚ¹ºÎï³µÉÌÆ·µÄid×÷±È¶Ô
         let shopcargoods = this.$store.state.shopcargoods
         let have = false
         let goodscount = 0
-        // åˆ¤æ–­ç‚¹å‡»çš„å•†å“æ˜¯å¦å·²ç»åœ¨è´­ç‰©è½¦ä¸­å­˜åœ¨
+        // ÅĞ¶Ïµã»÷µÄÉÌÆ·ÊÇ·ñÒÑ¾­ÔÚ¹ºÎï³µÖĞ´æÔÚ
         shopcargoods.forEach((item) => {
           if (item.ingredientsid === ingredientsid) {
             goodscount = item.goodscount
@@ -72,7 +72,7 @@ export default {
             have = true
           }
         })
-        //  å¦‚æœå­˜åœ¨ï¼Œä¿®æ”¹è´­ç‰©è½¦çš„å†…å®¹
+        //  Èç¹û´æÔÚ£¬ĞŞ¸Ä¹ºÎï³µµÄÄÚÈİ
         if (have) {
           goodscount++
         } else {
@@ -90,12 +90,12 @@ export default {
          }
          shopcargoods.push(newshopcargoods)
         }
-        // æ›´æ–°vuexä¿å­˜çš„æ•°æ®
+        // ¸üĞÂvuex±£´æµÄÊı¾İ
         this.$store.commit({
           type: 'changeshopcargoods',
           shopcargoods: shopcargoods
         })
-        // è¯·æ±‚ä¿®æ”¹è´­ç‰©è½¦æ•°æ®åº“
+        // ÇëÇóĞŞ¸Ä¹ºÎï³µÊı¾İ¿â
         axios({
           method: 'get',
           url: 'api/addshopcar',

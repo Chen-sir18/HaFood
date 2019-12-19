@@ -5,12 +5,12 @@
         <section class="h-top-imgbox">
           <div class="h-top-container">
             <div class="h-inner-box">
-              <h3 class="h-inner-title">Product ^_^</h3>
+              <h3 class="h-inner-title">{{topName}}</h3>
             </div>
             <nav class="h-nav-outer">
               <ul class="h-nav-inner">
                 <li class="h-nav-text">Home</li>
-                <li class="h-nav-righttext">Production ~_~</li>
+                <li class="h-nav-righttext">{{topName}}</li>
               </ul>
             </nav>
           </div>
@@ -25,7 +25,22 @@
 
 <script>
 export default {
-
+  data () {
+    return {
+      topName: ''
+    }
+  },
+  mounted () {
+    let fillname = this.$route.path
+    // 删除(/)
+    let aa = fillname.split('/')
+    // 将两个字符串连接起来
+    let newName = aa.join('')
+    // 字符串方法 replace(a, b) 用b替换a
+    let resultName = newName.replace(/[t]/, 't ')
+    console.log(resultName)
+    this.topName = resultName
+  }
 }
 </script>
 

@@ -203,17 +203,18 @@
     background: #f0e0aa;
     margin: 12px 0 92px 0;
     position: relative;
-    // &::before{
-    //     content: "";
-    //     position: absolute;
-    //     width: 260px;
-    //     height: 260px;
-    //     top: -90px;
-    //     right: -210px;
-    //     background: #fff;
-    //     border-radius: 50%;
-    //     border: 75px solid #eda52c;
-    // }
+    overflow: hidden;
+    &::before{
+        content: "";
+        position: absolute;
+        width: 260px;
+        height: 260px;
+        top: 50px;
+        right: -210px;
+        background: #fff;
+        border-radius: 50%;
+        border: 70px solid #eda52c;
+    }
     .fresh-content-box{
         margin: 0 30px;
         .fresh-content{
@@ -406,6 +407,13 @@
             font-size: 134px;
         }
     }
+    // Fresh Cakes Sale Off开始
+    .fresh-box{
+        &::before{
+            top: 6px;
+            border: 50px solid #eda52c;
+        }
+    }
 }
 @media only screen and (min-width:768px) and (max-width:992px){
     .homeThird{
@@ -439,6 +447,10 @@
     // Fresh Cakes Sale Off开始
     .fresh-box{
         padding:92px 0;
+        &::before{
+            top: 19px;
+            border: 50px solid #eda52c;
+        }
         .fresh-content-box{
             .fresh-content{
                 .fresh-left{
