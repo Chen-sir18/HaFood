@@ -2,7 +2,7 @@
   <div>
     <div class="x-pr-boyx" v-for="(item,index) in product" :key="index">
       <ul>
-        <img :src='"http://192.168.97.241:3000/"+item.picstr'/>
+        <img :src='"http://192.168.97.241:3000/"+item.picstr' v-if="!(item.picstr === null)"/>
       </ul>
       <ul>
         <li>
@@ -44,31 +44,40 @@ export default {
     axios({
       method: 'get',
       url: 'api/ingredients'
-    }).then((res) => (this.product = res.data.data))
+    }).then((res) => {
+       if (res.data.status === 200) {
+        let foodData = res.data.data
+        this.product = foodData
+      } else {
+        return false
+      }
+    })
    }
 }
 </script>
 
 <style scoped lang="less">
   .x-pr-boyx{
-    height: 285px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     ul{
-      height: 255px;
       box-sizing: border-box;
       margin: 30px 0 0;
     }
     ul:nth-child(1){
-      padding: 0 15px;
+      flex: 0 0 25%;
+      max-width: 25%;
       img{
-        height: 255px;
+        width: 100%;
+        max-width: 100%;
+        vertical-align: middle;
       }
     }
     ul:nth-child(2){
+      flex: 0 0 50%;
+      max-width: 50%;
       padding: 0 15px;
-      width: 540px;
-      height: 255px;
       li:nth-child(1){
         padding: 0 0 23px;
       }
@@ -80,6 +89,7 @@ export default {
         padding: 0 35px 0 0;
         font-size: 14px;
         color: #555555;
+        line-height: 26px;
       }
       li:nth-child(4){
         a{
@@ -108,10 +118,37 @@ export default {
       }
     }
   }
-  @media (max-width:992px){
-    .x-pr-main{
-      margin-right: 0px;
+@media only screen and (max-width:768px){
+  .x-pr-boyx{
+    ul{
+      box-sizing: border-box;
+      margin: 30px 0 0;
+    }
+    ul:nth-child(1){
+      flex: 0 0 75%;
+      max-width: 75%;
+    }
+    ul:nth-child(2){
+      flex: 0 0 75%;
+      max-width: 75%;
     }
   }
-
+}
+@media only screen and (max-width:572px){
+  .x-pr-boyx{
+    padding: 0 15px;
+    ul{
+      box-sizing: border-box;
+      margin: 30px 0 0;
+    }
+    ul:nth-child(1){
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    ul:nth-child(2){
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+}
 </style>

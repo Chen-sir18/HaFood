@@ -19,7 +19,7 @@
                         <el-form-item class="table-item" prop="person">
                             <el-input placeholder="person" v-model="reserveForm.person"></el-input>
                         </el-form-item>
-                        <el-form-item class="table-item table-item-textarea">
+                        <el-form-item class="table-item table-item-textarea" prop="decript">
                             <el-input placeholder="Special Notes" type="textarea" v-model="reserveForm.decript"></el-input>
                         </el-form-item>
                       </el-form>
@@ -69,6 +69,8 @@ export default {
                 let token = window.localStorage.getItem('token')
                 // console.log(token)
                 let info = JSON.parse(window.localStorage.getItem('info'))
+                let email = info.email
+                let userid = info.id
                 console.log(info)
                 // 表单验证成功
                 if (valid && token && info) {
@@ -76,10 +78,13 @@ export default {
                         url: 'http://192.168.97.241:3000/booktable',
                         method: 'get',
                         params: {
-                            name: this.reserveForm.name,
-                            date: this.reserveForm.date,
-                            time: this.reserveForm.time,
-                            person: this.reserveForm.person
+                            consumer: this.reserveForm.name,
+                            bookday: this.reserveForm.date,
+                            booktime: this.reserveForm.time,
+                            personcount: this.reserveForm.person,
+                            node: this.reserveForm.decript,
+                            email: email,
+                            userid: userid
                         }
                     }).then((res) => {
                         console.log(res.data)
@@ -102,6 +107,7 @@ export default {
                     })
                 }
             })
+                this.$refs.reserveRef.resetFields()
         }
     }
 }
