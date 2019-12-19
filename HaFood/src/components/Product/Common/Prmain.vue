@@ -1,137 +1,143 @@
 <template>
-  <div class="promain clearfix">
-    <div class="x-pr-main">
-      <div class="x-pr-mainboy" v-for="(item,index) in message" :key="index">
-        <ul class="x-pr-mainboy-ul">
-          <img :src="item.imgUrl"/>
-          <li>
-            <b>{{item.title}}</b>
-            <span>{{item.price}}</span>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <div class="trending-content-box">
+    <ul class="trending-lists">
+      <li :key="index" class="list" v-for="(item,index) in lists" v-if="!(item.picstr === undefined)">
+            <div class="list-box">
+                <img :src='"http://192.168.97.241:3000/" + item.picstr' alt="" v-if="!(item.picstr === null)">
+                <a>{{item.goodsname}}</a>
+                <p>{{item.price}}</p>
+            </div>
+        </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  data: function () {
-    return {
-      message: [
-        {
-          imgUrl: 'api/product_1.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_4.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_2.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_6.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_3.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_7.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_2.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_5.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_6.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_4.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_3.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_2.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_1.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_6.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_4.jpg',
-          title: 'Grape',
-          price: '$135.00'
-        },
-        {
-          imgUrl: 'api/product_5.jpg',
-          title: 'Grape',
-          price: '$135.00'
+    data () {
+        return {
+            lists: {
+                imgUrl: '',
+                title: '',
+                price: ''
+            }
         }
-      ]
-    }
+    },
+    mounted () {
+    axios({
+      method: 'get',
+      url: 'http://192.168.97.241:3000/ingredients'
+    }).then((res) => {
+      console.log(res.data)
+      if (res.data.status === 200) {
+        let foodData = res.data.data
+        this.lists = foodData
+      } else {
+        return false
+      }
+    })
   }
 }
+
 </script>
 
 <style lang="less">
-  .x-pr-main{
-    width: 1144px;
+  .trending-content-box{
+    width: 95%;
     margin: 0 auto;
-    .x-pr-mainboy{
-      height: 360px;
-      width: 286px;
-      float: left;
-      img{
-        height: 256px;
-        width: 256px;
-        box-sizing: border-box;
-      }
-      ul{
-        margin: 30px 0 0;
-        padding: 0 15px;
-        b{
-          display: block;
-          font-size: 18px;
-          padding: 25px 0 5px;
-        }
-        span{
-          font-size: 16px;
-          color: #eda52c;
-          font-weight: bolder;
+    .trending-lists{
+      display: flex;
+      flex-wrap: wrap;
+      .list{
+        padding:0 15px;
+        flex: 0 0 25%;
+        max-width: 25%;
+        .list-box{
+          margin-top: 30px;
+          img{
+            width: 100%;
+            max-width: 100%;
+            vertical-align: middle;
+          }
+          a{
+            display: inline-block;
+            font-weight: 600;
+            font-size: 16px;
+            color: #222222;
+            padding-top: 25px;
+            padding-bottom: 5px;
+          }
+          p{
+            color: #eda52c;
+          }
         }
       }
     }
   }
+@media only screen and (min-width:992px) {
+  .trending-content-box{
+    .trending-lists{
+      .list{
+        .list-box{
+          img{
+            width: 255px;
+            height: 255px;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width:992px){
+   .trending-content-box{
+    width: 85%;
+    .trending-lists{
+      .list{
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+        .list-box{
+          img{
+            width: 210px;
+            height: 210px;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width:768px){
+  .trending-content-box{
+      .trending-lists{
+          .list{
+              flex:0 0 50%;
+              max-width: 50%;
+              .list-box{
+                img{
+                  width: 240px;
+                  height: 240px;
+                }
+              }
+          }
+      }
+  }
+}
+@media only screen and (max-width:572px){
+  .trending-content-box{
+      .trending-lists{
+          .list{
+              flex:0 0 100%;
+              max-width: 100%;
+              .list-box{
+                img{
+                  width: 525px;
+                  height: 525px;
+                  min-width: 525px;
+                  min-height: 525px;
+                }
+              }
+          }
+      }
+  }
+}
 </style>

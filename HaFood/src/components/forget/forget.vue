@@ -12,23 +12,24 @@
           <div class="form-box">
               <el-form ref="forgetForm" :rules="forgetRules" class="forget" :model="forgetForm">
                   <el-form-item prop="email">
-                      <el-input v-model="forgetForm.email" id="email" placeholder="请输入邮箱"></el-input>
+                      <el-input v-model="forgetForm.email" id="email" placeholder="Email"></el-input>
                   </el-form-item>
                   <el-form-item class="code-box" prop="code">
-                      <el-input v-model="forgetForm.code" class="code-input" placeholder="请输入验证码"></el-input>
+                      <el-input v-model="forgetForm.code" class="code-input" placeholder="ValiCode"></el-input>
                       <div class="code-btn">
-                          <a @click="getCode">获取验证码</a>
+                          <a @click="getCode" v-show="show">Get Code</a>
+                          <a v-show="!show">{{count}} s</a>
                       </div>
                   </el-form-item>
                   <el-form-item prop="password">
-                      <el-input type="password" v-model="forgetForm.password" placeholder="请输入密码"></el-input>
+                      <el-input type="password" v-model="forgetForm.password" placeholder="Password"></el-input>
                   </el-form-item>
                   <el-form-item prop="repassword">
-                      <el-input type="password" v-model="forgetForm.repassword" placeholder="请确认密码"></el-input>
+                      <el-input type="password" v-model="forgetForm.repassword" placeholder="RePassword"></el-input>
                   </el-form-item>
               </el-form>
              <div class="confirm-btn">
-                <a @click="getSubmit">确定</a>
+                <a @click="getSubmit">Submit</a>
             </div>
           </div>
       </div>
@@ -91,7 +92,20 @@ export default {
             let email = document.getElementById('email').value
             console.log(email)
                 if (this.forgetForm.email && email) {
-                    // console.log(111)
+                    let timeCount = 60
+                    if (!this.timer) {
+                        this.count = timeCount
+                        this.show = false
+                        this.timer = setInterval(() => {
+                            if (this.count > 0 && this.count <= timeCount) {
+                                this.count--
+                            } else {
+                                this.show = true
+                                clearInterval(this.timer)
+                                this.timer = null
+                            }
+                        }, 1000)
+                    }
                     axios({
                         url: 'http://192.168.97.241:3000/forgetcode',
                         method: 'get',
@@ -117,7 +131,6 @@ export default {
                             email: this.forgetForm.email,
                             valicode: this.forgetForm.code,
                             psd: md5(this.forgetForm.password)
-                            // psd: md5(this.password)
                         }
                     }).then((res) => {
                         console.log(res)
@@ -125,7 +138,10 @@ export default {
                             message: '修改密码成功',
                             type: 'success',
                             showClose: true,
-                            duration: 2000
+                            duration: 2000,
+                            onClose: () => {
+                                this.$router.push('/login')
+                            }
                         })
                     })
                 }
