@@ -35,7 +35,7 @@ export default {
     let aa = fillname.split('/')
     let newName = aa.join('')
     let resultName = newName.replace(/[g]/, 'g ')
-    console.log(resultName)
+    // console.log(resultName)
     this.routername = resultName
   }
 }

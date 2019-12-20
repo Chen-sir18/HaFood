@@ -5,7 +5,7 @@
       <div :data="tabList" class="h-bloggrid-outer">
         <div :key="item.id" v-for="item in tabList" class="h-bloggrid-item">
           <div class="h-bgid-inner">
-            <img :src='"http://192.168.97.241:3000/" + item.picstr' />
+            <img :src='"api/" + item.picstr' />
             <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
             <a>
               <h5 class="bloggrid-tips">{{item.reminder}}</h5>
@@ -58,7 +58,7 @@
           </div>
         </div> -->
       </div>
-      <!-- ·­Ò³ -->
+      <!-- change page -->
       <div class="h-pagination">
         <el-pagination
           @size-change="handleSizeChange"
@@ -91,9 +91,9 @@ export default {
   data () {
     return {
       tableNme: '',
-      currentPage: 1, // ³õÊ¼Ò³
-      pagesize: 6, // Ã¿Ò³ÏÔÊ¾ÌõÊý
-      pageData: [] // Ò³ÃæÊý¾ÝÊý×é¶ÔÏó
+      currentPage: 1, // default page = 1
+      pagesize: 6, // total pages
+      pageData: [] // page data store
     }
   },
   created () {
@@ -101,7 +101,7 @@ export default {
   },
   computed: {
     tabList () {
-      // slice(aa, mm) Êý×é·½·¨ Ñ¡È¡Êý×éÏÂ±ê´Óaa¿ªÊ¼ÍùºóµÄmm¸öÊý¾Ý
+      // slice(aa, mm) æ•°ç»„æ–¹æ³• é€‰å–æ•°ç»„ä¸‹æ ‡ä»Žaaå¼€å§‹å¾€åŽçš„mmä¸ªæ•°æ®
       var list = this.pageData.slice((this.currentPage - 1) * this.pagesize, this.currentPage * this.pagesize)
       return list
     }
@@ -110,22 +110,22 @@ export default {
 
   },
   methods: {
-    // ³õÊ¼Ò³currentPage¡¢³õÊ¼Ã¿Ò³Êý¾ÝÊýpagesizeºÍÊý¾Ýdata
+    // åˆå§‹é¡µcurrentPageã€åˆå§‹æ¯é¡µæ•°æ®æ•°pagesizeå’Œæ•°æ®data
     handleSizeChange (size) {
-      console.log(size)
+      // console.log(size)
       this.pagesize = size
-      console.log(this.pagesize)
+      // console.log(this.pagesize)
     },
     handleCurrentChange (currentPage) {
       this.currentPage = currentPage
-      console.log(this.currentPage) // µã»÷µÚ¼¸Ò³
+      // console.log(this.currentPage) // ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½Ò³
     },
     getList () {
       axios({
         url: 'api/bloglists',
         method: 'get',
         params: {
-          // ´Ë´¦²»ÓÃÉÏ´«²ÎÊý ´ÓÊý¾Ý¿â»ñÈ¡
+          // æ­¤å¤„ä¸ç”¨ä¸Šä¼ å‚æ•° ä»Žæ•°æ®åº“èŽ·å–
         }
       }).then((res) => {
         if (res.status === 200) {

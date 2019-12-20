@@ -188,7 +188,7 @@
         <div class="h-row-outer">
           <div :key="index" v-for="(item, index) in relatedData" class="h-row-item">
             <div class="h-row-list">
-              <img v-if="!(item.headpic === undefined)" :src='"http://192.168.97.241:3000/" + item.picstr'/>
+              <img v-if="!(item.headpic === undefined)" :src='"api/" + item.picstr'/>
               <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
               <a class="h-row-a">
                 <h5 class="title">{{item.reminder}}</h5>
@@ -321,7 +321,7 @@ export default {
           let userinfo = JSON.parse(window.localStorage.getItem('info'))
           let token = window.localStorage.getItem('token')
           if (userinfo && token) {
-            console.log(valid, userinfo.id)
+            // console.log(valid, userinfo.id)
             axios({
               url: 'api/incomment',
               method: 'get',
@@ -333,7 +333,7 @@ export default {
                 userid: userinfo.id
               }
             }).then((res) => {
-              console.log(res)
+              // console.log(res)
               if (res.data.status === 200) {
                 this.$message({
                   message: '发表评论成功',

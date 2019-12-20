@@ -2,14 +2,14 @@
   <div class="x-pr-paging">
     <div class="x-pr-pag">
       <ul>
-        <a v-for="(item,index) in message.listpag" :key="index">{{item}}</a>
+        <a v-for="(item, index) in message.listpag" :key="index">{{item}}</a>
       </ul>
       <ul>
         <li>
-          <span class="icon iconfont" @click="goback()">&#xe60d;</span>
+          <span class="icon iconfont">&#xe60d;</span>
         </li>
         <li>
-          <span class="icon iconfont" @click="goto()">&#xe607;</span>
+          <span class="icon iconfont">&#xe607;</span>
         </li>
       </ul>
     </div>
@@ -26,12 +26,12 @@ export default {
     }
   },
   methods: {
-    goback () {
-      this.$router.go(-1)
-    },
-    goto () {
-      this.$router.go(+1)
-    }
+    // goback () {
+    //   this.$router.go(-1)
+    // },
+    // goto () {
+    //   this.$router.go(+1)
+    // }
   }
 }
 </script>

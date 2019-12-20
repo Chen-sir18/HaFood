@@ -48,10 +48,10 @@ export default {
   mounted () {
     // 将商品信息从vuex里拿出来并渲染到页面上
     let commodityData = this.$store.state.ordergoods.ordergoodsdata
-    console.log(commodityData)
+    // console.log(commodityData)
     this.payData = commodityData
     this.subPrice = this.$store.state.ordergoods.checkedmoney
-    console.log(this.subPrice)
+    // console.log(this.subPrice)
     // 从vuex里拿数据
     this.detailaddress = this.$store.state.checkedAddress.detailaddress
     this.receiveName = this.$store.state.checkedAddress.receiveName

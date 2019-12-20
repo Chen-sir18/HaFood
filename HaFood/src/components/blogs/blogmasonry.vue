@@ -15,7 +15,7 @@
           <div :key="item.id" v-for="item in blogData1" class="h-blogmary-item animate-item">
             <div class="h-bgid-inner">
               <!-- <img :src="item.img" /> -->
-              <img :src='"http://192.168.97.241:3000/" + item.picstr' />
+              <img :src='"api/" + item.picstr' />
               <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
               <a>
                 <h5 class="bloggrid-tips">{{item.goodsname}}</h5>
@@ -175,7 +175,7 @@ export default {
         url: 'api/cakes',
         method: 'get',
         params: {
-          // ´Ë´¦²»´«²Î
+          // æ­¤å¤„ä¸ä¼ å‚
         }
       }).then((res) => {
         // console.log(res.data)
@@ -193,10 +193,10 @@ export default {
         url: 'api/foodclass',
         method: 'get',
         params: {
-          // ´Ë´¦²»´«²Î
+          // æ­¤å¤„ä¸ä¼ å‚
         }
       }).then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         if (res.status === 200) {
           this.blogData1 = res.data.data
         } else {
@@ -211,10 +211,10 @@ export default {
         url: 'api/popular',
         method: 'get',
         params: {
-          // ´Ë´¦²»´«²Î
+          // æ­¤å¤„ä¸ä¼ å‚
         }
       }).then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         if (res.status === 200) {
           this.blogData1 = res.data.data
         } else {

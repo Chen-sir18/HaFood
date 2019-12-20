@@ -89,7 +89,7 @@
             <h4 class="h-post-title">Recent Posts</h4>
             <div :key="item.id" v-for="item in recentData" class="h-posd-item">
               <div class="h-posd-thumb">
-                <img :src='"http://192.168.97.241:3000/" + item.picstr' />
+                <img :src='"api/" + item.picstr' />
               </div>
               <div class="h-posd-content">
                 <a>
@@ -262,7 +262,7 @@ export default {
   },
   methods: {
     handleNodeClick (data) {
-      console.log(data)
+      // console.log(data)
     }
   },
   components: {

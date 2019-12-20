@@ -2,7 +2,7 @@
   <div>
     <div class="x-pr-boyx" v-for="(item,index) in product" :key="index">
       <ul>
-       <img :src='"api/"+item.picstr'/>
+       <img v-if="!(item.picstr === undefined)" :src='"api/"+item.picstr' />
       </ul>
       <ul>
         <li>
@@ -49,22 +49,22 @@ export default {
     })
   },
   methods: {
-    // Ìí¼Óµ½¹ºÎï³µ
+    // æ·»åŠ åˆ°è´­ç‰©è½¦
     addtocar: function (e) {
-      // ÅĞ¶ÏÊÇ·ñµÇÂ¼
+      // åˆ¤æ–­æ˜¯å¦ç™»å½•
       let token = window.localStorage.getItem('token')
       let info = JSON.parse(window.localStorage.getItem('info'))
-      // Èç¹ûµÇÂ¼
+      // å¦‚æœç™»å½•
       if (token && info) {
-        // »ñÈ¡userid
+        // è·å–userid
         let userid = parseInt(info.id)
-        // »ñÈ¡µã»÷ÉÌÆ·µÄid
+        // è·å–ç‚¹å‡»å•†å“çš„id
         let ingredientsid = parseInt(e.target.getAttribute('ingredientsid'))
-        // ½«idÄÃµ½ÒÑ´æÔÚ¹ºÎï³µÉÌÆ·µÄid×÷±È¶Ô
+        // å°†idæ‹¿åˆ°å·²å­˜åœ¨è´­ç‰©è½¦å•†å“çš„idä½œæ¯”å¯¹
         let shopcargoods = this.$store.state.shopcargoods
         let have = false
         let goodscount = 0
-        // ÅĞ¶Ïµã»÷µÄÉÌÆ·ÊÇ·ñÒÑ¾­ÔÚ¹ºÎï³µÖĞ´æÔÚ
+        // åˆ¤æ–­ç‚¹å‡»çš„å•†å“æ˜¯å¦å·²ç»åœ¨è´­ç‰©è½¦ä¸­å­˜åœ¨
         shopcargoods.forEach((item) => {
           if (item.ingredientsid === ingredientsid) {
             goodscount = item.goodscount
@@ -72,7 +72,7 @@ export default {
             have = true
           }
         })
-        //  Èç¹û´æÔÚ£¬ĞŞ¸Ä¹ºÎï³µµÄÄÚÈİ
+        //  å¦‚æœå­˜åœ¨ï¼Œä¿®æ”¹è´­ç‰©è½¦çš„å†…å®¹
         if (have) {
           goodscount++
         } else {
@@ -90,12 +90,12 @@ export default {
          }
          shopcargoods.push(newshopcargoods)
         }
-        // ¸üĞÂvuex±£´æµÄÊı¾İ
+        // æ›´æ–°vuexä¿å­˜çš„æ•°æ®
         this.$store.commit({
           type: 'changeshopcargoods',
           shopcargoods: shopcargoods
         })
-        // ÇëÇóĞŞ¸Ä¹ºÎï³µÊı¾İ¿â
+        // è¯·æ±‚ä¿®æ”¹è´­ç‰©è½¦æ•°æ®åº“
         axios({
           method: 'get',
           url: 'api/addshopcar',

@@ -38,7 +38,7 @@ export default {
     let newName = aa.join('')
     // 字符串方法 replace(a, b) 用b替换a
     let resultName = newName.replace(/[t]/, 't ')
-    console.log(resultName)
+    // console.log(resultName)
     this.topName = resultName
   }
 }

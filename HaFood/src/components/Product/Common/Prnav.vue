@@ -1,62 +1,5 @@
 <template>
   <div>
-    <!-- <div class="x-pr-list">
-      <ul class="product-gird-tab">
-        <b>105 products</b>
-        <router-link to="/ProductGrid">
-         <span class="x-pr-list-sb">
-            <i class="icon iconfont">&#xe60a;</i>
-         </span>
-        </router-link>
-        <router-link to="/ProductList">
-          <span class="x-pr-list-sp">
-            <i class="icon iconfont">&#xe7c8;</i>
-          </span>
-        </router-link>
-      </ul>
-      <ul>
-        <li>
-          <span @click="shows">
-            <a>Sort by popularity</a>
-            <strong class="icon iconfont">&#xe60c;</strong>
-          </span>
-          <ol v-if="show">
-            <li class="product-sort">
-              <a>Sort by popularity</a>
-            </li>
-            <li class="product-sort">
-              <a>Sort by popularity</a>
-            </li>
-            <li class="product-sort">
-              <a>Sort by popularity</a>
-            </li>
-            <li class="product-sort">
-              <a>Sort by popularity</a>
-            </li>
-          </ol>
-        </li>
-        <li>
-          <span @click="hides">
-            <a>Select category</a>
-            <strong class="icon iconfont">&#xe60c;</strong>
-          </span>
-          <ol v-if="hide">
-            <li class="product-sort">
-              <a>Select category</a>
-            </li>
-            <li class="product-sort">
-              <a>Select category</a>
-            </li>
-            <li class="product-sort">
-              <a>Select category</a>
-            </li>
-            <li class="product-sort">
-              <a>Select category</a>
-            </li>
-          </ol>
-        </li>
-      </ul>
-    </div> -->
     <div class="product-nav-outer">
       <div class="product-icon-list clearfix">
         <div class="product-icon-left">
@@ -64,10 +7,10 @@
             <span>105 products</span>
             <ul class="product-nav-pills">
               <li class="nav-item">
-                <a class="icon iconfont icon-liebiao1 active"></a>
+                <a @click="prouductList" class="icon iconfont icon-liebiao1 active"></a>
               </li>
               <li class="nav-item">
-                <a class="icon iconfont icon-333 "></a>
+                <a @click="productGrid" class="icon iconfont icon-333 "></a>
               </li>
             </ul>
           </div>
@@ -117,11 +60,29 @@ export default {
     }
   },
   methods: {
-    shows: function () {
-      this.show = !this.show
+    // shows: function () {
+    //   this.show = !this.show
+    // },
+    // hides: function () {
+    //   this.hide = !this.hide
+    // }
+    prouductList () {
+      let pathRoute = this.$route.path
+      // console.log(pathRoute)
+      if (pathRoute === '/ProductGrid') {
+        this.$router.push('/ProductList')
+      } else {
+        return false
+      }
     },
-    hides: function () {
-      this.hide = !this.hide
+    productGrid () {
+      let pathRoute = this.$route.path
+      // console.log(pathRoute)
+      if (pathRoute === '/ProductList') {
+        this.$router.push('/ProductGrid')
+      } else {
+        return false
+      }
     }
   }
 }

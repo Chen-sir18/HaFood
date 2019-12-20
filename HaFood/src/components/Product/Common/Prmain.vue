@@ -1,9 +1,9 @@
 <template>
   <div class="trending-content-box">
     <ul class="trending-lists">
-      <li :key="index" class="list" v-for="(item,index) in lists" v-if="!(item.picstr === undefined)">
+      <li :key="index" class="list" v-for="(item,index) in lists" >
             <div class="list-box">
-                <img :src='"api/" + item.picstr'  v-if="!(item.picstr === null)">
+                <img v-if="!(item.picstr === undefined)" :src='"api/" + item.picstr' alt="">
                 <a>{{item.goodsname}}</a>
                 <p>{{item.price}}</p>
             </div>
@@ -29,6 +29,7 @@ export default {
       method: 'get',
       url: 'api/ingredients'
     }).then((res) => {
+      // console.log(res.data)
       if (res.data.status === 200) {
         let foodData = res.data.data
         this.lists = foodData

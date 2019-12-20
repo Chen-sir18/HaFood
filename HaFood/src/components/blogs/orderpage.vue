@@ -180,7 +180,7 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$store.state)
+    // console.log(this.$store.state)
     let vueData = this.$store.state.ordergoods.ordergoodsdata
     this.orderData = vueData
     this.orderData.total = this.$store.state.ordergoods.checkedmoney
@@ -245,7 +245,7 @@ export default {
       let address = radioData[i].nextElementSibling.innerText
       // 将字符串以空格为间隔分成数组存入变量arr
       let arr = address.split(' ')
-      console.log(arr)
+      // console.log(arr)
       // let phonenumber = arr[2]
       // console.log(phonenumber)
       // substring(address.length - 11) 字符串方法 截取字符串倒数11位字符
