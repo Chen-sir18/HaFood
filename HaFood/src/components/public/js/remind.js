@@ -17,6 +17,6 @@ function remind (remindtext) {
   document.querySelector('body').appendChild(remindelement)
   setTimeout(() => {
     remindelement.style.display = 'none'
-  }, 4000)
+  }, 1000)
 }
 export default remind

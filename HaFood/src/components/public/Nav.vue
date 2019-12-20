@@ -75,7 +75,7 @@
 			</div>
 			<!-- 购物车登录实际内容 -->
 			<div v-if="islogin && shopgoods.length !== 0">
-				<div class="cart-goods-big-box" v-show="this.$store.state.shopcargoods.length >= 0">
+				<div class="cart-goods-big-box" v-show="this.$store.state.shopcargoods.length !== 0">
 					<div class="cart-goods-box"  v-for="(item, index) in this.$store.state.shopcargoods" v-bind:key="index">
 						<div class="goods-img-box">
 							<img class="goods-img" v-if="!(item.picstr === undefined)" :src="'api/'+ item.picstr">
@@ -99,7 +99,7 @@
 				<span>LOGIN UP NOW</span>
 			</div>
 			<!-- 购物车登录却没有内容 -->
-			<div v-if="this.$store.state.shopcargoods.length === 0" class='shopgoods-none'>
+			<div v-if="this.$store.state.shopcargoods.length === 0 && islogin" class='shopgoods-none'>
 				暂无数据
 				<div class="login-button">
 					<span @click="linktoproduct">ADD GOODS</span>
@@ -149,6 +149,9 @@ export default {
 			window.localStorage.removeItem('info')
 			window.localStorage.removeItem('token')
 			this.islogin = false
+			if (this.$route.fullPath !== '/Home1') {
+				this.$router.replace('/Home1')
+			}
 		},
 		// 控制线条
   	line: function (e) {

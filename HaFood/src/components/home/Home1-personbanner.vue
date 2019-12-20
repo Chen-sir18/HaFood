@@ -1,13 +1,15 @@
 <template>
   <div class="t-banner">
     <div class="t-banner-content">
+      <!-- 轮播可见宽度 -->
       <div class="t-banner-box">
+        <!-- 轮播移动盒子 -->
         <ul class="t-banner-sliders clearfix">
-        <!-- 1 -->
+        <!-- 每一个小内容 -->
           <li class="t-banner-item" v-for="(item, index) in newLists" :key="index">
             <div class="info-top clearfix">
               <div class="person-avater">
-                <img :src="'http://192.168.97.241:3000/' + item.headpic" alt="图片资源错误">
+                <img :src="'api/' + item.headpic" alt="图片资源错误">
               </div>
               <div class="person-name">
                 <span class="info-l">{{item.nickname}}</span>
@@ -16,10 +18,9 @@
             </div>
             <div class="info-detail">{{item.content}}</div>
           </li>
-
         </ul>
-        <ul class="btn-group">
-          <li class="btn-item" v-if="a !== (newLists.length - 1)" v-for="(item, a) in newLists" :key="a" @click="isClicked(a)" :class="{on: index === a}"></li>
+        <ul ref="btngroup" @mouseenter="stopinterval" @mouseleave="reinterval" class="btn-group">
+          <li  @click="clickbannerbtn" :class="{'btn-item': true, 'on':index === activebtnindex }"  :clickindex = 'index' v-show="index <= btncount - 1"  v-for="(item, index) in renewLists" :key="index"></li>
         </ul>
       </div>
     </div>
@@ -31,113 +32,152 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      index: 0,
-      timer: null,
       carouselItem: '',
       carouselSlide: '',
       newLists: [
-      ]
+      ],
+      renewLists: [],
+      interval: '',
+      marginleftindex: 0,
+      move: '',
+      btncount: 0,
+      activebtnindex: 0,
+      showcount: 0
     }
   },
   methods: {
-    banner (carouselItem) {
-      // 获取轮播盒子
-      let carouselSlide = document.querySelector('.t-banner-sliders')
-      // 获取所有轮播的项目
-      // console.log(carouselItem.length)
-      this.carouselItem = carouselItem
-      this.carouselSlide = carouselSlide
-       // 获取轮播项目的长度
-      let itemLength = carouselItem.length
-      // 获取轮播盒子的宽度
-      carouselSlide.style.width = parseInt(carouselItem[0].clientWidth) * (this.newLists.length + 2) + 'px'
-      let speed = 2000
-      // 获取轮播盒子的宽度
-      this.timer = setInterval(() => {
-        this.index++
-        if (this.index > itemLength - 2) {
-          this.index = 0
-          speed = 0
-          carouselSlide.style.transition = 'none'
-        } else if (this.index === 0) {
-          speed = 1000
-        } else {
-          speed = 2000
-          carouselSlide.style.transition = 'all 1s'
-        }
-        carouselSlide.style.marginLeft = -parseInt(carouselItem[0].clientWidth) * this.index + 'px'
-      }, speed)
-    },
     moseenter () {
-      clearInterval(this.timer)
+      // clearInterval(this.timer)
     },
     isClicked (index) {
-      this.index = index
-      let carouselSlide = document.querySelector('.t-banner-sliders')
-      let carouselItem = document.querySelectorAll('.t-banner-item')
-      this.carouselItem = carouselItem
-      this.carouselSlide = carouselSlide
-      carouselSlide.style.marginLeft = -parseInt(carouselItem[0].clientWidth) * index + 'px'
+    },
+    // 调整根据不同的屏，调整渲染的长度
+    changenewslist (showcount) {
+      let newLists = this.newLists
+      let newListsafter = newLists.slice(newLists.length - showcount)
+      let newListsbefore = newLists.slice(0, showcount)
+      newLists = newLists.concat(newListsbefore)
+      newLists = newListsafter.concat(newLists)
+      this.newLists = newLists
+    },
+    // 调整轮播内容的宽度
+    changeitemwidth (showcount) {
+      this.carouselSlide = document.querySelector('.t-banner-sliders')
+      this.carouselItem = document.querySelectorAll('.t-banner-item')
+      this.allbtn = document.querySelectorAll('.btn-item')
+      this.carouselItem.forEach(item => {
+        item.style.width = this.carouselSlide.parentNode.clientWidth / showcount + 'px'
+      })
+      this.carouselSlide.style.width = this.carouselItem[0].clientWidth * this.newLists.length + 'px'
+    },
+    // 轮播的初始位置
+    startmarginleft (showcount) {
+      this.marginleftindex = showcount
+      this.carouselSlide.style.marginLeft = -parseInt(this.carouselItem[0].clientWidth) * showcount + 'px'
+    },
+    // 轮播定时器
+    carouseinterval (showcount) {
+      this.showcount = showcount
+      let speed = 10
+      this.interval = setInterval(() => {
+        this.marginleftindex++
+        this.activebtnindex++
+        this.move = setInterval(() => {
+          this.carouselSlide.style.marginLeft = parseInt(this.carouselSlide.style.marginLeft) - speed + 'px'
+          if (parseInt(this.carouselSlide.style.marginLeft) <= -this.marginleftindex * this.carouselItem[0].clientWidth) {
+            clearInterval(this.move)
+          }
+          if (parseInt(this.carouselSlide.style.marginLeft) <= -(this.carouselItem.length - showcount) * this.carouselItem[0].clientWidth) {
+            this.marginleftindex = showcount
+            this.startmarginleft(showcount)
+          }
+        }, 10)
+        if (this.activebtnindex > this.btncount - 1) {
+          this.activebtnindex = 0
+        }
+      }, 3000)
+    },
+    // 按钮的个数
+    changebtncount (showcount) {
+      this.btncount = this.renewLists.length
+    },
+    // 按钮悬停时，关闭定时器
+    stopinterval () {
+      clearInterval(this.interval)
+    },
+    // 按钮移出,重启定时器
+    reinterval () {
+      this.carouseinterval(this.showcount)
+    },
+    // 按钮点击事件
+    clickbannerbtn (e) {
+      let clickindex = parseInt(e.target.getAttribute('clickindex'))
+      // 改变按钮的样式
+      this.activebtnindex = clickindex
+      // 改变轮播的状态
+      this.carouselSlide.style.transition = 'all 0.3s'
+      this.marginleftindex = parseInt(clickindex) + this.showcount
+      this.carouselSlide.style.marginLeft = -this.carouselItem[0].clientWidth * this.marginleftindex + 'px'
+      setTimeout(() => {
+        this.carouselSlide.style.transition = 'none'
+      }, 300)
+    },
+    // 执行轮播的函数
+    carouse () {
+      if (document.body.clientWidth >= 992) {
+        this.changenewslist(2)
+        setTimeout(() => {
+          this.changeitemwidth(2)
+          this.startmarginleft(2)
+          this.carouseinterval(2)
+          this.changebtncount(2)
+        }, 10)
+      } else if (document.body.clientWidth < 992 && document.body.clientWidth >= 767) {
+        this.changenewslist(2)
+        setTimeout(() => {
+          this.changeitemwidth(2)
+          this.startmarginleft(2)
+          this.carouseinterval(2)
+        }, 10)
+      } else if (document.body.clientWidth < 767 && document.body.clientWidth >= 576) {
+        this.changenewslist(1)
+       setTimeout(() => {
+          this.changeitemwidth(1)
+          this.startmarginleft(1)
+          this.carouseinterval(1)
+        }, 10)
+      } else {
+        this.changenewslist(1)
+       setTimeout(() => {
+          this.changeitemwidth(1)
+          this.startmarginleft(1)
+          this.carouseinterval(1)
+        }, 10)
+      }
     }
   },
   mounted () {
-    window.onresize = () => {
-      if (document.body.clientWidth >= 992) {
-        this.carouselItem.forEach(item => {
-          item.style.width = this.carouselSlide.parentNode.clientWidth / 2 + 'px'
-        })
-      } else if (document.body.clientWidth < 992 && document.body.clientWidth >= 767) {
-        this.carouselItem.forEach(item => {
-          item.style.width = this.carouselSlide.parentNode.clientWidth / 2 + 'px'
-        })
-      } else if (document.body.clientWidth < 767 && document.body.clientWidth >= 576) {
-          this.carouselItem.forEach(item => {
-          item.style.width = this.carouselSlide.parentNode.clientWidth / 1 + 'px'
-        })
-      } else {
-        this.carouselItem.forEach(item => {
-          item.style.width = this.carouselSlide.parentNode.clientWidth / 1 + 'px'
-        })
-      }
-    }
     axios({
       method: 'get',
       url: 'api/comments'
     }).then((res) => {
-      if (res.data.status === 200) {
-        let customerLists = res.data.data
-        this.newLists = customerLists
-        setTimeout(() => {
-          this.newLists.forEach((item, index) => {
-            let carouselItem = document.querySelectorAll('.t-banner-item')
-            // console.log(carouselItem)
-            if (index < 2) {
-              let liItem = `
-            <li class="t-banner-item">
-              <div class="info-top clearfix">
-                <div class="person-avater">
-                  <img src="'http://192.168.97.241:3000/' + {item.headpic}" alt="图片资源错误">
-                </div>
-                <div class="person-name">
-                  <span class="info-l">{item.nickname}</span>
-                  <span class="info-r">/ DESIGNER</span>
-                </div>
-              </div>
-              <div class="info-detail">{item.content}</div>
-            </li>
-            `
-            // console.log(carouselItem[0].parentNode)
-            carouselItem[0].parentNode.innerHTML = carouselItem[0].parentNode.innerHTML + liItem
-            }
-            this.banner(carouselItem)
-          })
-        }, 500)
-      }
+        if (res.data.status === 200) {
+          this.renewLists = res.data.data
+          this.newLists = res.data.data
+          setTimeout(() => {
+            this.carouse()
+          }, 20)
+        }
     }).catch((error) => {
       console.log(error)
-      let carouselItem = document.querySelectorAll('.t-banner-item')
-      this.banner(carouselItem)
     })
+    window.onresize = () => {
+      for (let i = 0; i < 1000; i++) {
+        clearInterval(i)
+      }
+      this.newLists = this.renewLists
+      this.carouse()
+    }
   }
 }
 </script>

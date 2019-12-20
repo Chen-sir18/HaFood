@@ -193,7 +193,6 @@ methods: {
         }
         }).then((response) => {
           if (response.data.status === 200) {
-            console.log(1111)
             this.shopcargoods[goodsindex].goodscount = goodscount
             this.shopcargoods[goodsindex].subtotal = this.shopcargoods[goodsindex].goodscount * parseInt(this.shopcargoods[goodsindex].price.replace(/^\$/, ''))
             this.changeallmoney()
@@ -307,10 +306,17 @@ methods: {
         // 重新给予所选的全部价格
         this.changeallmoney()
         // 将vuex里面保存的购物车内容清空
+        this.shopcargoods.forEach((item) => {
+          item.price = item.price.replace(/^\$/, '')
+        })
         this.$store.commit({
           type: 'changeshopcargoods',
           shopcargoods: this.shopcargoods
         })
+        // 清除掉全选框的选中状态
+        if (this.allchecked) {
+          this.allchecked = false
+        }
       }
     })
   }
