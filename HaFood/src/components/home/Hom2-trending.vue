@@ -25,7 +25,6 @@
               <span class="product-price">{{item.price}}</span>
               <span class="product-oldprice">{{item.overprice}}</span>
             </div>
-            <!-- <div class="product-sale">SALE</div> -->
           </li>
         </ul>
       </div>
@@ -86,74 +85,49 @@ export default {
     getSalads () {
       axios({
         url: 'api/ingredients',
-        method: 'get',
-        params: {
-          //
-        }
+        method: 'get'
       }).then((res) => {
         if (res.data.status === 200) {
           let dataList = res.data.data.splice(6, res.data.data.length - 6)
           this.trendingLists = dataList
         }
-      }).catch((error) => {
-        console.log(error)
       })
     },
     getDesserts () {
       axios({
         url: 'api/cakes',
-        method: 'get',
-        params: {
-          //
-        }
+        method: 'get'
       }).then((res) => {
         let dessertData = res.data.data
         this.trendingLists = dessertData
-      }).catch((error) => {
-        console.log(error)
       })
     },
     getDrinks () {
       axios({
         url: 'api/ingredients',
-        method: 'get',
-        params: {
-          //
-        }
+        method: 'get'
       }).then((res) => {
         let drinksData = res.data.data
         drinksData.splice(6, drinksData.length - 6)
         this.trendingLists = drinksData
-      }).catch((error) => {
-        console.log(error)
       })
     },
     getPasta () {
       axios({
         url: 'api/cakes',
-        method: 'get',
-        params: {
-          //
-        }
+        method: 'get'
       }).then((res) => {
         let pastatData = res.data.data
         this.trendingLists = pastatData
-      }).catch((error) => {
-        console.log(error)
       })
     },
     getPizzass () {
       axios({
         url: 'api/popular',
-        method: 'get',
-        params: {
-          //
-        }
+        method: 'get'
       }).then((res) => {
         let pizzassData = res.data.data
         this.trendingLists = pizzassData
-      }).catch((error) => {
-        console.log(error)
       })
     }
   },

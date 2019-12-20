@@ -14,7 +14,7 @@
                             <el-input placeholder="mm/dd/yy" v-model="reserveForm.date"></el-input>
                         </el-form-item>
                         <el-form-item class="table-item" prop="time">
-                            <el-input placeholder="7:00 pm" v-model="reserveForm.time"></el-input>
+                            <el-input placeholder="Your telephone" v-model="reserveForm.time"></el-input>
                         </el-form-item>
                         <el-form-item class="table-item" prop="person">
                             <el-input placeholder="person" v-model="reserveForm.person"></el-input>
@@ -55,7 +55,7 @@ export default {
                     {required: true, message: '请输入日期', trigger: 'blur'}
                 ],
                 time: [
-                    {required: true, message: '请输入时间', trigger: 'blur'}
+                    {required: true, message: '请输入电话号码', trigger: 'blur'}
                 ],
                 person: [
                     {required: true, message: '请输入人数', trigger: 'blur'}

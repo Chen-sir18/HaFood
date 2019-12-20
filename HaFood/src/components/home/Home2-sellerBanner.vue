@@ -84,7 +84,6 @@ export default {
         this.index = 0
       }
       this.timer = setInterval(() => {
-        // console.log(getComputedStyle(this.carouselSlide).marginLeft)
         carouselSlide.style.transition = 'all 0.5s'
         this.index++
         if (this.index >= this.carouselItem.length - 4) {

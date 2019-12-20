@@ -7,7 +7,7 @@
       </div>
       <div class="news-cont">
         <div class="news-cont-item same-item" v-for="(item, index) in newItemLists" :key="index">
-          <img :src="'http://192.168.97.241:3000/' + item.picstr" v-if="!(item.picstr === undefined)" alt="图片资源错误">
+          <img :src="'api/' + item.picstr" v-if="!(item.picstr === undefined)" alt="图片资源错误">
           <a class="item-descript">{{item.reminder}}</a>
           <span class="item-name">{{item.class}}</span>
         </div>

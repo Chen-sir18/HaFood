@@ -4,7 +4,7 @@
     <div class="product-area-cont">
       <ul class="product-area-lists">
         <li class="product-area-list" v-for="(item, index) in productlists" :key="index">
-          <img :src="'http://192.168.97.241:3000/' + item.picstr" class="pro-img" v-if="!(item.picstr === undefined)" />
+          <img :src="'api/' + item.picstr" class="pro-img" v-if="!(item.picstr === undefined)" />
           <p class="product-name"><a>{{item.name}}</a></p>
         </li>
       </ul>
@@ -49,8 +49,6 @@ export default {
       if (res.data.status === 200) {
         this.productlists = res.data.data
       }
-    }).catch((error) => {
-      console.log(error)
     })
   }
 }

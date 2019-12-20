@@ -3,7 +3,6 @@
     <div class="instagram-box">
       <div class="area-item" v-for="(item, index) in productLists" :key="index">
         <img :src="item.imgUrl" />
-        <!-- <div class="area-item-covers"></div> -->
         <a class="view-button">
           <span class="iconfont icon-instagram"></span>
         </a>
