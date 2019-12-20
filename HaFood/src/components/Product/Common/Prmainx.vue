@@ -2,7 +2,7 @@
   <div>
     <div class="x-pr-boyx" v-for="(item,index) in product" :key="index">
       <ul>
-       <img v-if="!(item.picstr === undefined)" :src='"api/"+item.picstr' />
+       <img v-if="!(item.picstr === undefined)" :src="'api/'+item.picstr" />
       </ul>
       <ul>
         <li>

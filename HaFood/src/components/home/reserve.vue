@@ -67,15 +67,13 @@ export default {
         reserveBtn () {
             this.$refs.reserveRef.validate((valid) => {
                 let token = window.localStorage.getItem('token')
-                // console.log(token)
                 let info = JSON.parse(window.localStorage.getItem('info'))
                 let email = info.email
                 let userid = info.id
-                console.log(info)
                 // 表单验证成功
                 if (valid && token && info) {
                     axios({
-                        url: 'http://192.168.97.241:3000/booktable',
+                        url: 'api/booktable',
                         method: 'get',
                         params: {
                             consumer: this.reserveForm.name,
@@ -87,7 +85,6 @@ export default {
                             userid: userid
                         }
                     }).then((res) => {
-                        console.log(res.data)
                         return this.$message({
                             message: '订单成功',
                             type: 'success',

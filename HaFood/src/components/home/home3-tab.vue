@@ -25,7 +25,6 @@
               <span class="product-price">{{item.price}}</span>
               <span class="product-oldprice">{{item.overprice}}</span>
             </div>
-            <!-- <div class="product-sale">SALE</div> -->
           </li>
         </ul>
       </div>
@@ -48,12 +47,6 @@ export default {
           name: 'DESSERTS'
         },
         {
-          name: 'DRINKS'
-        },
-        {
-          name: 'PASTA'
-        },
-        {
           name: 'PIZZASS'
         }
      ],
@@ -73,12 +66,6 @@ export default {
         case 1:
           this.getDesserts()
           break
-        case 2:
-          this.getDrinks()
-          break
-        case 3:
-          this.getPasta()
-          break
         default:
           this.getPizzass()
       }
@@ -86,10 +73,7 @@ export default {
     getSalads () {
       axios({
         url: 'api/ingredients',
-        method: 'get',
-        params: {
-          //
-        }
+        method: 'get'
       }).then((res) => {
         if (res.data.status === 200) {
           let dataList = res.data.data.splice(6, res.data.data.length - 6)
@@ -102,10 +86,7 @@ export default {
     getDesserts () {
       axios({
         url: 'api/cakes',
-        method: 'get',
-        params: {
-          //
-        }
+        method: 'get'
       }).then((res) => {
         let dessertData = res.data.data
         this.trendingLists = dessertData
@@ -113,42 +94,10 @@ export default {
         console.log(error)
       })
     },
-    getDrinks () {
-      axios({
-        url: 'api/ingredients',
-        method: 'get',
-        params: {
-          //
-        }
-      }).then((res) => {
-        let drinksData = res.data.data
-        drinksData.splice(6, drinksData.length - 6)
-        this.trendingLists = drinksData
-      }).catch((error) => {
-        console.log(error)
-      })
-    },
-    getPasta () {
-      axios({
-        url: 'api/cakes',
-        method: 'get',
-        params: {
-          //
-        }
-      }).then((res) => {
-        let pastatData = res.data.data
-        this.trendingLists = pastatData
-      }).catch((error) => {
-        console.log(error)
-      })
-    },
     getPizzass () {
       axios({
         url: 'api/popular',
-        method: 'get',
-        params: {
-          //
-        }
+        method: 'get'
       }).then((res) => {
         let pizzassData = res.data.data
         this.trendingLists = pizzassData
@@ -163,6 +112,7 @@ export default {
 }
 </script>
 
-<style lang="less">
- @import '../../less/home2-index.less';
+<style lang= "less">
+ /* @import '../../less/public.less'; */
+ @import '../../less/home3-trending.less';
 </style>

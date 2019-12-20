@@ -4,7 +4,7 @@
       <FourFall></FourFall>
       <Daily></Daily>
       <Tea></Tea>
-      <BestSeller></BestSeller>
+      <HomTrending></HomTrending>
       <Reserve></Reserve>
       <Latest></Latest>
   </div>
@@ -15,8 +15,8 @@ import BannerArea from './banner-area'
 import FourFall from './four-fall'
 import Daily from './daily'
 import Tea from './tea'
-import BestSeller from './best-seller'
-// import BestSeller './best-seller'
+// import HomTrending from './Hom2-trending'
+import HomTrending from './home3-tab'
 import Reserve from './reserve'
 import Latest from './latest'
 export default {
@@ -25,12 +25,14 @@ export default {
     FourFall,
     Daily,
     Tea,
-    BestSeller,
+    HomTrending,
     Reserve,
     Latest
   }
 }
 </script>
-<style lang="less" scope="scope">
+<style lang="less">
 @import '../../less/homeFour.less';
+// @import '../../less/home2-index.less';
+@import '../../less/home3-trending.less';
 </style>

@@ -5,10 +5,10 @@
       </div>
       <div class="popular-content">
         <ul class="popular-lists">
-          <li :key="index" class="list" v-if="!(item.picstr === undefined)" v-for="(item,index) in popularData">
+          <li :key="index" class="list" v-for="(item,index) in popularData">
             <div class="list-box">
               <div class="img-box mar-r-30">
-                <img :src='"http://192.168.97.241:3000/" + item.picstr' alt="">
+                <img :src='"api/" + item.picstr'  v-if="!(item.picstr === undefined)">
               </div>
               <div class="text-box font-14">
                 <a class="font-16 font-wei-600">{{item.goodsname}}</a>
@@ -38,17 +38,14 @@ export default {
   mounted () {
     axios({
       method: 'get',
-      url: 'http://192.168.97.241:3000/popular'
+      url: 'api/popular'
     }).then((res) => {
-      console.log(res.data)
       if (res.data.status === 200) {
         let popData = res.data.data
         this.popularData = popData
       } else {
         return false
       }
-    }).catch((error) => {
-      console.log(error)
     })
   }
 }
