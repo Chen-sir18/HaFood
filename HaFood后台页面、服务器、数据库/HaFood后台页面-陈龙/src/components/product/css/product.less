@@ -1,0 +1,30 @@
+.product {
+  .inbtn {
+    margin-left: 30px;
+  }
+  .page {
+    text-align: center;
+    margin-top: 15px;
+  }
+  /deep/ .protable th.is-leaf, /deep/ td {
+    text-align: center;
+  }
+  /deep/ .protable td {
+    &/deep/ .cell{
+      white-space: nowrap;
+     text-overflow: ellipsis;
+    }
+  }
+  .showshop {
+    .el-form-item__content {
+      & div {
+        padding:0 10px;
+        border: 1px solid #e2e2e2;
+        border-radius: 5px;
+      }
+      & .shopImg{
+        border: none;
+      }
+    }
+  }
+}

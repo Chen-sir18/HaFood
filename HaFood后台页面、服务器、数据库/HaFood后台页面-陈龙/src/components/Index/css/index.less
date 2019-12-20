@@ -1,0 +1,40 @@
+
+.asside {
+  & a {
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 90px 12px 0;
+  }
+  .el-tabs {
+    overflow: inherit;
+    /deep/ .el-tabs__content {
+      top: -85px;
+    }
+  }
+  /deep/ .el-tabs__header {
+    height: 935px;
+    background: #134676;
+    .el-tabs__item {
+      color: #fff;
+      font-size: 16px;
+      text-align: left;
+      width: 224px;
+      height: 50px;
+      line-height: 50px;
+      & i {
+        margin-right: 10px;
+      }
+    }
+    .el-tabs__item.is-active {
+      background: #0a3054;
+    }
+  }
+  .userphoto {
+    width: 224px;
+    color: #fff;
+    text-align: center;
+    background: #134676;
+    display: inline-block;
+    padding: 25px 0;
+  }
+}
