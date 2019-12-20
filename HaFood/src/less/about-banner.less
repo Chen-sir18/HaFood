@@ -1,0 +1,91 @@
+// abouta-us 轮播
+.about-banner{
+    position: relative;
+    z-index: 20;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+    .about-banner-title{
+        margin: 0 auto;
+        width: 50%;
+        text-align: center;
+        padding-bottom: 22px;
+    }
+}
+.about-show-banner{
+    overflow: hidden;
+    // background: greenyellow;
+    width: 960px;
+    .banner-lists{
+        width: 1440px;
+        display: flex;
+        .banner-list{
+            padding:30px 15px 0;
+            width: 480px;
+            .banner-list-cont{
+                background: #fff;
+                padding: 40px;
+                .list-cont-top{
+                    .photo{
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        // background: green;
+                        float: left;
+                    }
+                    .title{
+                        font-size: 12px;
+                        padding: 20px 0 0 74px;
+                    }
+                }
+                .list-cont-de{
+                    word-break: break-all;
+                    padding-top: 20px;
+                }
+            }
+        }
+    }
+}
+
+
+// 小于992px
+@media (max-width: 992px){
+    // about-banner显示区域
+    .about-show-banner{
+        width: 720px;
+        .banner-lists{
+            width: 1080px;
+            .banner-list{
+                width: 360px;
+            }
+        }
+    }
+}
+// 小于768px
+@media (max-width: 768px){
+    // about-banner显示区域
+    .about-show-banner{
+        width: 540px;
+        .banner-lists{
+            width: 1620px;
+            .banner-list{
+                width: 540px;
+            }
+        }
+    }
+}
+// 小于575px
+@media (max-width: 575px){
+    // about-banner显示区域
+    .about-show-banner{
+        width: 100%;
+        .banner-lists{
+            width: 300%;
+            .banner-list{
+                width: 100%;
+                min-width: 400px;
+            }
+        }
+    }
+}

@@ -1,0 +1,316 @@
+// about页面样式
+// 顶部 关于我们
+.about-us-top{
+    position: relative;
+    width: 100%;
+    height: 380px;
+    &.about-bg-cover{
+        background: url(../img/banner_bg_5.jpg) no-repeat;
+        background-position: center center;
+        background-size: cover;
+        width: 100%;
+    }
+    &::after{
+        background:#000;
+        content: '';
+        opacity: .3;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        left: 0;
+    }
+    // about us标题
+    .about-main-title{
+        position: relative;
+        z-index: 10;
+        padding: 0 15px;
+        display: inline-block;
+        margin-top: 160px;
+        width: 100%;
+        text-align: center;
+    }
+    .small-nav{
+        position: absolute;
+        z-index: 20;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -10px;
+        padding: 0 85px;
+        border: 1px solid #ccc;
+        background: #fff;
+        height: 50px;
+        line-height: 50px;
+        .list{
+            color: #888888;
+            &.list-secont{
+                padding-left: 5px;
+                &::before{
+                    display: inline-block;
+                    padding-right: 5px;
+                    color: #6c757d;
+                    content: '/';
+                }
+            }
+        }
+    }
+    // banner-shape
+    .banner-shape{
+        position: absolute;
+        z-index: 10;
+        bottom: -5px;
+        width: 100%;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+// Fresh Fruits部分
+.about-fresh-box{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 67px 0 85px 0;
+    // fresh图片 和title描述
+    .fresh-cont{
+        margin-bottom: 60px;
+        display: flex;
+        justify-content: center;
+        .fresh-photo,
+        .fresh-cont-right{
+            padding:0 15px;
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            max-width: 570px;
+            min-width: 480px;
+        }
+        .fresh-photo{
+            .photo{
+                width: 100%;
+                height: auto;
+                max-height: 100%;
+            }
+        }
+        // Fresh Fruits右边部分
+        .fresh-cont-right{
+            .first{
+                color: #a3a3a3;
+            }
+            .fresh-text{
+                font-size: 14px;
+                line-height: 26px;
+                color: #555;
+                padding-bottom: 22px;
+            }
+            // rede more 按钮
+            .fresh-btn{
+                width: 161px;
+                display: inline-block;
+                margin-top: 20px;
+                padding: 0 35px;
+                font-size: 14px;
+                height: 52px;
+                line-height: 52px;
+                border-radius: 26px;
+                background: #fb7e00;
+            }
+        }
+    }
+    // fresh列表
+    .fresh-lists{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .fresh-list{
+            width: 240px;
+            .list-cont{
+                padding-top: 30px;
+                text-align: center;
+                // fresh-list 图标
+                .list-icon{
+                    font-style: normal;
+                    display: inline-block;
+                    height: 60px;
+                    width: 60px;
+                    border-radius: 50%;
+                    text-align: center;
+                    line-height: 60px;
+                    background: #f7f7f7;;
+                    font-size: 20px;
+                    color: #444;
+                }
+                .title{
+                    font-size: 13px;
+                    font-weight: 600;
+                    padding: 26px 0 8px;
+                }
+                .text{
+                    color: #888;
+                }
+            }
+        }
+    }
+}
+// about-banner
+.about-banner-box{
+    position: relative;
+    padding: 83px 0 152px 0;
+    background: url(../img/best_drinks_5.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+// meat out Team
+.about-team-box{
+    padding: 80px 0 85px;
+    .about-team-title{
+        width: 100%;
+        text-align: center;
+    }
+    
+}
+// meat out Team列表
+.about-team-lists{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .about-team-list{
+        margin-top: 30px;
+        padding: 0 15px;
+        width: 240px;
+        .team-photo{
+            border: 10px solid #fff;
+            // height: auto;
+            max-height: 210px;
+            img{
+                width: 100%;
+                height: auto;
+                max-height: 100%;
+            }
+        }
+        .team-photo:hover{
+            box-shadow: 0px 0px 30px 0px #c3cbd3;
+        }
+        .team-list-title{
+            text-align: center;
+            color: #222;
+            font-weight: 600;
+            padding-top: 20px;
+        }
+    }
+}
+// 小于992宽度
+@media (max-width: 992px){
+    // 顶部 关于我们
+    .about-us-top{
+        .small-nav{
+            padding: 0 45px;
+        }
+    }
+    // Fresh Fruits部分
+    .about-fresh-box{
+        // fresh图片 和title描述
+        .fresh-cont{
+            .fresh-photo{
+                min-width: auto;
+                width: 300px;
+            }
+            .fresh-cont-right{
+                min-width: auto;
+                width: 420px;
+            }
+        }
+        // fresh列表
+        .fresh-lists{
+            .fresh-list{
+                width: 360px;
+                .list-cont{
+                    .title{
+                        font-size: 16px
+                    }
+                }
+            }
+        }
+    }
+
+    // meat out Team 我们的团队
+    .about-team-lists{
+        padding: 0 20px;
+        .about-team-list{
+            width: 360px;
+            .team-photo{
+                max-height: 360px;
+            }
+        }
+    }
+}
+
+// 小于768宽度时候 
+@media (max-width: 768px){
+    // 顶部 关于我们
+    .about-us-top{
+        .small-nav{
+            padding: 0 10px;
+        }
+    }
+    // Fresh Fruits部分
+    .about-fresh-box{
+        // fresh图片 和title描述
+        .fresh-cont{
+            flex-wrap: wrap;
+            .fresh-photo{
+                width: 540px;
+            }
+            .fresh-cont-right{
+                margin-top: 30px;
+                width: 540px;
+            }
+        }
+        // fresh列表
+        .fresh-lists{
+            .fresh-list{
+                width: 75%;
+                max-width: 510px;
+            }
+        }
+    }
+}
+
+// 小于575px时候
+@media (max-width: 575px){
+    // 顶部 关于我们
+    .about-us-top{
+        .small-nav{
+            padding: 0 10px;
+            width: 210px;
+            .list{
+                font-size: 13px !important;
+            }
+        }
+    }
+    // Fresh Fruits部分
+    .about-fresh-box{
+        // fresh图片 和title描述
+        .fresh-cont{
+            .fresh-photo{
+                width: 100%;
+            }
+            .fresh-cont-right{
+                width: 100%;
+            }
+        }
+    }
+    // meat out Team 我们的团队
+    .about-team-lists{
+        padding: 0px;
+        .about-team-list{
+            width: 100%;
+            .team-photo{
+                max-height: 498px;
+            }
+        }
+    }
+
+}

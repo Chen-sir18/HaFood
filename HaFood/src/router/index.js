@@ -18,6 +18,8 @@ const Shopcart = () => import('../components/public/Shopcar.vue')
 const ProductList = () => import('../components/product/Prlist.vue')
 const ProductGrid = () => import('../components/product/Prgrid.vue')
 const ProductDetails = () => import('../components/product/Prdetails.vue')
+const AboutUs = () => import('../components/About/index.vue')
+const Contact = () => import('../components/Contact/index.vue')
 Vue.use(Router)
 let Router1 = new Router({
   routes: [
@@ -87,6 +89,14 @@ let Router1 = new Router({
         {
           path: '/state',
           component: Blogstate
+        },
+        {
+          path: '/about',
+          component: AboutUs
+        },
+        {
+          path: '/contact',
+          component: Contact
         }
       ]
     },

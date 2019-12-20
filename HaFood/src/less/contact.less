@@ -1,0 +1,278 @@
+// 顶部 联系我们
+.about-us-top{
+    position: relative;
+    width: 100%;
+    height: 380px;
+    &.about-bg-cover{
+        background: url(../img/banner_bg_5.jpg) no-repeat;
+        background-position: center center;
+        background-size: cover;
+        width: 100%;
+    }
+    &::after{
+        background:#000;
+        content: '';
+        opacity: .3;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        left: 0;
+    }
+    // about us标题
+    .about-main-title{
+        position: relative;
+        z-index: 10;
+        padding: 0 15px;
+        display: inline-block;
+        margin-top: 160px;
+        width: 100%;
+        text-align: center;
+    }
+    .small-nav{
+        position: absolute;
+        z-index: 20;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -10px;
+        padding: 0 85px;
+        border: 1px solid #ccc;
+        background: #fff;
+        height: 50px;
+        line-height: 50px;
+        .list{
+            color: #888888;
+            &.list-secont{
+                padding-left: 5px;
+                &::before{
+                    display: inline-block;
+                    padding-right: 5px;
+                    color: #6c757d;
+                    content: '/';
+                }
+            }
+        }
+    }
+    // banner-shape
+    .banner-shape{
+        position: absolute;
+        z-index: 10;
+        bottom: -5px;
+        width: 100%;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+// 联系方式列表
+.contact-way-lists{
+    padding: 35px 0 55px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.contact-way-list{
+    padding: 30px 15px 0;
+    width: 320px;
+    text-align: center;
+    .contact-way-icon{
+        box-shadow: 0 0 30px 5px #dad7d7;
+        line-height: 80px;
+        display: inline-block;
+        font-size: 20px;
+        color: #999;
+        width: 80px;
+        height: 80px;
+    }
+    .contact-way-icon:hover{
+       animation: contactwayBorder 1s forwards;
+    }
+    .title{
+        color: #222;
+        padding: 25px 0 10px;
+    }
+    .text{
+        color: #888;
+    }
+}
+
+// contact-map 地图
+.contact-map-box{
+    width: 100%;
+    // background: green;
+    // height: 100px;
+}
+// contact-form 表单
+.contact-form-box{
+    display: flex;
+    justify-content: center;
+    padding: 82px 0 90px;
+}
+// 联系表单图片
+.contact-form-photo{
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .photo{
+        width: 100%;
+        height: auto;
+        // height: 100%;
+        max-height: 100%;
+    }
+}
+// 联系表单内容
+.contact-form-cont{
+    padding: 77px 45px 84px;
+    color: #888;
+    font-size: 16px;
+    width: 690px;
+    border: 7px solid #f5f5f5;
+    .main-title{
+        color: #222;
+        font-size: 24px;
+        text-align: center;
+        .text{
+            color: #888;
+            padding-top: 10px;
+        }
+    }
+    .contact-form{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .el-form-item{
+            margin: 35px 0 0 0;
+        }
+        .form-name,
+        .form-email{
+            width: 50%;
+            padding: 0 15px;
+            .el-input__inner{
+                border: none;
+                background: #f5f5f5;
+                border-radius: 0;
+                padding: 0 0 0 30px;
+                height: 47px;
+                line-height: 47px;
+            }
+        }
+        .form-message{
+            width: 100%;
+            padding: 0 15px;
+            .el-form-item__content{
+                line-height: 1;
+            }
+           
+            .info-message{
+                color: #888;
+                height: 140px;
+                padding: 20px 0 0 30px;
+                background: #f5f5f5;
+                width: 100%;
+                border: none;
+                outline: none;
+                &::-webkit-input-placeholder {
+                    color: #cacaca;
+                    font-size: 12px;
+                }
+            }
+        }
+        .contact-form-btn{
+            // text-align: center;
+            background: #fb7e00;
+            border: none;
+            height: 50px;
+            line-height: 52px;
+            border-radius: 25px;
+            padding: 0 45px;
+        }
+    }
+}
+// 联系方式列表icon动画
+@keyframes contactwayBorder {
+    0%{
+        border-radius: 0%;
+    }
+    100%{
+        color: #fff;
+        background: #000;
+        border-radius: 50%;
+    }
+}
+// 小于992宽度
+@media (max-width: 992px){
+    // 顶部 关于我们
+    .about-us-top{
+        .small-nav{
+            padding: 0 45px;
+        }
+    }
+    // 联系方式列表
+    .contact-way-list{
+        width: 240px;
+    }
+
+    // contact-form 联系表单
+    // 联系表单图片
+    .contact-form-photo{
+        display: none;
+    }
+    // 联系表单内容
+    .contact-form-cont{
+        margin: 0 15px;
+        .contact-form{
+            .form-name,
+            .form-email{
+                width: 100%;
+            }
+        }
+    }
+}
+
+// 小于768宽度时候 
+@media (max-width: 768px){
+    // 顶部 关于我们
+    .about-us-top{
+        .small-nav{
+            padding: 0 10px;
+        }
+    }
+    // 联系方式列表
+    .contact-way-list{
+        width: 270px;
+    }
+    
+    // contact-form 联系表单
+    // 联系表单内容
+    .contact-form-cont{
+        width: 510px;
+    }
+}
+// 小于575px时候
+@media (max-width: 575px){
+    // 顶部 关于我们
+    .about-us-top{
+        .small-nav{
+            padding: 0 10px;
+            width: 210px;
+            .list{
+                font-size: 13px !important;
+            }
+        }
+    }
+    // 联系方式列表
+    .contact-way-list{
+        width: 100%;
+    }
+
+    // contact-form 联系表单
+    // 联系表单内容
+    .contact-form-cont{
+        width: 100%;
+        padding: 30px 0;
+    }
+}
