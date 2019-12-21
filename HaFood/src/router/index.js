@@ -91,11 +91,11 @@ let Router1 = new Router({
           component: Blogstate
         },
         {
-          path: '/about',
+          path: '/AboutUs',
           component: AboutUs
         },
         {
-          path: '/contact',
+          path: '/Contact',
           component: Contact
         }
       ]

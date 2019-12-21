@@ -7,7 +7,8 @@
         <div class="product-details-thumb">
           <div class="product-thumb-inner">
             <div class="product-img-box">
-              <img :src='"api/" + this.$store.state.searchdata[0].picstr' />
+              <img v-if="this.$store.state.searchdata.length >= 1" :src='"api/" + this.$store.state.searchdata[0].picstr' />
+              <img v-else :src='"api/" + this.message.picstr' />
             </div>
           </div>
           <div class="product-thumb-lists">
@@ -31,7 +32,7 @@
         <div class="product-info-box">
           <div class="product-right-content">
             <div class="product-details-title">
-              <h4 class="title">{{this.$store.state.searchdata[0].goodsname}}</h4>
+              <h4 class="title">{{this.$store.state.searchdata[0].goodsname || this.message.goodsname}}</h4>
             </div>
             <div class="product-review">
               <ul>
@@ -44,9 +45,9 @@
               <span>- 1 review - Add your review</span>
             </div>
             <div class="prduct-detail-con">
-              <span>{{this.$store.state.searchdata[0].price}}</span>
+              <span>{{this.$store.state.searchdata[0].price || this.message.price}}</span>
               <p>
-                {{this.$store.state.searchdata[0].depict}}
+                {{this.$store.state.searchdata[0].depict || this.message.depict }}
               </p>
             </div>
             <div class="product-color">
