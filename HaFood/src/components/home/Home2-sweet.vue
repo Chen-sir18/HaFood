@@ -4,7 +4,7 @@
       <div class="memory-area-item">
         <div class="memory-play">
           <img src="../../img/memories_play.jpg" alt="图片资源错误">
-          <a class="memory-readmore">Read More</a>
+          <a class="memory-readmore" @click="toBlogDetail">Read More</a>
         </div>
         <div class="memory-title">
           <div class="memory-title-detail">
@@ -19,7 +19,11 @@
 
 <script>
 export default {
-
+  methods: {
+    toBlogDetail () {
+      this.$router.replace('/BlogDetails')
+    }
+  }
 }
 </script>
 

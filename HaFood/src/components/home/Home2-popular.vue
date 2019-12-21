@@ -11,7 +11,7 @@
             </div>
             <div class="popular-menu-flex">
               <div class="popular-menu-detail">
-                <a class="foods-title">{{item.goodsname}}</a>
+                <a class="foods-title" @click="toDetail">{{item.goodsname}}</a>
                 <p class="foods-price">{{item.price}}</p>
                 <p class="foods-descript">{{item.depict}}</p>
               </div>
@@ -65,6 +65,11 @@ export default {
            imgUrl: require('../../img/popular_menu_6.jpg')
          }
        ]
+     }
+   },
+   methods: {
+     toDetail () {
+       this.$router.replace('/ProductDetails')
      }
    },
    mounted () {

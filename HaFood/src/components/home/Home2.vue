@@ -45,6 +45,16 @@ export default {
       let personbanner = this.$refs.personBanner
       personbanner.carouse()
     }
+    document.addEventListener('webkitvisibilitychange', () => {
+		// 浏览器是否隐藏  隐藏hidden  显示visible
+    var isHidden = document.hidden || document.webkitVisibilityState === 'hidden'
+    let personbanner = this.$refs.personBanner
+		if (isHidden) {
+			clearInterval(personbanner.interval)
+		} else {
+      personbanner.carouseinterval(personbanner.showcount)
+		}
+	})
   }
 }
 </script>

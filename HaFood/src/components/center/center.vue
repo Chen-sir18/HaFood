@@ -39,7 +39,7 @@
           <a @click="toHome">我的HaFood</a>
         </div>
         <ul class="nav-lists">
-          <li class="nav-list"><a>首页</a></li>
+          <li class="nav-list"><a @click="changeShow">首页</a></li>
           <li class="nav-list"><a>账户管理</a></li>
           <li class="nav-list"><a>消息</a></li>
         </ul>
@@ -323,7 +323,7 @@ export default {
       if (!value) {
         return callback(new Error('请输入手机号!'))
       } else {
-        const reg = /^[1][3,4,5,7,8][0-9]{8}$/
+        const reg = /^[1][3,4,5,7,8][0-9]\d{8}$/
         if (reg.test(value)) {
           callback()
           console.log(reg.test(value))
@@ -362,6 +362,7 @@ export default {
     Bottom
   },
   beforeRouteEnter: (to, from, next) => {
+    // 组件内守卫
     next(vm => {
       // judge login
       let token = window.localStorage.getItem('token')
@@ -416,12 +417,7 @@ export default {
         window.localStorage.removeItem('info')
         window.localStorage.removeItem('token')
         this.$router.push('/Home1')
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '网络登录异常，请稍后再试！'
-        })
-      })
+      }).catch(() => {})
     },
     handleClose (done) {
       // 关闭修改头像的弹窗
