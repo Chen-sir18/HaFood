@@ -163,6 +163,7 @@ export default {
           color: #fb7e00;
           font-size: 14px;
           font-weight: bolder;
+          cursor: pointer;
         }
         a:hover{
           background: #fb7e00;
