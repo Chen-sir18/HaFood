@@ -189,7 +189,9 @@ export default {
 							type: 'changesearchdata',
 							searchdata: searchdata
 						})
-						this.$router.push('/ProductDetails')
+						if (this.$route.fullPath !== '/ProductDetails') {
+							this.$router.push('/ProductDetails')
+						}
 					}
 				})
 		  }
