@@ -188,7 +188,7 @@
         <div class="h-row-outer">
           <div :key="index" v-for="(item, index) in relatedData" class="h-row-item">
             <div class="h-row-list">
-              <img v-if="!(item.headpic === undefined)" :src='"api/" + item.picstr'/>
+              <img v-if="!(item.picstr === undefined)" :src='"api/" + item.picstr'/>
               <span>Feb 11, 2019  -  Rachel  -  Fashion </span>
               <a class="h-row-a">
                 <h5 class="title">{{item.reminder}}</h5>

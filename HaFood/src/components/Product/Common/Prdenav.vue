@@ -1,20 +1,127 @@
 <template>
-  <div class="x-pr-nav">
+<div>
+  <div class="product-detail-outer">
+    <div class="product-contain">
+      <div class="product-content">
+        <!-- 左边图片盒子 -->
+        <div class="product-details-thumb">
+          <div class="product-thumb-inner">
+            <div class="product-img-box">
+              <img :src='"api/" + this.$store.state.searchdata[0].picstr' />
+            </div>
+          </div>
+          <div class="product-thumb-lists">
+            <div class="slick-list-draggable">
+              <div class="item-slide-list">
+                <img src="../../../img/blog_details_list_4.jpg" />
+              </div>
+              <div class="item-slide-list">
+                <img src="../../../img/blog_details_list_4.jpg" />
+              </div>
+              <div class="item-slide-list">
+                <img src="../../../img/blog_details_list_4.jpg" />
+              </div>
+              <div class="item-slide-list">
+                <img src="../../../img/blog_details_list_4.jpg" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 右边内容 -->
+        <div class="product-info-box">
+          <div class="product-right-content">
+            <div class="product-details-title">
+              <h4 class="title">{{this.$store.state.searchdata[0].goodsname}}</h4>
+            </div>
+            <div class="product-review">
+              <ul>
+                <li class="icon iconfont icon-wujiaoxingxingxingshoucang"></li>
+                <li class="icon iconfont icon-wujiaoxingxingxingshoucang"></li>
+                <li class="icon iconfont icon-wujiaoxingxingxingshoucang"></li>
+                <li class="icon iconfont icon-wujiaoxingxingxingshoucang"></li>
+                <li class="icon iconfont icon-wujiaoxingxingxing"></li>
+              </ul>
+              <span>- 1 review - Add your review</span>
+            </div>
+            <div class="prduct-detail-con">
+              <span>{{this.$store.state.searchdata[0].price}}</span>
+              <p>
+                {{this.$store.state.searchdata[0].depict}}
+              </p>
+            </div>
+            <div class="product-color">
+              <span>Color</span>
+              <ul>
+                <li>
+                  √
+                </li>
+                <li>
+                  √
+                  <!-- <i class="icon iconfont icon-wancheng"></i> -->
+                </li>
+              </ul>
+            </div>
+            <div class="product-weight">
+              <span>Weight (kg) </span>
+              <ul>
+                <li>
+                  <p>0.5</p>
+                </li>
+                <li>
+                  <p>1</p>
+                </li>
+                <li>
+                  <p>1.5</p>
+                </li>
+                <li>
+                  <p>2</p>
+                </li>
+                <li>
+                  <p>3</p>
+                </li>
+              </ul>
+            </div>
+            <!-- 加入购物车 -->
+            <div class="product-cart">
+              <div class="product-quantity">
+                <button @click="addCount(-1)" type="button" class="sub">-</button>
+                <input v-model="count" type="text" value="0">
+                <button @click="addCount(1)" type="button" class="add">+</button>
+              </div>
+              <div class="add-cart">
+                <span>Add to cart</span>
+              </div>
+              <ul class="ul-lists">
+                <li>
+                  <i class="icon iconfont icon-xin-copy"></i>
+                </li>
+                <li>
+                  <i class="icon iconfont icon-jiaohuan"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- <div class="x-pr-nav">
     <div class="x-nav">
       <ul>
         <li>
           <ol>
             <span>
-              <img :src="'api/' + message.picstr"/>
+              <img :src='"api/" + message.picstr'/>
             </span>
           </ol>
         </li>
         <li>
-            <ol>
-              <span v-for="(item,index) in message.lists" :key="index">
-                <img :src="item.imgUrl"/>
-              </span>
-            </ol>
+          <ol>
+            <span v-for="(item, index) in message.lists" :key="index">
+              <img :src="item.imgUrl" />
+            </span>
+          </ol>
         </li>
       </ul>
       <ul>
@@ -54,10 +161,12 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
+import '../../../font/demo.css'
+import '../../../font/iconfont.css'
 export default {
   data: function () {
     return {
@@ -105,180 +214,35 @@ export default {
             imgUrl: 'api/product_2.jpg'
           }
         ]
+      },
+      count: 1
+    }
+  },
+  methods: {
+    addCount (i) {
+      this.count += i
+      if (this.count <= 0) {
+        this.count = 1
+      } else if (this.count > 100) {
+        this.count = 100
       }
     }
   },
   mounted: function () {
-
+    if (this.$store.state.searchdata.length >= 1) {
+      // console.log(this.$store.state.searchdata)
+      this.message = this.$store.state.searchdata[0]
+    }
   },
   activated () {
     if (this.$store.state.searchdata.length >= 1) {
+      // console.log(this.$store.state.searchdata)
       this.message = this.$store.state.searchdata[0]
     }
   }
 }
 </script>
 
-<style lang="less">
-  .x-pr-nav{
-    height: 760px;
-    padding: 30px 0 90px;
-    .x-nav{
-      display: flex;
-      justify-content: center;
-      ul{
-        position: relative;
-        padding: 30px 15px 0;
-        height: 638px;
-        width: 570px;
-        box-sizing: border-box;
-      }
-      ul:nth-child(1){
-        li:nth-child(1){
-          height: 540px;
-          width: 540px;
-          overflow: hidden;
-          ol{
-            span{
-              display: inline-block;
-              float: left;
-              img{
-                height: 540px;
-                width: 540px;
-              }
-            }
-          }
-        }
-        li:nth-child(2){
-          position: absolute;
-          bottom: 0;
-          ol{
-            width: 540px;
-            height: 110px;
-            padding: 0 30px;
-            overflow: hidden;
-            span{
-              display: inline-block;
-              padding: 0 3px;
-              img{
-                height: 110px;
-                width: 110px;
-                font-size: 0;
-                vertical-align: middle;
-                border: 4px solid #cccccc;
-              }
-            }
-          }
-        }
-      }
-      ul:nth-child(2){
-        li:nth-child(1){
-          font-size: 24px;
-          padding: 0 0 17px;
-          font-font: "Poppins", sans-serif;
-          font-weight: 600;
-          color: #222222;
-        }
-        li:nth-child(2){
-          padding: 0 0 20px;
-          span{
-            color: #fb7e00;
-          }
-          a{
-            font-size: 14px;
-            color: #888888;
-          }
-        }
-        li:nth-child(3){
-          color: #fb7e00;
-          font-size: 22px;
-        }
-        li:nth-child(4){
-          color: #555555;
-          padding: 30px 0 0;
-          font-size: 14px;
-          font-font: "Poppins", sans-serif;
-          line-height: 25px;
-          padding-right: 20px;
-        }
-        li:nth-child(5){
-          padding: 30px 0 0;
-          span:nth-child(1){
-            color: #222222;
-            font-size: 15px;
-            font-weight: bold;
-            margin-right: 35px;
-          }
-          span:nth-child(2){
-            display: inline-block;
-            height: 30px;
-            width: 30px;
-            background: #8bab3e;
-            border-radius: 15px;
-            vertical-align: -8px;
-            margin-right: 18px;
-          }
-          span:nth-child(3){
-            font-size: 32px;
-            vertical-align: -5px;
-            color: #ffffff;
-            background: #222222;
-            font-weight: bold;
-            border-radius: 50%;
-          }
-        }
-      }
-      li:nth-child(6){
-        padding: 40px 0 0;
-        a{
-          font-size: 15px;
-          padding: 0 18px 0 0;
-          color: #222222;
-          font-weight: bold;
-        }
-        span{
-          font-size: 14px;
-          padding: 0 17px;
-        }
-      }
-      li:nth-child(7){
-        padding: 45px 0 0;
-        button{
-          height: 50px;
-          width: 23px;
-          background: #cccccc;
-          font-size: 18px;
-          border: 0;
-          outline: none;
-        }
-        input{
-          height: 51px;
-          width: 65px;
-          border: 1px solid #ddd;
-          padding: 0 10px;
-          text-align: center;
-          vertical-align: 2px;
-        }
-        a{
-          display: inline-block;
-          height: 50px;
-          width: 154px;
-          border: 1px solid #fb7e00;
-          text-align: center;
-          line-height: 50px;
-          border-radius: 25px;
-          color: #ffffff;
-          font-size: 14px;
-          font-weight: bolder;
-          background: #fb7e00;
-        }
-        i{
-          font-size: 20px;
-          margin: 10px;
-          color: #666666;
-          cursor: pointer;
-        }
-      }
-    }
-  }
+<style lang="less" scope>
+@import './productnav.less';
 </style>

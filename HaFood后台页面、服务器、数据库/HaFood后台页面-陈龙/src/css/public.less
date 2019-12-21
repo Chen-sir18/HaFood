@@ -1,0 +1,83 @@
+@import './common.less';
+
+// 封装公共样式
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a{
+    cursor: pointer;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.clearfix {
+    content: '';
+    display: inline-block;
+    clear: both;
+}
+
+// 内外边距 5 10 15 20 25 30
+
+.distance(6, 1);
+
+.distance(@n, @i: 1, @count:5 * @i) when (@i <=@n) {
+    .padding-@{count} {
+        padding: @i * 5px;
+    }
+    .padding-l-@{count} {
+        padding-left: @i * 5px;
+    }
+    .padding-r-@{count} {
+        padding-right: @i * 5px;
+    }
+    .padding-t-@{count} {
+        padding-top: @i * 5px;
+    }
+    .padding-b-@{count} {
+        padding-bottom: @i * 5px;
+    }
+    .padding-lr-@{count} {
+        padding:0 @i * 5px;
+    }
+    .padding-tb-@{count} {
+        padding: @i * 5px 0;
+    }
+
+    .margin-@{count} {
+        margin: @i * 5px;
+    }
+    .margin-l-@{count} {
+        margin-left: @i * 5px;
+    }
+    .margin-r-@{count} {
+        margin-right: @i * 5px;
+    }
+    .marging-t-@{count} {
+        margin-top: @i * 5px;
+    }
+    .margin-b-@{count} {
+        margin-bottom: @i * 5px;
+    }
+    .margin-lr-@{count} {
+        margin:0 @i * 5px;
+    }
+    .margin-tb-@{count} {
+        margin: @i * 5px 0;
+    }
+    .distance(@n, (@i + 1));
+}
+
+// 字体大小 12 14 16 18
+.font-sizes(9, 6);
+.font-sizes(@font, @n, @size:2 * @n) when (@n <= @font) {
+    .font-@{size} {
+        font-size: @size * 1px;
+    }
+
+    .font-sizes(@font, @n + 1)
+}

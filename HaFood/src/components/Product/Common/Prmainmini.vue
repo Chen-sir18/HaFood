@@ -1,5 +1,5 @@
 <template>
-  <div class="promain clearfix">
+  <div class="promain">
     <div class="x-pr-main">
       <div class="x-pr-tit">Related Products</div>
       <div class="x-pr-mainboy" v-for="(item,index) in message" :key="index">
@@ -47,28 +47,33 @@ export default {
 </script>
 
 <style lang="less">
+.clearfix:after{
+  content: '';
+  clear: both;
+  display: block;
+}
   .x-pr-main{
-    width: 1144px;
+    width: 1140px;
     margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 85px;
     .x-pr-tit{
+      width: 100%;
       font-size: 24px;
       text-align: center;
       padding: 0 0 20px;
       font-weight: bold;
     }
     .x-pr-mainboy{
-      height: 360px;
-      width: 286px;
-      margin-bottom: 85px;
-      float: left;
+      width: 25%;
+      padding: 0 15px;
       img{
-        height: 256px;
-        width: 256px;
+        width: 100%;
         box-sizing: border-box;
       }
       ul{
         margin: 30px 0 0;
-        padding: 0 15px;
         b{
           display: block;
           font-size: 18px;
@@ -79,6 +84,35 @@ export default {
           color: #eda52c;
           font-weight: bolder;
         }
+      }
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1200px) {
+    .x-pr-main{
+      width: 960px;
+    }
+  }
+  @media (min-width: 767px) and (max-width: 992px) {
+    .x-pr-main{
+      width: 720px;
+      .x-pr-mainboy{
+        width: 33.333%;
+      }
+    }
+  }
+  @media (min-width: 567px) and (max-width: 767px) {
+    .x-pr-main{
+      width: 540px;
+      .x-pr-mainboy{
+        width: 50%;
+      }
+    }
+  }
+  @media only screen and (max-width: 567px) {
+    .x-pr-main{
+      width: 100%;
+      .x-pr-mainboy{
+        width: 100%;
       }
     }
   }

@@ -5,14 +5,13 @@
       <ul class="products-lists">
         <li class="products-list mar-t-30" v-for="(item,index) in newProductList.slice(0,6)" :key="index">
           <div>
-            <img :src="'http://192.168.97.241:3000/' + item.picstr" v-if="!(item.picstr === undefined)">
+            <img :src="'api/' + item.picstr" v-if="!(item.picstr === undefined)">
           </div>
           <div class="product-title"><a>{{item.goodsname}}</a></div>
           <div>
             <span class="product-price">{{item.price}}</span>
             <span class="product-oldprice">{{item.overprice}}</span>
           </div>
-          <!-- <div class="product-sale">SALE</div> -->
         </li>
       </ul>
     </div>
@@ -105,8 +104,6 @@ export default {
         if (res.data.status === 200) {
           this.newProductList = res.data.data
         }
-      }).catch((error) => {
-        console.log(error)
       })
     }
   }

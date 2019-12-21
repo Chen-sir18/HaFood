@@ -1,0 +1,98 @@
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.login {
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    padding: 235px 0 344px 0;
+    background: url(../image/banner-bg-5.jpg) no-repeat;
+    background-position-x: 50%;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+}
+.login-content {
+    margin: 0 auto;
+    display: inline-block;
+}
+.login-content form {
+    text-align: left;
+}
+.login-content form > div {
+    padding: 30px 0  0 0;
+    border-bottom: 1px solid #6e7680;
+}
+.login-content form .regist, 
+.login-content form .gologin{
+    padding: 15px 0 25px 0;
+    border: none;
+}
+.login-content form .regist input {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.login-content form .regist a{
+    margin-left: 10px;
+    float: right;
+    color: #007dff;
+}
+/deep/ form .email input, /deep/  .pass input {
+    padding: 0 34px;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    height: 34px;
+    line-height: 34px;
+}
+/deep/ form input:focus {
+    outline: none;
+}
+.login-content form .gologin{
+    padding: 0;
+    text-align: center;
+}
+.login-content form .gologin .submit-login{
+    font-size: 24px;
+    padding: 8px 100px;
+    background: #007dff;
+    border-radius: 25px;
+    line-height: 40px;
+}
+.login-content form .gologin p {
+    margin-top: 15px;
+}
+.login-content .el-form-item {
+    margin: 0;
+}
+/deep/ .login-content .el-form-item .el-form-item__label {
+    text-align: left;
+    color: #fff;
+    line-height: 14px;
+    padding: 15px 12px 0 0;
+}
+.login-content .el-button.is-round {
+    padding: 8px 100px;
+    font-size: 24px;
+    line-height: 30px;
+    border-radius: 25px;
+}
+/* 是否记住账号的input  checkbox */
+.regist .rember {
+    appearance: none;
+    outline: none;
+}
+.regist .rember::after {
+    content: '';
+    display: inline-block;
+    background: url(../image/checkbox.png) no-repeat;
+    width: 17px;
+    height: 15px;
+    background-position-y: 1px;
+    /* vertical-align: -2px; */
+}
+.regist .rember:checked::after {
+    background-position-y: -25px;
+    background-position-x: -2px;
+}
