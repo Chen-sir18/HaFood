@@ -5,7 +5,7 @@
       <ul class="product-area-lists">
         <li class="product-area-list" v-for="(item, index) in productlists" :key="index">
           <img :src="'api/' + item.picstr" class="pro-img" v-if="!(item.picstr === undefined)" />
-          <p class="product-name"><a>{{item.name}}</a></p>
+          <p class="product-name"><a @click="toDetail">{{item.class}}</a></p>
         </li>
       </ul>
     </div>
@@ -39,6 +39,11 @@ export default {
           name: 'Dairy'
         }
       ]
+    }
+  },
+  methods: {
+    toDetail () {
+      this.$router.replace('/ProductDetails')
     }
   },
   mounted () {

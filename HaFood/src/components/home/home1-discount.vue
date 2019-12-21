@@ -15,7 +15,7 @@
           </div>
           <!-- 按钮 -->
           <a class="main-btn">
-            <span>SHOP NOW</span>
+            <a @click="toDetail">SHOP NOW</a>
             <span class="hover-status"></span>
           </a>
         </div>
@@ -26,7 +26,11 @@
 
 <script>
 export default {
-
+  methods: {
+    toDetail () {
+      this.$router.replace('/ProductDetails')
+    }
+  }
 }
 </script>
 

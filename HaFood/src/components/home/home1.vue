@@ -11,11 +11,11 @@
       <!-- 商标自动轮播 -->
       <AutoBanner></AutoBanner>
       <!-- Best Seller Banner -->
-      <SellerBanner></SellerBanner>
+      <SellerBanner ref='sellerBanner'></SellerBanner>
       <!-- 点击去到product页面 -->
       <DiscountArea></DiscountArea>
       <!-- 人物轮播 -->
-      <PersonBanner></PersonBanner>
+      <PersonBanner ref='personBanner'></PersonBanner>
       <!-- LatestNews -->
       <LatestNews></LatestNews>
       <!-- 底部产品 -->
@@ -47,6 +47,14 @@ export default {
     PersonBanner,
     LatestNews,
     HomeBottom
+  },
+  mounted: function () {
+    window.onresize = () => {
+      let sellerbanner = this.$refs.sellerBanner
+      let personbanner = this.$refs.personBanner
+      sellerbanner.carouse()
+      personbanner.carouse()
+    }
   }
 }
 </script>

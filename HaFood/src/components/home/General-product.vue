@@ -7,7 +7,7 @@
           <div>
             <img :src="'api/' + item.picstr" v-if="!(item.picstr === undefined)">
           </div>
-          <div class="product-title"><a>{{item.goodsname}}</a></div>
+          <div class="product-title"><a @click="toDetail">{{item.goodsname}}</a></div>
           <div>
             <span class="product-price">{{item.price}}</span>
             <span class="product-oldprice">{{item.overprice}}</span>
@@ -92,6 +92,11 @@ export default {
           price: '$32.00'
         }
       ]
+    }
+  },
+  methods: {
+    toDetail () {
+      this.$router.replace('/ProductDetails')
     }
   },
   mounted () {

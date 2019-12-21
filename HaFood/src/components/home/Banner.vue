@@ -8,7 +8,7 @@
       <div class="banner-cont">
         <h1 class="banner-title">{{item.title}}</h1>
         <p class="main-btn main-button">
-          <span>SHOP NOW</span>
+          <a @click="toProductGrid" style="color:#fff;">SHOP NOW</a>
           <span class="hover-status"></span>
         </p>
       </div>
@@ -76,6 +76,9 @@ export default {
       } else if (this.index > 2) {
         this.index = 0
       }
+    },
+    toProductGrid () {
+      this.$router.replace('/ProductGrid')
     }
   },
   mounted () {

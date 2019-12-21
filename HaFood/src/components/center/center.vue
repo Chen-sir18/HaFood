@@ -3,14 +3,14 @@
     <div class="header">
       <div class="header-content content clearfix">
         <div class="header-position">
-          <span class="iconfont icon-gouwuche"></span>
+          <span class="el-icon-s-home" style="color: #666;font-size: 14px;"></span>
           <a @click="toHome">首页</a>
           <span>>个人中心</span>
         </div>
         <ul class="header-lists">
           <li class="header-list">
             <span class="iconfont icon-gouwuche"></span>
-            <a>购物车</a>
+            <a @click="toShopCar">购物车</a>
           </li>
           <li class="header-list">
             <span class="iconfont icon-wujiaoxingxingxing"></span>
@@ -51,11 +51,11 @@
         <!-- left-sidebar -->
         <ul class="left-sidebar">
           <li class="side-list">
-            <span class="iconfont icon-gouwuche"></span>
+            <span class="el-icon-s-home" style="color: #666;font-size: 14px;"></span>
             <a class="side-item" @click="changeShow">首页</a>
           </li>
           <li class="side-list">
-            <span class="iconfont icon-gouwuche"></span>
+            <span class="el-icon-money"></span>
             <a class="side-item">我的交易</a>
             <ul class="item-lists">
               <li class="item-list"><a>订单管理</a></li>
@@ -64,7 +64,7 @@
             </ul>
           </li>
           <li class="side-list">
-            <span class="iconfont icon-gouwuche"></span>
+            <span class="el-icon-bank-card"></span>
             <a class="side-item">我的资产</a>
             <ul class="item-lists">
               <li class="item-list"><a>优惠券</a></li>
@@ -73,7 +73,7 @@
             </ul>
           </li>
           <li class="side-list">
-            <span class="iconfont icon-gouwuche"></span>
+            <span class="el-icon-user"></span>
             <a class="side-item">我的账户</a>
             <ul class="item-lists">
               <li class="item-list"><a @click="changeShow">我的资料</a></li>
@@ -508,6 +508,9 @@ export default {
     },
     toHome () {
       this.$router.replace('/Home1')
+    },
+    toShopCar () {
+      this.$router.replace('/Shopcar')
     }
   },
   mounted () {

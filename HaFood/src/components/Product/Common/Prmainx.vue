@@ -30,14 +30,7 @@ import remind from '../../public/JS/remind.js'
 export default {
   data: function () {
     return {
-      product: [
-        {
-          picstr: '',
-          goodsname: '',
-          price: '',
-          depict: ''
-        }
-      ]
+      product: []
     }
   },
   mounted () {

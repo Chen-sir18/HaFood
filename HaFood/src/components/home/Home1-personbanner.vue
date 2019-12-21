@@ -124,6 +124,9 @@ export default {
     },
     // 执行轮播的函数
     carouse () {
+      clearInterval(this.interval)
+      this.newLists = this.renewLists
+      this.activebtnindex = 0
       if (document.body.clientWidth >= 992) {
         this.changenewslist(2)
         setTimeout(() => {
@@ -171,13 +174,13 @@ export default {
     }).catch((error) => {
       console.log(error)
     })
-    window.onresize = () => {
-      for (let i = 0; i < 1000; i++) {
-        clearInterval(i)
-      }
-      this.newLists = this.renewLists
-      this.carouse()
-    }
+  },
+  activated () {
+    // window.onresize = () => {
+    //   clearInterval(this.interval)
+    //   this.newLists = this.renewLists
+    //   this.carouse()
+    // }
   }
 }
 </script>

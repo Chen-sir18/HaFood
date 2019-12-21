@@ -13,7 +13,7 @@
       <!-- banner -->
       <div class="customer-saying">
         <p class="customer-title">Customer Saying</p>
-        <PersonBanner></PersonBanner>
+        <PersonBanner ref="personBanner"></PersonBanner>
       </div>
       <!-- Cooking Tips -->
       <div class="cooking-cont-box">
@@ -39,6 +39,12 @@ export default {
     PopularMenu,
     PersonBanner,
     CookingTips
+  },
+  mounted: function () {
+    window.onresize = () => {
+      let personbanner = this.$refs.personBanner
+      personbanner.carouse()
+    }
   }
 }
 </script>
