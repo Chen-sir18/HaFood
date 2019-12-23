@@ -106,7 +106,7 @@ export default {
                         }, 1000)
                     }
                     axios({
-                        url: 'http://192.168.97.241:3000/forgetcode',
+                        url: 'api/forgetcode',
                         method: 'get',
                         params: {
                             email: this.forgetForm.email
@@ -123,7 +123,7 @@ export default {
             this.$refs.forgetForm.validate((valid) => {
                 if (valid) {
                     axios({
-                        url: 'http://192.168.97.241:3000/forget',
+                        url: 'api/forget',
                         method: 'get',
                         params: {
                             email: this.forgetForm.email,

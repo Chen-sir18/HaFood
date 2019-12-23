@@ -86,7 +86,7 @@ export default {
                         }
                     }).then((res) => {
                         return this.$message({
-                            message: '订单成功',
+                            message: '订座成功',
                             type: 'success',
                             showClose: true,
                             duration: 2000
@@ -104,7 +104,8 @@ export default {
                     })
                 }
             })
-                this.$refs.reserveRef.resetFields()
+            // 订座成功，清空表单
+            this.$refs.reserveRef.resetFields()
         }
     }
 }

@@ -326,7 +326,6 @@ export default {
         const reg = /^[1][3,4,5,7,8][0-9]\d{8}$/
         if (reg.test(value)) {
           callback()
-          console.log(reg.test(value))
         } else {
           return callback(new Error('请输入格式正确的手机号'))
         }
@@ -457,7 +456,6 @@ export default {
     },
     beforeAvatarUpload (file) {
       this.infoForm.headpic = file.name
-      console.log(this.infoForm.headpic)
       const isJPG = file.type === 'image/jpeg'
       const isLt2M = file.size / 1024 / 1024 < 2
 
