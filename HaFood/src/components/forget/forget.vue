@@ -90,7 +90,6 @@ export default {
         getCode () {
             this.$refs.forgetForm.validate((valid) => {
             let email = document.getElementById('email').value
-            console.log(email)
                 if (this.forgetForm.email && email) {
                     let timeCount = 60
                     if (!this.timer) {
@@ -123,7 +122,6 @@ export default {
         getSubmit () {
             this.$refs.forgetForm.validate((valid) => {
                 if (valid) {
-                    console.log('验证通过，可以发送请求')
                     axios({
                         url: 'http://192.168.97.241:3000/forget',
                         method: 'get',
@@ -133,7 +131,6 @@ export default {
                             psd: md5(this.forgetForm.password)
                         }
                     }).then((res) => {
-                        console.log(res)
                         return this.$message({
                             message: '修改密码成功',
                             type: 'success',
@@ -152,7 +149,6 @@ export default {
         },
         linktologin: function () {
             this.$router.replace('/login')
-            console.log()
             this.$forceUpdate(this.$route.fullPath)
         }
     }
