@@ -8,7 +8,7 @@
           <el-form label-position="left" inline class="demo-table-expand">
             <el-form-item label="商家头像">
               <span>
-                 <img :src="api+props.row.headpic" min-width="70" height="70" />
+                 <img :src="api+props.row.headpic" width="70" height="70" style="border-radius:50%;" />
               </span>
             </el-form-item>
             <el-form-item label="商家名称">
