@@ -19,16 +19,16 @@
         <FreshFruits></FreshFruits>
         <!-- about-us-banner -->
         <div class="about-banner-box">
-          <AboutBanner></AboutBanner>
+          <personbanner ref="personbanner"></personbanner>
         </div>
         <AboutTeam></AboutTeam>
     </div>
 </template>
 
 <script>
+import personbanner from '../home/Home1-personbanner'
 import bannerShape from '../../img/banner_shape.png'
 import FreshFruits from './fresh-fruits'
-import AboutBanner from './about-banner'
 import AboutTeam from './about-team'
 export default {
   data () {
@@ -39,8 +39,24 @@ export default {
   },
   components: {
     FreshFruits,
-    AboutBanner,
-    AboutTeam
+    AboutTeam,
+    personbanner
+  },
+  mounted: function () {
+    window.onresize = () => {
+      let personbanner = this.$refs.personbanner
+      personbanner.carouse()
+    }
+    document.addEventListener('webkitvisibilitychange', () => {
+		// 浏览器是否隐藏  隐藏hidden  显示visible
+    var isHidden = document.hidden || document.webkitVisibilityState === 'hidden'
+    let personbanner = this.$refs.personBanner
+		if (isHidden) {
+			clearInterval(personbanner.interval)
+		} else {
+      personbanner.carouseinterval(personbanner.showcount)
+		}
+	})
   }
 }
 </script>
