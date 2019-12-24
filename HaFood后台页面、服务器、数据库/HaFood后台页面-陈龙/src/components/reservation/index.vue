@@ -12,11 +12,6 @@
         width="144">
       </el-table-column>
       <el-table-column
-        prop="node"
-        label="房间名称"
-        width="168">
-      </el-table-column>
-      <el-table-column
         prop="consumer"
         label="客户名称"
         width="168">
@@ -34,6 +29,11 @@
       <el-table-column
         prop="bookday"
         label="提交时间"
+        width="168">
+      </el-table-column>
+      <el-table-column
+        prop="node"
+        label="详情"
         width="168">
       </el-table-column>
     </el-table>
