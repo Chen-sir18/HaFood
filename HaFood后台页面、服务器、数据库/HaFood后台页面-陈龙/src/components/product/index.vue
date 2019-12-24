@@ -53,7 +53,7 @@
         type="index"
         prop="number"
         label="序号"
-        width="124">
+        width="114">
       </el-table-column>
       <el-table-column
         prop="goodsname"

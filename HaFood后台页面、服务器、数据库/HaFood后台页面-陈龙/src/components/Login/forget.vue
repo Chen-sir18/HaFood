@@ -14,7 +14,8 @@
         <div class="code" prop="code">
             <span>请输入验证码：</span>
             <input type="text" name="code" class="codeTxt" v-model="ruleForm.code">
-            <a @click="getcode" class="getcode">获取验证码</a>
+            <a @click="getcode" class="getcode" v-if="isShow">获取验证码</a>
+            <a class="nogetcode" v-else>{{this.time}}秒后重发</a>
         </div>
         <el-form-item label="密码" prop="pass" class="pass">
           <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
@@ -85,7 +86,9 @@ export default {
         checkPass: [
           { validator: validatePass2, trigger: 'blur' }
         ]
-      }
+      },
+      isShow: true,
+      time: ''
     }
   },
   methods: {
@@ -142,8 +145,21 @@ export default {
           email: email
         }
       }).then((res) => {
-        console.log(res)
+        // console.log(res)
       })
+      // 点击获取验证码按钮的倒计时
+      this.isShow = false
+      let timer = 15
+      this.time = timer
+      let clock = setInterval(() => {
+        this.time = timer
+        timer--
+        if (timer <= 0) {
+          this.isShow = true
+          this.time = 15
+          clearInterval(clock)
+        }
+      }, 1000)
     }
   }
 }

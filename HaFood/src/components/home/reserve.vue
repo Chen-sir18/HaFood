@@ -68,10 +68,10 @@ export default {
             this.$refs.reserveRef.validate((valid) => {
                 let token = window.localStorage.getItem('token')
                 let info = JSON.parse(window.localStorage.getItem('info'))
-                let email = info.email
-                let userid = info.id
                 // 表单验证成功
                 if (valid && token && info) {
+                    let email = info.email
+                    let userid = info.id
                     axios({
                         url: 'api/booktable',
                         method: 'get',
