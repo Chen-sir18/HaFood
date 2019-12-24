@@ -98,9 +98,13 @@
             <h3 class="h-comment-number">{{commtentData.length}} comments</h3>
             <div :key="index" v-for="(item, index) in commtentData" class="h-comments-item">
               <div class="h-comments-in">
-                <img v-if="!(item.headpic === undefined)" :src='"http://192.168.97.241:3000/" + item.headpic' />
-                <span>FEB 15, 2019</span>
-                <h5 class="h-Vanessa">{{item.nickname}}</h5>
+                <div class="h-comments-avatar">
+                  <img v-if="!(item.headpic === undefined)" :src='"api/" + item.headpic' />
+                </div>
+                <div class="h-comment-spanbox">
+                  <span>FEB 15, 2019</span>
+                  <h5 class="h-Vanessa">{{item.nickname}}</h5>
+                </div>
                 <a class="h-return-box">
                   <i class="icon iconfont icon-return-left"></i>
                 </a>
