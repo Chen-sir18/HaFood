@@ -24,7 +24,7 @@
       <el-table-column
         prop="booktime"
         label="客户电话"
-        width="198">
+        width="168">
       </el-table-column>
       <el-table-column
         prop="bookday"
