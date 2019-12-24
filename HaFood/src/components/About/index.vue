@@ -44,8 +44,10 @@ export default {
   },
   mounted: function () {
     window.onresize = () => {
-      let personbanner = this.$refs.personbanner
-      personbanner.carouse()
+      if (this.$route.fullPath === '/AboutUs') {
+        let personbanner = this.$refs.personbanner
+        personbanner.carouse()
+      }
     }
     document.addEventListener('webkitvisibilitychange', () => {
 		// 浏览器是否隐藏  隐藏hidden  显示visible

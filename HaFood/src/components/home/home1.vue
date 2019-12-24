@@ -50,24 +50,26 @@ export default {
   },
   mounted: function () {
     window.onresize = () => {
-      let sellerbanner = this.$refs.sellerBanner
-      let personbanner = this.$refs.personBanner
-      sellerbanner.carouse()
-      personbanner.carouse()
+      if (this.$route.fullPath === '/Home1') {
+        let sellerbanner = this.$refs.sellerBanner
+        let personbanner = this.$refs.personBanner
+        sellerbanner.carouse()
+        personbanner.carouse()
+      }
     }
     document.addEventListener('webkitvisibilitychange', () => {
-		// 浏览器是否隐藏  隐藏hidden  显示visible
+    // 浏览器是否隐藏  隐藏hidden  显示visible
     var isHidden = document.hidden || document.webkitVisibilityState === 'hidden'
     let personbanner = this.$refs.personBanner
     let sellerbanner = this.$refs.sellerBanner
-		if (isHidden) {
-      clearInterval(personbanner.interval)
-      clearInterval(sellerbanner.interval)
-		} else {
-      personbanner.carouseinterval(personbanner.showcount)
-      sellerbanner.carouseinterval(sellerbanner.showcount)
-		}
-	})
+      if (isHidden) {
+        clearInterval(personbanner.interval)
+        clearInterval(sellerbanner.interval)
+      } else {
+        personbanner.carouseinterval(personbanner.showcount)
+        sellerbanner.carouseinterval(sellerbanner.showcount)
+      }
+    })
   }
 }
 </script>

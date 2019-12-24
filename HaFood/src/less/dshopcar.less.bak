@@ -189,7 +189,7 @@
     .go-pay {
       width: 94px;
       height: 100%;
-      text-align: center;
+      text-align：center;
       background: #fb7e00;
       float: right;
       color: #fff;
