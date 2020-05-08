@@ -88,8 +88,8 @@ export default {
                         return this.$message({
                             message: '订座成功',
                             type: 'success',
-                            showClose: true,
-                            duration: 2000
+                            duration: 2000,
+                            showClose: true
                         })
                     })
                 } else {

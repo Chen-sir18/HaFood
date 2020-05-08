@@ -1,5 +1,4 @@
 <template>
-<!-- tea -->
   <div class="tea-box">
       <div class="four-fall-box">
         <div class="content-box">
